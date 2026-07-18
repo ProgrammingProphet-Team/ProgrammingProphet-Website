@@ -1,0 +1,214 @@
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const NAV_LINKS = [
+  { name: 'Tech Stack', href: '#', hasDropdown: true },
+  { name: 'Services', href: '/#services', hasDropdown: false },
+  // { name: 'Industries', href: '#', hasDropdown: true },
+  // { name: 'Insights', href: '#', hasDropdown: true },
+  // { name: 'Testimonials', href: '/testimonials', hasDropdown: false },
+  { name: 'Projects', href: '/projects', hasDropdown: false },
+  { name: 'Testimonials', href: '/testimonials', hasDropdown: false },
+
+  { name: 'About us', href: '/about', },
+
+  // { name: 'Careers', href: '/careers', openInNewTab: true },
+];
+
+const TECH_STACK_DATA = {
+  'Front-end': [
+    { title: 'Front-end Development', desc: 'Helping you with complex front-end tasks' },
+    { title: 'Angular', desc: 'Building scalable, enterprise-grade web applications' },
+    { title: 'React / Next.js', desc: 'Powering dynamic and robust front-end solutions' },
+    { title: 'Vue', desc: 'Building reactive and user-friendly applications' },
+  ],
+  'Back-end': [
+    { title: 'Back-end Development', desc: 'Building secure and robust server-side architectures' },
+    { title: 'Node.js', desc: 'High-performance, event-driven backend systems' },
+    { title: 'Python', desc: 'Scalable data processing and backend services' },
+    { title: 'Java', desc: 'Enterprise-grade backend applications' },
+  ],
+  'Cloud Engineering': [
+    { title: 'AWS / Azure / GCP', desc: 'Multi Cloud Services' },
+    { title: 'Cloud Architecture / Deployment', desc: 'Helping you with complex cloud architecture and deployment tasks' },
+    { title: 'Cloud Cost Optimization', desc: 'Reduce your cloud cost by using optimized cloud solutions' },
+    { title: 'Cloud Solutions', desc: 'Custom cloud solutions for your business' },
+
+  ]
+};
+
+// {
+//   title: 'Cloud Engineering',
+//   subServices: ['AWS / Azure / GCP', 'Cloud Architecture / Deployment ', "Cost Optimization", 'Cloud Solutions',],
+//   icon: Cloud,
+//   stats: '$2M+ Cloud Costs Saved',
+//   color: 'from-cyan-500 to-blue-400',
+//   textColor: 'text-cyan-400',
+//   bgIcon: 'text-cyan-500'
+// }
+
+
+
+export const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [activeTechCategory, setActiveTechCategory] = useState<keyof typeof TECH_STACK_DATA>('Front-end');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 bg-white ${isScrolled ? 'shadow-md border-b border-gray-200' : 'border-b border-gray-100'}`}>
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-8">
+        <div className="flex items-center justify-between h-[80px]">
+
+          {/* Logo (Left) */}
+          <Link to="/" className="flex items-center group cursor-pointer shrink-0">
+            <img src="/logo-light.png" alt="ProgrammingProphet Logo" className="h-12 w-auto object-contain mix-blend-multiply" />
+
+            <div className="flex ">
+              <span className="text-xl font-bold text-slate-900 tracking-tight leading-tight">Programming</span><span className="text-xl font-bold text-blue-600 tracking-tight leading-tight">Prophet</span>
+            </div>
+          </Link>
+
+          {/* Desktop Links (Center) */}
+          <div className="hidden lg:flex items-center justify-center flex-1 ml-4 h-full relative" onMouseLeave={() => setActiveMenu(null)}>
+            <div className="flex items-center gap-6 xl:gap-8 h-full">
+              {NAV_LINKS.map((link) => (
+                <div
+                  key={link.name}
+                  // ${activeMenu === link.name ? 'border-b-4 border-blue-600' : ''}
+                  className={`h-full flex items-center `}
+                  onMouseEnter={() => setActiveMenu(link.name)}
+                >
+                  <a
+                    href={link.href}
+                    target={link.openInNewTab ? "_blank" : undefined}
+                    rel={link.openInNewTab ? "noopener noreferrer" : undefined}
+                    className={`text-base font-semibold transition-colors flex items-center gap-1 ${activeMenu === link.name ? 'text-blue-600' : 'text-slate-700 hover:text-blue-600 '}`}
+                  >
+                    {link.name}
+                    {link.hasDropdown && (
+                      <ChevronDown size={14} className={`mt-[2px] transition-transform ${activeMenu === link.name ? 'rotate-180 text-blue-600' : 'opacity-70'}`} />
+                    )}
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            {/* Mega Menu Dropdown */}
+            <AnimatePresence>
+              {activeMenu === 'Tech Stack' && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute top-[80px] left-1/2 -translate-x-1/2 w-screen max-w-[1410px] bg-white shadow-2xl border-t border-gray-200 flex z-50  overflow-hidden"
+                >
+                  {/* Left Sidebar */}
+
+                  <div className="w-[280px] bg-gray-50 flex flex-col py-6">
+                    {(Object.keys(TECH_STACK_DATA) as Array<keyof typeof TECH_STACK_DATA>).map((category) => (
+                      <button
+                        key={category}
+                        onMouseEnter={() => setActiveTechCategory(category)}
+                        // shadow-[inset_4px_0_0_0_#2563eb]
+                        className={`flex items-center  justify-between px-8 py-4 text-left font-semibold transition-colors ${activeTechCategory === category
+                          ? 'text-blue-600 bg-gray-100 '
+                          : 'text-slate-700 hover:bg-gray-100 hover:text-blue-600'
+                          }`}
+                      >
+                        {category}
+                        <ChevronDown size={14} className="-rotate-90 opacity-50" />
+                      </button>
+                    ))}
+                  </div>
+
+                  {/* Right Content */}
+                  <div className="flex-1 p-10 bg-white">
+                    <div className="grid grid-cols-3 gap-x-8 gap-y-10">
+                      {TECH_STACK_DATA[activeTechCategory].map((item, idx) => (
+                        <div key={idx} className="flex flex-col gap-2 group cursor-pointer">
+                          <h4 className="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
+                            {item.title}
+                          </h4>
+                          <p className="text-sm text-slate-500 leading-relaxed group-hover:text-slate-600">
+                            {item.desc}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Desktop Actions (Right) */}
+          <div className="hidden lg:flex items-center gap-4 ml-auto">
+            {/* <button className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-slate-600 hover:bg-gray-50 transition-colors">
+              <Search size={18} />
+            </button> */}
+
+            <Link to="/contact" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5  text-[14px] transition-colors flex items-center gap-2">
+              Contact us
+              {/* <ArrowRight size={16} /> */}
+            </Link>
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <div className="flex items-center gap-4 lg:hidden ml-auto">
+            <button
+              aria-label="Toggle Mobile Menu"
+              className="p-2 text-slate-700 transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden absolute top-full left-0 right-0 border-b border-gray-200 bg-white shadow-xl overflow-hidden"
+          >
+            <div className="flex flex-col p-6 gap-6">
+              {NAV_LINKS.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  target={link.openInNewTab ? "_blank" : undefined}
+                  rel={link.openInNewTab ? "noopener noreferrer" : undefined}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-lg font-semibold text-slate-700 hover:text-blue-600 transition-colors flex items-center justify-between"
+                >
+                  {link.name}
+                  {link.hasDropdown && <ChevronDown size={18} className="opacity-70" />}
+                </a>
+              ))}
+              <div className="h-[1px] bg-gray-100 my-2"></div>
+              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md text-center transition-colors w-full flex items-center justify-center gap-2">
+                Contact Us <ArrowRight size={18} />
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+};
