@@ -57,8 +57,11 @@ app.get("/api/health", (req, res) => {
 // ============================================================
 // CONTACT FORM - Save to DB + Send confirmation email
 // ============================================================
-app.post("/api/contact", async (req, res) => {
+app.post("/api/contact", upload.array("files", 3), async (req, res) => {
   try {
+    console.log("Received contact request!");
+    console.log("req.body:", req.body);
+    console.log("req.files:", req.files);
     const { name, email, phone, requirements } = req.body;
 
     // Validate required fields
@@ -88,6 +91,10 @@ app.post("/api/contact", async (req, res) => {
               <p><strong>Requirements:</strong><br/>${requirements}</p>
             </div>
           `,
+          attachments: req.files ? req.files.map(file => ({
+            filename: file.originalname,
+            path: file.path
+          })) : []
         });
         console.log(`✅ [EMAIL SUCCESS] Contact email sent to contact@programmingprophet.site`);
       } else {
@@ -181,6 +188,12 @@ app.post("/api/apply", upload.single("resume"), async (req, res) => {
     console.error("[SERVER ERROR] Failed to submit application:", error);
     res.status(500).json({ error: "Failed to submit application" });
   }
+});
+
+// Global Error Handler
+app.use((err, req, res, next) => {
+  console.error("❌ [GLOBAL ERROR HANDLER]:", err);
+  res.status(500).json({ error: err.message || "Internal Server Error" });
 });
 
 app.listen(PORT, () => {
