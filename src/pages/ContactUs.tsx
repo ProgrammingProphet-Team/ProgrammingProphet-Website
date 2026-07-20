@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Paperclip, ShieldCheck, Star, Zap, Shield, Rocket, Handshake } from 'lucide-react';
+import { ChevronRight, Paperclip, ShieldCheck, Star, Zap, Shield, Rocket, Handshake, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const ContactUs = () => {
@@ -17,6 +17,61 @@ export const ContactUs = () => {
     phone: '',
     requirements: ''
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const [files, setFiles] = useState<File[]>([]);
+  const [fileError, setFileError] = useState<string>('');
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = Array.from(e.target.files || []);
+    if (!selectedFiles.length) return;
+
+    setFileError('');
+
+    const validExtensions = ['.pdf', '.doc', '.docx', '.ppt', '.pptx'];
+    const newFiles = [...files, ...selectedFiles];
+
+    if (newFiles.length > 3) {
+      setFileError('You can only attach up to 3 files.');
+      return;
+    }
+
+    let errorMsg = '';
+    const validNewFiles: File[] = [];
+
+    for (const file of selectedFiles) {
+      const isValidType = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+
+      if (!isValidType) {
+        errorMsg = 'Invalid file format. Allowed: doc, docx, pdf, ppt, pptx.';
+        break;
+      }
+
+      if (file.size > 3 * 1024 * 1024) {
+        errorMsg = `File "${file.name}" exceeds the 3MB limit.`;
+        break;
+      }
+
+      validNewFiles.push(file);
+    }
+
+    if (errorMsg) {
+      setFileError(errorMsg);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+      return;
+    }
+
+    setFiles([...files, ...validNewFiles]);
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
+  const removeFile = (index: number) => {
+    setFiles(files.filter((_, i) => i !== index));
+    setFileError('');
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -47,7 +102,7 @@ export const ContactUs = () => {
     setErrors(prev => ({ ...prev, [name]: error }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     let newErrors = { name: '', email: '', phone: '', requirements: '' };
@@ -70,12 +125,45 @@ export const ContactUs = () => {
       isValid = false;
     }
 
+    if (fileError) {
+      isValid = false;
+    }
+
     setErrors(newErrors);
 
     if (isValid) {
-      // Process form submission
-      console.log('Form submitted successfully', formData);
-      // Optional: reset form or show success message
+      setIsSubmitting(true);
+      setSubmitStatus('idle');
+
+      try {
+        const formDataToSend = new FormData();
+        formDataToSend.append('name', formData.name);
+        formDataToSend.append('email', formData.email);
+        formDataToSend.append('phone', formData.phone);
+        formDataToSend.append('requirements', formData.requirements);
+        files.forEach(file => {
+          formDataToSend.append('files', file);
+        });
+
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          body: formDataToSend,
+        });
+
+        if (response.ok) {
+          setSubmitStatus('success');
+          setFormData({ name: '', email: '', phone: '', requirements: '' });
+          setFiles([]);
+          setTimeout(() => setSubmitStatus('idle'), 5000);
+        } else {
+          setSubmitStatus('error');
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        setSubmitStatus('error');
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
   return (
@@ -119,49 +207,52 @@ export const ContactUs = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <h3 className="text-xl font-semibold mb-12">What happens next?</h3>
+              <h3 className="text-xl font-semibold mb-6">What happens next?</h3>
 
-              <div className="relative border-l border-dashed border-gray-500 ml-4 space-y-12 pb-12">
+              <div className="ml-4 space-y-6 pb-12">
                 {/* Step 1 */}
-                <div className="relative pl-8 ">
-                  <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-slate-800  flex items-center justify-center text-sm font-semibold text-gray-300">
+                <div className="relative pl-12">
+                  <div className="absolute left-[15px] top-8 -bottom-12 border-l border-dashed border-gray-400"></div>
+                  <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-sm font-semibold text-gray-300 z-10">
                     1
                   </div>
-                  {/* <h4 className="text-white font-semibold font-2xl mb-1 pt-1">Discovery Call</h4> */}
-                  <p className="text-gray-200 text-[15px] leading-relaxed">
+                  <h4 className="text-white font-semibold font-2xl mb-1 pt-1">Discovery Call</h4>
+                  <p className="text-gray-300 text-[15px] leading-relaxed">
                     We discuss your goals, challenges, budget, and timeline to understand your business requirements.
                   </p>
                 </div>
 
                 {/* Step 2 */}
-                <div className="relative pl-8">
-                  <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-slate-800 border border-gray-600 flex items-center justify-center text-sm font-semibold text-gray-300">
+                <div className="relative pl-12">
+                  <div className="absolute left-[15px] top-8 -bottom-12 border-l border-dashed border-gray-400"></div>
+                  <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-slate-800 border border-gray-600 flex items-center justify-center text-sm font-semibold text-gray-300 z-10">
                     2
                   </div>
-                  {/* <h4 className="text-white font-semibold mb-1 pt-1">Solution Architecture</h4> */}
-                  <p className="text-gray-200 text-[15px] leading-relaxed">
+                  <h4 className="text-white font-semibold mb-1 pt-1">Solution Architecture</h4>
+                  <p className="text-gray-300 text-[15px] leading-relaxed">
                     We evaluate the best technology stack, project scope, and implementation approach for your product.
                   </p>
                 </div>
 
                 {/* Step 3 */}
-                <div className="relative pl-8">
-                  <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-slate-800 border border-gray-600 flex items-center justify-center text-sm font-semibold text-gray-300">
+                <div className="relative pl-12">
+                  <div className="absolute left-[15px] top-8 -bottom-12 border-l border-dashed border-gray-400"></div>
+                  <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-slate-800 border border-gray-600 flex items-center justify-center text-sm font-semibold text-gray-300 z-10">
                     3
                   </div>
-                  {/* <h4 className="text-white font-semibold mb-1 pt-1">Proposal & Planning</h4> */}
-                  <p className="text-gray-200 text-[15px] leading-relaxed">
+                  <h4 className="text-white font-semibold mb-1 pt-1">Proposal & Planning</h4>
+                  <p className="text-gray-300 text-[15px] leading-relaxed">
                     You'll receive a detailed proposal including timeline, milestones, pricing, and delivery roadmap.
                   </p>
                 </div>
 
                 {/* Step 4 */}
-                <div className="relative pl-8 ">
-                  <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-slate-800 border border-gray-600 flex items-center justify-center text-sm font-semibold text-gray-300">
+                <div className="relative pl-12">
+                  <div className="absolute left-0 top-0 w-8 h-8 rounded-full bg-slate-800 border border-gray-600 flex items-center justify-center text-sm font-semibold text-gray-300 z-10">
                     4
                   </div>
-                  {/* <h4 className="text-white font-semibold mb-1 pt-1">Development & Delivery</h4> */}
-                  <p className="text-gray-200 text-[15px] leading-relaxed">
+                  <h4 className="text-white font-semibold mb-1 pt-1">Development & Delivery</h4>
+                  <p className="text-gray-300 text-[15px] leading-relaxed">
                     Once approved, we begin development with timely updates, testing, deployment, and post-launch support.
                   </p>
                 </div>
@@ -173,7 +264,7 @@ export const ContactUs = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="relative w-[1200px] mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-24 text-xl pb-18"
+              className="relative w-[1200px] mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14 text-xl pb-18"
             >
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10   border border-blue-500/20 flex items-center justify-center flex-shrink-0 text-blue-500">
@@ -223,7 +314,7 @@ export const ContactUs = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-white p-8 lg:p-12  mt-4  shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)]"
+            className="bg-white p-8 lg:p-12 mt-1 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)]"
           >
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="relative pb-5">
@@ -347,14 +438,49 @@ export const ContactUs = () => {
                 )}
               </div>
 
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4 ">
-                <button type="button" className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 hover:border-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-300 text-sm font-semibold text-slate-900 w-full sm:w-auto shrink-0 group">
-                  <Paperclip size={18} className="text-black group-hover:text-white transition-colors" />
-                  Attach file
-                </button>
-                <p className="text-xs text-gray-500 leading-relaxed max-w-xs">
-                  No more than 3 files may be attached up to 3MB each. Formats: doc, docx, pdf, ppt, pptx.
-                </p>
+              <div className="flex flex-col gap-3">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                  <input
+                    type="file"
+                    multiple
+                    className="hidden"
+                    ref={fileInputRef}
+                    onChange={handleFileChange}
+                    accept=".doc,.docx,.pdf,.ppt,.pptx"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 hover:border-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-300 text-sm font-semibold text-slate-900 w-full sm:w-auto shrink-0 group"
+                  >
+                    <Paperclip size={18} className="text-black group-hover:text-white transition-colors" />
+                    Attach file
+                  </button>
+                  <div className="flex flex-col gap-1">
+                    <p className="text-xs text-gray-600 leading-relaxed max-w-xs">
+                      No more than 3 files may be attached up to 3MB each. Formats: doc, docx, pdf, ppt, pptx.
+                    </p>
+                    {fileError && <p className="text-sm font-medium text-orange-500">{fileError}</p>}
+                  </div>
+                </div>
+
+                {files.length > 0 && (
+                  <div className="flex flex-col gap-2 mt-1">
+                    {files.map((file, idx) => (
+                      <div key={idx} className="flex items-center justify-between bg-slate-50 px-4 py-2 border border-slate-200 rounded text-sm text-slate-700 max-w-md">
+                        <span className="truncate mr-4 font-medium">{file.name}</span>
+                        <button
+                          type="button"
+                          onClick={() => removeFile(idx)}
+                          className="text-gray-400 hover:text-red-500 transition-colors"
+                          aria-label="Remove file"
+                        >
+                          <X size={16} />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
 
               {/* <label className="flex items-start gap-3 cursor-pointer group">
@@ -367,14 +493,30 @@ export const ContactUs = () => {
               </label> */}
 
               <div className="pt-2 flex flex-col sm:flex-row items-center gap-6">
-                <button type="submit" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3.5 duration-300 hover:shadow-lg text-[15px]">
-                  Send request
+                <button type="submit" disabled={isSubmitting} className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold px-8 py-3.5 duration-300 hover:shadow-lg text-[15px] flex items-center justify-center gap-2">
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Sending...
+                    </>
+                  ) : 'Let\'s Build Together'}
                 </button>
                 <div className="flex items-center gap-2 md:text-sm lg:text-base text-gray-500 font-medium">
                   <ShieldCheck size={24} className=" text-green-600" />
                   Your privacy is protected
                 </div>
               </div>
+
+              {submitStatus === 'success' && (
+                <div className="text-green-600 text-sm font-medium p-3 bg-green-50 border border-green-200 rounded-lg">
+                  Thank you! Your message has been sent successfully. We will get back to you soon.
+                </div>
+              )}
+              {submitStatus === 'error' && (
+                <div className="text-orange-600 text-sm font-medium p-3 bg-orange-50 border border-orange-200 ">
+                  Oops! Something went wrong. Please try again later.
+                </div>
+              )}
 
             </form>
           </motion.div>

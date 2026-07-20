@@ -1,15 +1,10 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 const multer = require("multer");
 const nodemailer = require("nodemailer");
 const fs = require("fs");
 const path = require("path");
-const dns = require("dns");
 require("dotenv").config();
-
-// Use Google Public DNS to resolve MongoDB Atlas SRV records
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -35,18 +30,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-// Database Connection
-mongoose
-  .connect(process.env.MONGODB_URI, {
-    serverSelectionTimeoutMS: 10000,
-    socketTimeoutMS: 45000,
-  })
-  .then(() => console.log("✅ Connected to MongoDB Atlas successfully!"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err.message));
-
-// Models
-const Applicant = require("./models/Applicant");
-const Contact = require("./models/Contact");
+// Database removed - only handling emails
 
 // Email Transporter - Uses connectwm.team@gmail.com to send emails on behalf of team@wemurz.com
 const transporter = nodemailer.createTransport({
@@ -57,21 +41,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Verify email transporter on startup
-if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-  transporter
-    .verify()
-    .then(() =>
-      console.log("✅ Email transporter is ready (connectwm.team@gmail.com)"),
-    )
-    .catch((err) =>
-      console.error("❌ Email transporter verification failed:", err.message),
-    );
-} else {
-  console.log(
-    "⚠️  Email credentials not configured. Set EMAIL_USER and EMAIL_PASS in .env",
-  );
-}
+// Verified transporter configuration on demand when sending emails instead of startup
 
 // ============================================================
 // Health Check API
@@ -89,77 +59,42 @@ app.get("/api/health", (req, res) => {
 // ============================================================
 app.post("/api/contact", async (req, res) => {
   try {
-    const { firstName, lastName, email, projectDetails } = req.body;
+    const { name, email, phone, requirements } = req.body;
 
     // Validate required fields
-    if (!firstName || !lastName || !email || !projectDetails) {
+    if (!name || !email || !phone || !requirements) {
       return res.status(400).json({
         error:
-          "All fields are required: firstName, lastName, email, projectDetails",
+          "All fields are required: name, email, phone, requirements",
       });
     }
 
-    // Save to MongoDB
-    const newContact = new Contact({
-      firstName,
-      lastName,
-      email,
-      projectDetails,
-    });
+    // Email sending logic
 
-    await newContact.save();
-    console.log(
-      `[DB SUCCESS] Contact inquiry from ${firstName} ${lastName} (${email}) saved!`,
-    );
-
-    // Send confirmation email to the user
+    // Send email to contact@programmingprophet.site
     try {
       if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
         await transporter.sendMail({
-          from: `"WeMurz Team" <${process.env.COMPANY_EMAIL}>`,
-          // replyTo: "team@wemurz.com",
-          cc: process.env.EMAIL_USER, // CC the company email for internal tracking
-          to: email,
-          subject: `We've Received Your Message — WeMurz`,
+          from: `"ProgrammingProphet Contact Form" <${process.env.EMAIL_USER}>`,
+          to: "contact@programmingprophet.site",
+          replyTo: email,
+          subject: `New Contact Request from ${name}`,
           html: `
-            <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; background: #0a0a0a; color: #e2e8f0; border-radius: 16px; overflow: hidden; border: 1px solid #1e293b;">
-              <div style="background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%); padding: 40px 30px; text-align: center;">
-                <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 700;">WeMurz</h1>
-                <p style="color: #94a3b8; margin: 8px 0 0; font-size: 14px;">Building the Future, Together</p>
-              </div>
-              <div style="padding: 30px;">
-                <h2 style="color: #ffffff; font-size: 20px; margin-bottom: 16px;">Hi ${firstName},</h2>
-                <p style="color: #cbd5e1; line-height: 1.7; font-size: 15px;">
-                  Thank you for reaching out to us! We have received your message and our team is already reviewing your project details.
-                </p>
-                <div style="background: #111827; border-radius: 12px; padding: 20px; margin: 20px 0; border-left: 4px solid #3b82f6;">
-                  <p style="color: #94a3b8; font-size: 13px; margin: 0 0 8px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;">Your Project Details:</p>
-                  <p style="color: #e2e8f0; font-size: 14px; margin: 0; line-height: 1.6;">${projectDetails}</p>
-                </div>
-                <p style="color: #cbd5e1; line-height: 1.7; font-size: 15px;">
-                  We will reach out to you soon with next steps. In the meantime, feel free to contact us at <a href="mailto:team@wemurz.com" style="color: #60a5fa; text-decoration: none; font-weight: 600;">team@wemurz.com</a> for any urgent queries.
-                </p>
-                <hr style="border: none; border-top: 1px solid #1e293b; margin: 24px 0;" />
-                <p style="color: #64748b; font-size: 13px; line-height: 1.6; margin: 0;">
-                  Warm regards,<br />
-                  <strong style="color: #e2e8f0;">The WeMurz Team</strong><br />
-                  <a href="mailto:team@wemurz.com" style="color: #60a5fa; text-decoration: none;">team@wemurz.com</a>
-                </p>
-              </div>
+            <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; color: #333333; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">
+              <h2>New Contact Request</h2>
+              <p><strong>Name:</strong> ${name}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Phone:</strong> ${phone}</p>
+              <p><strong>Requirements:</strong><br/>${requirements}</p>
             </div>
           `,
         });
-        console.log(`[EMAIL SUCCESS] Contact confirmation sent to ${email}`);
+        console.log(`✅ [EMAIL SUCCESS] Contact email sent to contact@programmingprophet.site`);
       } else {
-        console.log(
-          `[EMAIL MOCK] Skipping email to ${email} — EMAIL_USER/EMAIL_PASS not set in .env`,
-        );
+        console.log(`⚠️ [EMAIL SKIP] Missing EMAIL_USER/EMAIL_PASS in .env`);
       }
     } catch (mailErr) {
-      console.error(
-        "[EMAIL ERROR] Contact confirmation failed:",
-        mailErr.message,
-      );
+      console.error("❌ [EMAIL ERROR] Contact email failed:", mailErr.message);
     }
 
     res.status(201).json({ message: "Contact form submitted successfully!" });
@@ -190,26 +125,7 @@ app.post("/api/apply", upload.single("resume"), async (req, res) => {
 
     const resumePath = req.file ? req.file.filename : null;
 
-    // Save to Database
-    const newApplicant = new Applicant({
-      jobId,
-      role,
-      firstName,
-      lastName,
-      email,
-      phone,
-      resumePath,
-      coverLetter,
-      portfolioUrl,
-      linkedinUrl,
-      noticePeriod,
-      relocation,
-    });
-
-    await newApplicant.save();
-    console.log(
-      `[DB SUCCESS] Application for ${firstName} ${lastName} (${role}) saved!`,
-    );
+    // Email sending logic
 
     // Send confirmation email to the applicant
     try {
@@ -252,28 +168,21 @@ app.post("/api/apply", upload.single("resume"), async (req, res) => {
             </div>
           `,
         });
-        console.log(
-          `[EMAIL SUCCESS] Job application confirmation sent to ${email}`,
-        );
+        console.log(`✅ [EMAIL SUCCESS] Job application confirmation sent to ${email}`);
       } else {
-        console.log(
-          `[EMAIL MOCK] Skipping email to ${email} — EMAIL_USER/EMAIL_PASS not set in .env`,
-        );
+        console.log(`⚠️ [EMAIL SKIP] Missing EMAIL_USER/EMAIL_PASS in .env`);
       }
     } catch (mailErr) {
-      console.error(
-        "[EMAIL ERROR] Job application confirmation failed:",
-        mailErr.message,
-      );
+      console.error("❌ [EMAIL ERROR] Job application email failed:", mailErr.message);
     }
 
     res.status(201).json({ message: "Application submitted securely!" });
   } catch (error) {
     console.error("[SERVER ERROR] Failed to submit application:", error);
-    res.status(500).json({ error: "Failed to submit application to MongoDB" });
+    res.status(500).json({ error: "Failed to submit application" });
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server is blasting off on port ${PORT}`);
+  console.log(`🚀 Server started on port ${PORT}`);
 });
