@@ -59,9 +59,11 @@ export const Testimonials = () => {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
       {/* <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/7 rounded-full blur-3xl pointer-events-none" /> */}
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 ">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 pt-12">
         <div className="text-center mb-20 max-w-3xl mx-auto">
-          <motion.div
+
+
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -69,7 +71,7 @@ export const Testimonials = () => {
           >
             <Star size={16} className="fill-current" />
             Testimonials
-          </motion.div>
+          </motion.div> */}
 
 
           <motion.h2

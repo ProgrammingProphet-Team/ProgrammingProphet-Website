@@ -1,32 +1,45 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { div } from 'framer-motion/client';
-import { Layers, Zap, Lock, Database, LineChart } from 'lucide-react';
+import { Layers, Zap, Lock, Database, LineChart, RocketIcon, Wrench, WrenchIcon, MessageCircleQuestionMarkIcon, HandshakeIcon, Shield } from 'lucide-react';
 
 const FEATURES = [
   {
-    icon: <Layers size={24} />,
-    title: 'Scalable Cloud Architecture',
-    description: 'Auto-scaling infrastructure designed to handle immense traffic spikes without degradation.'
-  },
-  {
-    icon: <Lock size={24} />,
-    title: 'Secure DevOps Pipelines',
-    description: 'Enterprise-grade security embedded throughout the continuous integration lifecycle.'
+    icon: <RocketIcon size={24} />,
+    title: 'Faster Time to Market ',
+    description: 'Deliver your product faster with efficient development workflows and streamlined deployment.'
   },
   {
     icon: <Zap size={24} />,
-    title: 'High Performance Web Apps',
-    description: 'Lightning-fast delivery using edge computing and optimal rendering strategies.'
+    title: 'High Performance',
+    description: 'Optimized software and cloud infrastructure designed for speed, scalability, and reliability.'
   },
   {
-    icon: <Database size={24} />,
-    title: 'AI Powered Automation',
-    description: 'Intelligent workflows that reduce manual overhead and improve operational efficiency.'
+    icon: <HandshakeIcon size={24} />,
+    title: 'Transparent Collaboration',
+    description: 'Clear communication, timely updates, and complete project visibility throughout development.'
   },
+  // {
+  //   icon: <Layers size={24} />,
+  //   title: 'Scalable Cloud Architecture',
+  //   description: 'Auto-scaling infrastructure designed to handle immense traffic spikes without degradation.'
+  // },
   {
-    icon: <LineChart size={24} />,
-    title: 'Data Driven Decision Making',
-    description: 'Real-time analytics and predictive modeling to guide business strategy.'
+    icon: <Shield size={24} />,
+    title: 'Security by Design',
+    description: 'Applications built with security, reliability, and best practices from day one.'
+  },
+
+  // {
+  //   icon: <Database size={24} />,
+  //   title: 'AI Powered Automation',
+  //   description: 'Intelligent workflows that reduce manual overhead and improve operational efficiency.'
+  // },
+  {
+    icon: <WrenchIcon size={24} />,
+    title: 'Long-Term Support',
+    description: 'We stay with you after deployment, providing maintenance and technical guidance as your business grows.'
+    // Ongoing maintenance and evolution of your digital assets.
   }
 ];
 
@@ -42,9 +55,9 @@ export const Features = () => {
               viewport={{ once: true }}
               className="text-white text-5xl font-extrabold text-slate-900 dark:text-white mb-6"
             >
-              Capabilities That Drive <br className="hidden md:block" />
+              Building Technology <br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-blue-400 text-glow-soft">
-                Unfair Advantages
+                That Empowers You
               </span>
             </motion.h2>
             <motion.p
@@ -54,17 +67,18 @@ export const Features = () => {
               transition={{ delay: 0.1 }}
               className="text-slate-400 dark:text-slate-400 text-lg mb-8 leading-relaxed"
             >
-              We don't just write code; we architect systems designed to give your startup a massive technological edge over the competition. Our platform handles the complexity so you can focus on growth.
-            </motion.p>
-            <motion.button
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="px-8 py-3   transition-all outline outline-1 outline-blue-500 text-white-600 hover:text-blue-600 font-semibold hover:bg-blue-50 dark:hover:bg-blue-900/20"
-            >
-              Learn More
-            </motion.button>
+              Technology shouldn't slow your business down. We build secure, scalable, and high-performance software that empowers you to move faster, serve customers better, and grow with confidence.            </motion.p>
+            <Link to="/contact">
+              <motion.button
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="px-8 py-3   transition-all outline outline-1 outline-blue-500 text-white-600 hover:text-blue-600 font-semibold hover:bg-blue-50 dark:hover:bg-blue-900/20"
+              >
+                Start Your Project
+              </motion.button>
+            </Link>
           </div>
 
           <div className="space-y-4 ">

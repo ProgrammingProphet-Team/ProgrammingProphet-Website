@@ -4,7 +4,7 @@ import { Github, X, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ALL_PROJECTS_DATA } from '../pages/AllProjects';
 
-const CATEGORIES = ['All', 'Artificial Intelligence', 'Cloud Engineering', 'Web Development', 'Hardware & IoT', 'Blockchain & Web3'];
+const CATEGORIES = ['All', 'Web Development', 'Software Engineering', 'DevOps Engineering', 'Cloud Engineering'];
 
 export const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
@@ -16,7 +16,7 @@ export const Projects = () => {
 
   return (
     <section id="projects" className="pt-24 px-8 lg:px-12 max-w-[1400px] mx-auto ">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 pt-12">
         <div className="max-w-3xl">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}

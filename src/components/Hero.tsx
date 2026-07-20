@@ -23,7 +23,7 @@ export const Hero = () => {
       }}
     >
 
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-8 w-full grid gap-12 items-center z-10 relative pt-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid gap-12 items-center z-10 relative pt-12">
         {/* Left Content */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -31,23 +31,23 @@ export const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex flex-col gap-6"
         >
-          <div className="text-blue-500 font-bold tracking-widest text-sm uppercase mb-1">
+          <div className="text-blue-500 font-bold tracking-widest text-xs lg:text-sm uppercase mb-1 ">
             Building Tomorrow's Technology, Together.
             {/* Custom Software. Built Around Your Business. */}
             {/* Reliable Software Development for Startups & Businesses */}
           </div>
-
-          <h1 className="text-5xl lg:text-8xl font-bold font-calibri font-heading tracking-tight text-white leading-[1.1]">
+          {/* 7xl - in pixel 112px */}
+          <h1 className="text-4xl md:text-6xl lg:text-[86px] font-bold font-calibri font-heading tracking-tight text-white leading-[1.1]">
             {/* Building the Future,<br />
             <span className="text-blue-600">Together.</span> */}
             Build Software<br />
             That Grows<br />
             <span className="text-blue-600"> Your Business</span><span className=" text-blue-600 animate-pulse  ease-in-out  duration-1000">.</span>
-            
+
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed mt-2 mb-4">
-            Helping startups and growing businesses design, develop, and scale custom software, websites and cloud solutions that drive measurable business growth.
+          <p className="text-lg lg:text-xl text-slate-400 max-w-xl leading-relaxed mt-2 mb-4">
+            We help startups and growing businesses design, develop, and scale custom software, websites and cloud solutions that drive measurable business growth.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mt-2">

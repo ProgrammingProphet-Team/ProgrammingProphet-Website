@@ -13,7 +13,7 @@ const TECHNOLOGIES = [
 
 export const TechStack = () => {
   return (
-    <section className="py-24 relative overflow-hidden bg-slate-200 dark:bg-[#0a0a0a] ">
+    <section id="tech-stack" className="py-24 relative overflow-hidden bg-slate-200 dark:bg-[#0a0a0a] ">
       {/* Professional glassmorphism background blobs */}
       {/* <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-400/10 dark:bg-blue-500/10 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-400/10 dark:bg-purple-500/10 rounded-full blur-[100px] translate-y-1/2 pointer-events-none" /> */}

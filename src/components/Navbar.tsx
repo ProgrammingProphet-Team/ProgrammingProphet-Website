@@ -4,13 +4,12 @@ import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const NAV_LINKS = [
-  { name: 'Tech Stack', href: '#', hasDropdown: true },
+  { name: 'Tech Stack', href: '/#tech-stack', hasDropdown: true },
   { name: 'Services', href: '/#services', hasDropdown: false },
   // { name: 'Industries', href: '#', hasDropdown: true },
   // { name: 'Insights', href: '#', hasDropdown: true },
-  // { name: 'Testimonials', href: '/testimonials', hasDropdown: false },
-  { name: 'Projects', href: '/projects', hasDropdown: false },
-  { name: 'Testimonials', href: '/testimonials', hasDropdown: false },
+  { name: 'Projects', href: '/#projects', hasDropdown: false },
+  { name: 'Testimonials', href: '/#testimonials', hasDropdown: false },
 
   { name: 'About us', href: '/about', },
 
@@ -71,7 +70,11 @@ export const Navbar = () => {
         <div className="flex items-center justify-between h-[80px]">
 
           {/* Logo (Left) */}
-          <Link to="/" className="flex items-center group cursor-pointer shrink-0">
+          <Link 
+            to="/" 
+            className="flex items-center group cursor-pointer shrink-0"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             <img src="/logo-light.png" alt="ProgrammingProphet Logo" className="h-12 w-auto object-contain mix-blend-multiply" />
 
             <div className="flex ">

@@ -21,12 +21,14 @@ import { ContactUs } from './pages/ContactUs';
 import { Careers } from './components/Careers';
 import { NotFound } from './pages/NotFound';
 
+import { ScrollToTop } from './components/ScrollToTop';
 
 function App() {
   return (
     <ThemeProvider>
       <SmoothScroll>
         <div className="min-h-screen bg-transparent text-slate-900 dark:text-white transition-colors duration-500 overflow-hidden font-sans">
+          <ScrollToTop />
           <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />

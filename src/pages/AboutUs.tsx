@@ -38,7 +38,7 @@ export const AboutUs = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-4xl mx-auto mb-10">
-            ProgrammingProphet is a technology agency dedicated to helping businesses transform ideas into reliable, scalable, and high-performing digital solutions.
+            ProgrammingProphet is dedicated to helping businesses transform ideas into reliable, scalable, and high-performing digital solutions.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
@@ -52,8 +52,9 @@ export const AboutUs = () => {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-sm md:text-base font-semibold text-slate-300 opacity-90">
+            <div className="flex items-center gap-2"><Check className="w-5 h-5 text-blue-500" /> High Performance</div>
+
             <div className="flex items-center gap-2"><Check className="w-5 h-5 text-blue-500" /> Secure Development</div>
-            <div className="flex items-center gap-2"><Check className="w-5 h-5 text-blue-500" /> Cloud Ready</div>
             <div className="flex items-center gap-2"><Check className="w-5 h-5 text-blue-500" /> Scalable Architecture</div>
             <div className="flex items-center gap-2"><Check className="w-5 h-5 text-blue-500" /> Long-Term Support</div>
           </div>
