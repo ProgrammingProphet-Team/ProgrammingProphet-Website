@@ -1,9 +1,83 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Paperclip, ShieldCheck, Star } from 'lucide-react';
+import { ChevronRight, Paperclip, ShieldCheck, Star, Zap, Shield, Rocket, Handshake } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    requirements: ''
+  });
+
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    requirements: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (errors[name as keyof typeof errors]) {
+      setErrors({ ...errors, [name]: '' });
+    }
+
+    // Auto-resize for textarea
+    if (e.target.tagName.toLowerCase() === 'textarea') {
+      const target = e.target as HTMLTextAreaElement;
+      target.style.height = 'auto';
+      target.style.height = `${target.scrollHeight}px`;
+    }
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    let error = '';
+
+    if (!value.trim()) {
+      if (name === 'name') error = 'Please, enter your name';
+      if (name === 'email') error = 'Please, enter your corporate E-mail';
+      if (name === 'phone') error = 'Please, enter your phone number';
+      if (name === 'requirements') error = 'Please, describe your IT project in a few words';
+    }
+
+    setErrors(prev => ({ ...prev, [name]: error }));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    let newErrors = { name: '', email: '', phone: '', requirements: '' };
+    let isValid = true;
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Please, enter your name';
+      isValid = false;
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = 'Please, enter your corporate E-mail';
+      isValid = false;
+    }
+    if (!formData.phone.trim()) {
+      newErrors.phone = 'Please, enter your phone number';
+      isValid = false;
+    }
+    if (!formData.requirements.trim()) {
+      newErrors.requirements = 'Please, describe your IT project in a few words';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+
+    if (isValid) {
+      // Process form submission
+      console.log('Form submitted successfully', formData);
+      // Optional: reset form or show success message
+    }
+  };
   return (
     <main className="min-h-screen pt-[80px] bg-slate-900 relative">
       {/* Background Image */}
@@ -19,23 +93,23 @@ export const ContactUs = () => {
       />
 
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-8 py-12 lg:py-20">
+      <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 pt-6 ">
 
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-gray-400 mb-12 ">
+        <div className="flex items-center gap-2 text-sm text-white mb-12 ">
           <Link to="/" className="hover:text-white transition-colors">Home</Link>
           <ChevronRight size={14} />
           <span className="text-blue-500 font-medium">Contact Us</span>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-8 items-start lg:mx-20">
+        <div className="grid lg:grid-cols-2  items-start lg:mx-20 mt-18">
 
           {/* Left Column */}
-          <div className="text-white lg:pr-12">
+          <div className="text-white lg:pr-12 mx-8">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="text-5xl lg:text-6xl font-bold mb-12 tracking-tight"
+              className="text-5xl lg:text-6xl font-bold mb-12 tracking-tight "
             >
               Contact us
             </motion.h1>
@@ -45,16 +119,17 @@ export const ContactUs = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              <h3 className="text-xl font-semibold mb-8">What happens next?</h3>
+              <h3 className="text-xl font-semibold mb-12">What happens next?</h3>
 
-              <div className="relative border-l border-dashed border-gray-600 ml-4 space-y-10 pb-10">
+              <div className="relative border-l border-dashed border-gray-500 ml-4 space-y-12 pb-12">
                 {/* Step 1 */}
-                <div className="relative pl-8">
-                  <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-slate-800 border border-gray-600 flex items-center justify-center text-sm font-semibold text-gray-300">
+                <div className="relative pl-8 ">
+                  <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-slate-800  flex items-center justify-center text-sm font-semibold text-gray-300">
                     1
                   </div>
-                  <p className="text-gray-300 leading-relaxed pt-1">
-                    An expert contacts you after having analyzed your requirements;
+                  {/* <h4 className="text-white font-semibold font-2xl mb-1 pt-1">Discovery Call</h4> */}
+                  <p className="text-gray-200 text-[15px] leading-relaxed">
+                    We discuss your goals, challenges, budget, and timeline to understand your business requirements.
                   </p>
                 </div>
 
@@ -63,8 +138,9 @@ export const ContactUs = () => {
                   <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-slate-800 border border-gray-600 flex items-center justify-center text-sm font-semibold text-gray-300">
                     2
                   </div>
-                  <p className="text-gray-300 leading-relaxed pt-1">
-                    If needed, we sign an NDA to ensure the highest privacy level;
+                  {/* <h4 className="text-white font-semibold mb-1 pt-1">Solution Architecture</h4> */}
+                  <p className="text-gray-200 text-[15px] leading-relaxed">
+                    We evaluate the best technology stack, project scope, and implementation approach for your product.
                   </p>
                 </div>
 
@@ -73,45 +149,70 @@ export const ContactUs = () => {
                   <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-slate-800 border border-gray-600 flex items-center justify-center text-sm font-semibold text-gray-300">
                     3
                   </div>
-                  <p className="text-gray-300 leading-relaxed pt-1">
-                    We submit a comprehensive project proposal with estimates, timelines, CVs, etc.
+                  {/* <h4 className="text-white font-semibold mb-1 pt-1">Proposal & Planning</h4> */}
+                  <p className="text-gray-200 text-[15px] leading-relaxed">
+                    You'll receive a detailed proposal including timeline, milestones, pricing, and delivery roadmap.
+                  </p>
+                </div>
+
+                {/* Step 4 */}
+                <div className="relative pl-8 ">
+                  <div className="absolute -left-[17px] top-0 w-8 h-8 rounded-full bg-slate-800 border border-gray-600 flex items-center justify-center text-sm font-semibold text-gray-300">
+                    4
+                  </div>
+                  {/* <h4 className="text-white font-semibold mb-1 pt-1">Development & Delivery</h4> */}
+                  <p className="text-gray-200 text-[15px] leading-relaxed">
+                    Once approved, we begin development with timely updates, testing, deployment, and post-launch support.
                   </p>
                 </div>
               </div>
             </motion.div>
 
-            {/* Ratings */}
+            {/* Trust Pillars */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="flex flex-wrap gap-8 mt-12"
+              className="relative w-[1200px] mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-24 text-xl pb-18"
             >
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center font-bold text-xl text-white">
-                  C
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10   border border-blue-500/20 flex items-center justify-center flex-shrink-0 text-blue-500">
+                  <Zap size={20} />
                 </div>
                 <div>
-                  <div className="text-sm font-bold tracking-wider mb-1">4.9 ON CLUTCH</div>
-                  <div className="flex gap-1 text-blue-500">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={16} fill="currentColor" />
-                    ))}
-                  </div>
+                  <div className="text-[15px] font-bold text-white mb-0.5">Fast Response</div>
+                  <div className="text-[13px] text-gray-400">Within 24 Hours</div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-slate-800 flex items-center justify-center font-bold text-xl text-white">
-                  G
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10  border border-blue-500/20 flex items-center justify-center flex-shrink-0 text-blue-500">
+                  <Shield size={20} />
                 </div>
                 <div>
-                  <div className="text-sm font-bold tracking-wider mb-1">4.9 ON GOODFIRMS</div>
-                  <div className="flex gap-1 text-blue-500">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={16} fill="currentColor" />
-                    ))}
-                  </div>
+                  <div className="text-[15px] font-bold text-white mb-0.5">Security First</div>
+                  <div className="text-[13px] text-gray-400">Best Practices</div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10   border border-blue-500/20 flex items-center justify-center flex-shrink-0 text-blue-500">
+                  <Rocket size={20} />
+                </div>
+                <div>
+                  <div className="text-[15px] font-bold text-white mb-0.5">Production Ready</div>
+                  {/* <div className="text-[13px] text-gray-400">Deployment Ready</div> */}
+                  <div className="text-[13px] text-gray-400">Deployment, CI/CD, Monitoring</div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10   border border-blue-500/20 flex items-center justify-center flex-shrink-0 text-blue-500">
+                  <Handshake size={20} />
+                </div>
+                <div>
+                  <div className="text-[15px] font-bold text-white mb-0.5">Long-Term Support</div>
+                  <div className="text-[13px] text-gray-400">Beyond Launch</div>
                 </div>
               </div>
             </motion.div>
@@ -122,49 +223,133 @@ export const ContactUs = () => {
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-white p-8 lg:p-12  shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)]"
+            className="bg-white p-8 lg:p-12  mt-4  shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)]"
           >
-            <form className="space-y-8">
-              <div className="grid lg:grid-cols-2 gap-8">
-                <div className="space-y-2">
-                  <input
-                    type="text"
-                    placeholder="Name *"
-                    className="w-full pb-3 bg-transparent border-b border-gray-200 focus:border-blue-600 hover:border-gray-300 outline-none transition-colors duration-300 text-slate-900 placeholder:text-slate-500 text-[15px]"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <input
-                    type="email"
-                    placeholder="Corporate E-mail *"
-                    className="w-full pb-3 bg-transparent border-b border-gray-200 focus:border-blue-600 hover:border-gray-300 outline-none transition-colors duration-300 text-slate-900 placeholder:text-slate-500 text-[15px]"
-                    required
-                  />
-                </div>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="relative pb-5">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={`peer block w-full appearance-none bg-transparent border-0 border-b pb-2 pt-3 text-[18px] text-slate-900 focus:outline-none focus:ring-0 transition-colors duration-300 ${errors.name ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500'
+                    }`}
+                  placeholder=" "
+                />
+                <label
+                  htmlFor="name"
+                  className={`pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform text-[18px] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 ${errors.name ? 'text-gray-500' : 'text-gray-500'
+                    }`}
+                >
+                  Name *
+                </label>
+                {errors.name && (
+                  <motion.p
+                    initial={{ opacity: 0, x: 0 }}
+                    animate={{ opacity: 1, x: [-5, 5, -5, 5, 0] }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute bottom-0 left-0 text-sm text-orange-500"
+                  >
+                    {errors.name}
+                  </motion.p>
+                )}
               </div>
 
-              <div className="space-y-2">
+              <div className="relative pb-5">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={`peer block w-full appearance-none bg-transparent border-0 border-b pb-2 pt-3 text-[18px] text-slate-900 focus:outline-none focus:ring-0 transition-colors duration-300 ${errors.email ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500'
+                    }`}
+                  placeholder=" "
+                />
+                <label
+                  htmlFor="email"
+                  className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
+                >
+                  E-mail *
+                </label>
+                {errors.email && (
+                  <motion.p
+                    initial={{ opacity: 0, x: 0 }}
+                    animate={{ opacity: 1, x: [-5, 5, -5, 5, 0] }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute bottom-0 left-0 text-sm text-orange-500"
+                  >
+                    {errors.email}
+                  </motion.p>
+                )}
+              </div>
+
+              <div className="relative pb-5">
                 <input
                   type="tel"
-                  placeholder="Phone number *"
-                  className="w-full pb-3 bg-transparent border-b border-gray-200 focus:border-blue-600 hover:border-gray-300 outline-none transition-colors duration-300 text-slate-900 placeholder:text-slate-500 text-[15px]"
-                  required
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={`peer block w-full appearance-none bg-transparent border-0 border-b pb-2 pt-3 text-[18px] text-slate-900 focus:outline-none focus:ring-0 transition-colors duration-300 ${errors.phone ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500'
+                    }`}
+                  placeholder=" "
                 />
+                <label
+                  htmlFor="phone"
+                  className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
+                >
+                  Phone number *
+                </label>
+                {errors.phone && (
+                  <motion.p
+                    initial={{ opacity: 0, x: 0 }}
+                    animate={{ opacity: 1, x: [-5, 5, -5, 5, 0] }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute bottom-0 left-0 text-sm text-orange-500"
+                  >
+                    {errors.phone}
+                  </motion.p>
+                )}
               </div>
 
-              <div className="space-y-2">
+              <div className="relative pb-5">
                 <textarea
-                  placeholder="Describe your project requirements *"
-                  rows={3}
-                  className="w-full pb-3 bg-transparent border-b border-gray-200 focus:border-blue-600 hover:border-gray-300 outline-none transition-colors duration-300 text-slate-900 placeholder:text-slate-500 text-[15px] resize-none"
-                  required
+                  id="requirements"
+                  name="requirements"
+                  value={formData.requirements}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  rows={1}
+                  className={`peer block w-full max-h-[140px] appearance-none bg-transparent border-0 border-b pb-2 pt-3 text-[18px] text-slate-900 focus:outline-none focus:ring-0 resize-none transition-colors duration-300 ${errors.requirements ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500 expand'
+                    }`}
+                  placeholder=" "
                 ></textarea>
+                <label
+                  htmlFor="requirements"
+                  className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
+                >
+                  Describe your project requirements *
+                </label>
+                {errors.requirements && (
+                  <motion.p
+                    initial={{ opacity: 0, x: 0 }}
+                    animate={{ opacity: 1, x: [-5, 5, -5, 5, 0] }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute bottom-0 left-0 text-sm text-orange-500"
+                  >
+                    {errors.requirements}
+                  </motion.p>
+                )}
               </div>
 
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4 py-4">
-                <button type="button" className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 rounded-lg hover:border-gray-400 hover:bg-slate-50 transition-all duration-300 text-sm font-semibold text-slate-700 w-full sm:w-auto shrink-0 group">
-                  <Paperclip size={18} className="text-gray-500 group-hover:text-slate-700 transition-colors" />
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 ">
+                <button type="button" className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 hover:border-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-300 text-sm font-semibold text-slate-900 w-full sm:w-auto shrink-0 group">
+                  <Paperclip size={18} className="text-black group-hover:text-white transition-colors" />
                   Attach file
                 </button>
                 <p className="text-xs text-gray-500 leading-relaxed max-w-xs">
@@ -172,21 +357,21 @@ export const ContactUs = () => {
                 </p>
               </div>
 
-              <label className="flex items-start gap-3 cursor-pointer group">
+              {/* <label className="flex items-start gap-3 cursor-pointer group">
                 <div className="relative flex items-start">
                   <input type="checkbox" className="peer w-5 h-5 border-gray-300 rounded text-blue-600 focus:ring-blue-600 cursor-pointer mt-0.5 transition-all duration-300 hover:border-blue-400" />
                 </div>
                 <span className="text-[15px] text-slate-600 select-none group-hover:text-slate-900 transition-colors duration-300">
                   I want to protect my data by signing an NDA. <span className="text-gray-400 inline-block ml-1 border border-gray-400 rounded-full w-4 h-4 text-center leading-none text-[10px] items-center justify-center transition-colors group-hover:border-slate-500 group-hover:text-slate-500">i</span>
                 </span>
-              </label>
+              </label> */}
 
-              <div className="pt-4 flex flex-col sm:flex-row items-center gap-6">
-                <button type="submit" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3.5 rounded-lg transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 text-[15px]">
+              <div className="pt-2 flex flex-col sm:flex-row items-center gap-6">
+                <button type="submit" className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3.5 duration-300 hover:shadow-lg text-[15px]">
                   Send request
                 </button>
-                <div className="flex items-center gap-2 text-sm text-gray-500 font-medium">
-                  <ShieldCheck size={20} className="text-green-500" />
+                <div className="flex items-center gap-2 md:text-sm lg:text-base text-gray-500 font-medium">
+                  <ShieldCheck size={24} className=" text-green-600" />
                   Your privacy is protected
                 </div>
               </div>
