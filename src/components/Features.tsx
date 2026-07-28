@@ -53,12 +53,13 @@ export const Features = () => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-white text-5xl font-extrabold text-slate-900 dark:text-white mb-6"
+              className="text-white text-3xl lg:text-5xl  font-extrabold text-slate-900 dark:text-white mb-6"
             >
-              Building Technology <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-blue-400 text-glow-soft">
+              Building Technology 
+              <br className="hidden md:block" />
+              <div className="text-transparent text-3xl lg:text-5xl bg-clip-text bg-gradient-to-r from-blue-800 to-blue-400 text-glow-soft">
                 That Empowers You
-              </span>
+              </div>
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -74,7 +75,7 @@ export const Features = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="px-8 py-3   transition-all outline outline-1 outline-blue-500 text-white-600 hover:text-blue-600 font-semibold hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                className="px-8 py-3  lg:start-0 transition-all outline outline-1 outline-blue-500 text-white-600 hover:text-blue-600 font-semibold hover:bg-blue-50 dark:hover:bg-blue-900/20"
               >
                 Start Your Project
               </motion.button>

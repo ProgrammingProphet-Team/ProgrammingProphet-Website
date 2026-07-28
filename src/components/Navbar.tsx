@@ -4,7 +4,8 @@ import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const NAV_LINKS = [
-  { name: 'Tech Stack', href: '/#tech-stack', hasDropdown: true },
+  // { name: 'Tech Stack', href: '/#tech-stack', hasDropdown: true },
+  { name: 'Home', href: '/#home', hasDropdown: false },
   { name: 'Services', href: '/#services', hasDropdown: false },
   // { name: 'Industries', href: '#', hasDropdown: true },
   // { name: 'Insights', href: '#', hasDropdown: true },

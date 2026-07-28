@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, X, ArrowRight } from 'lucide-react';
+import { Github, X, ArrowRight, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ALL_PROJECTS_DATA } from '../pages/AllProjects';
 
@@ -8,15 +8,14 @@ const CATEGORIES = ['All', 'Web Development', 'Software Engineering', 'DevOps En
 
 export const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [selectedProject, setSelectedProject] = useState<typeof ALL_PROJECTS_DATA[0] | null>(null);
 
   const filteredProjects = activeCategory === 'All'
     ? ALL_PROJECTS_DATA
     : ALL_PROJECTS_DATA.filter(p => p.department === activeCategory);
 
   return (
-    <section id="projects" className="pt-24 px-8 lg:px-12 max-w-[1400px] mx-auto ">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 pt-12">
+    <section id="projects" className="pt-12 md:pt-16 px-8 lg:px-12 max-w-[1400px] mx-auto">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 mt-16">
         <div className="max-w-3xl">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
@@ -50,7 +49,7 @@ export const Projects = () => {
               onClick={() => setActiveCategory(category)}
               className={`px-5 py-2.5  text-sm font-bold transition-all duration-300  ${activeCategory === category
                 ? 'bg-blue-700 text-white shadow-[0_0_15px_rgba(37,99,235,0.6)] scale-105'
-                : 'glass text-slate-900 hover:bg-blue-700 hover:text-white hover:scale-105'
+                : 'bg-white text-slate-900 hover:bg-blue-700 hover:text-white hover:scale-105'
                 }`}
             >
               {category}
@@ -70,7 +69,7 @@ export const Projects = () => {
               exit={{ opacity: 0, scale: 0.9 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               key={project.id}
-              onClick={() => setSelectedProject(project)}
+              onClick={() => window.open(`/project/${project.id}`, '_blank')}
               className="group relative overflow-hidden  hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] interactive cursor-pointer transition-all duration-500 flex flex-col"
             >
               <div className="relative h-60 overflow-hidden">
@@ -110,10 +109,15 @@ export const Projects = () => {
                   <span className="text-xs font-bold text-blue-500 uppercase tracking-widest">{project.department}</span>
                   <Link
                     to={`/project/${project.id}`}
+                    // target="_blank"
+                    target="_self"
+                    rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="flex items-center gap-2 text-sm font-bold text-white bg-blue-600/20 hover:bg-blue-600 px-5 py-2.5  transition-all duration-300 border border-blue-500/50 hover:border-blue-500 leading-none group-hover:shadow-[0_0_15px_rgba(59,130,246,0.6)] z-20"
+                    className="flex items-center gap-2 text-sm font-bold text-white bg-blue-600/40 hover:bg-blue-600 px-5 py-2.5  transition-all duration-300 border border-blue-500/50 hover:border-blue-500 leading-none group-hover:shadow-[0_0_15px_rgba(59,130,246,0.6)] z-20"
                   >
-                    Details <ArrowRight size={16} />
+                    {/* Details <ArrowRight size={16} />
+                     */}
+                    Details <ExternalLink className='center' size={16} />
                   </Link>
                 </div>
               </div>
@@ -140,71 +144,7 @@ export const Projects = () => {
         </Link>
       </motion.div> */}
 
-      {/* Project Quick Preview Modal */}
-      <AnimatePresence>
-        {selectedProject && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6"
-          >
-            <div className="absolute inset-0 bg-[#030712]/90 backdrop-blur-xl" onClick={() => setSelectedProject(null)} />
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              className="relative w-full max-w-3xl max-h-[85vh] overflow-y-auto rounded-[2.5rem] glass-panel neon-border z-10 shadow-2xl bg-[#0b1120]"
-            >
-              <button
-                onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 p-2 rounded-full bg-slate-900/50 hover:bg-red-500/80 text-white transition-colors z-20 backdrop-blur-md border border-slate-700/50 hover:border-red-400 group"
-              >
-                <X size={20} className="group-hover:rotate-90 transition-transform duration-300" />
-              </button>
 
-              <div className="h-56 sm:h-72 relative w-full overflow-hidden rounded-t-[2.5rem]">
-                <img src={selectedProject.image} alt={selectedProject.title} loading="lazy" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b1120] via-[#0b1120]/60 to-transparent opacity-100" />
-                <div className="absolute bottom-6 left-8 right-8">
-                  <div className="flex gap-2 mb-3">
-                    {selectedProject.tech.map(tech => (
-                      <span key={tech} className="px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full bg-blue-600/30 text-cyan-300 border border-cyan-400/30 backdrop-blur-md">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                  <h2 className="text-3xl sm:text-4xl font-extrabold text-white mb-2 tracking-tight drop-shadow-xl">{selectedProject.title}</h2>
-                  <span className="text-cyan-400 font-bold tracking-widest uppercase text-[10px] drop-shadow-md">{selectedProject.department}</span>
-                </div>
-              </div>
-
-              <div className="p-8 sm:p-10">
-                <h3 className="text-xl font-bold text-white mb-4 flex items-center gap-3">
-                  <span className="w-8 h-1 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></span>
-                  Quick Overview
-                </h3>
-                <p className="text-slate-300 text-base leading-relaxed mb-8">
-                  {selectedProject.description} This represents our robust architecture patterns and design methodology ensuring high scalability and reliability for enterprise applications. Performance at its peak.
-                </p>
-
-                <div className="flex flex-col sm:flex-row items-center gap-4">
-                  <Link
-                    to={`/project/${selectedProject.id}`}
-                    onClick={() => setSelectedProject(null)}
-                    className="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold transition-all shadow-[0_0_15px_rgba(6,182,212,0.4)] flex items-center justify-center gap-2 text-sm tracking-wide"
-                  >
-                    View Full Details <ArrowRight size={18} />
-                  </Link>
-                  <button className="w-full sm:w-auto px-8 py-4 rounded-xl border border-white/10 glass text-white hover:bg-white/10 font-bold transition-all flex items-center justify-center gap-2 text-sm tracking-wide">
-                    <Github size={18} /> Source Code
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
 
   );

@@ -10,7 +10,7 @@ export const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-[100vh] flex items-center pt-24 pb-20 overflow-hidden "
+      className="relative min-h-[100vh] flex items-center pt-24 pb-20 overflow-hidden bg-start lg:bg-center  "
       style={{
         backgroundImage: "url('/assets/bg-5.png')",
         backgroundSize: "cover",
@@ -31,13 +31,13 @@ export const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex flex-col gap-6"
         >
-          <div className="text-blue-500 font-bold tracking-widest text-xs lg:text-sm uppercase mb-1 ">
+          <div className="text-blue-500 font-bold tracking-widest text-[10px] lg:text-sm uppercase mb-1 ms-1 ">
             Building Tomorrow's Technology, Together.
             {/* Custom Software. Built Around Your Business. */}
             {/* Reliable Software Development for Startups & Businesses */}
           </div>
           {/* 7xl - in pixel 112px */}
-          <h1 className="text-4xl md:text-6xl lg:text-[86px] font-bold font-calibri font-heading tracking-tight text-white leading-[1.1]">
+          <h1 className="text-5xl md:text-6xl lg:text-[86px] font-bold font-calibri font-heading tracking-tight text-white  leading-[1.2] lg:leading-[1.1]">
             {/* Building the Future,<br />
             <span className="text-blue-600">Together.</span> */}
             Build Software<br />
@@ -46,7 +46,7 @@ export const Hero = () => {
 
           </h1>
 
-          <p className="text-lg lg:text-xl text-slate-400 max-w-xl leading-relaxed mt-2 mb-4">
+          <p className=" lg:text-xl text-slate-300 max-w-xl leading-relaxed mt-2 mb-4">
             We help startups and growing businesses design, develop, and scale custom software, websites and cloud solutions that drive measurable business growth.
           </p>
 

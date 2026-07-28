@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import { ExternalLink } from 'lucide-react';
 
 export const ALL_PROJECTS_DATA = [
-  {
-    id: 1,
-    title: 'Institutional Website',
-    department: 'Web Development',
-    image: '/projects/SSCMR_College.png',
-    tech: ['Next.js', 'Tailwind', 'TypeScript'],
-    description: 'This modern, responsive institutional website serves as a comprehensive digital gateway for Swayam Siddhi College of Management and Research. '
-  },
+  // {
+  //   id: 1,
+  //   title: 'Institutional Website',
+  //   department: 'Web Development',
+  //   image: '/projects/SSCMR_College.png',
+  //   tech: ['Next.js', 'Tailwind', 'TypeScript'],
+  //   description: 'This modern, responsive institutional website serves as a comprehensive digital gateway for Swayam Siddhi College of Management and Research. '
+  // },
   // , providing prospective students, current students, faculty, and staff with seamless access to essential information, resources, and services. 
 
   // Built with Next.js and Tailwind CSS, the platform features an intuitive interface, detailed academic program showcases, admission information, faculty profiles, campus news, and event calendars. The design prioritizes accessibility, mobile-first responsiveness, and fast load times, ensuring a premium user experience while highlighting the institution’s commitment to excellence and innovation in education.
@@ -25,49 +25,74 @@ export const ALL_PROJECTS_DATA = [
   //   tech: ['React', 'Python', 'TensorFlow'],
   //   description: 'Enterprise AI dashboard with real-time predictive analytics and natural language processing capabilities.'
   // },
+  // {
+  //   id: 2,
+  //   title: 'FinTech Cloud Infrastructure',
+  //   department: 'Cloud Engineering',
+  //   image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
+  //   tech: ['AWS', 'Kubernetes', 'Go'],
+  //   description: 'High-availability microservices architecture handling millions of transactions daily.'
+  // },
+  {
+    id: 1,
+    title: 'PCKeyZone',
+    department: 'Web Development',
+    image: '/projects/PC-Key-Zone.png',
+    tech: ['Next.js', 'Tailwind', 'TypeScript', 'Node', 'MongoDB', 'Google Pay', 'Rozer Pay', 'JWT'],
+    description: 'PCKeyZone is a modern, responsive e-commerce platform designed to provide customers with a seamless and enjoyable shopping experience.'
+  },
   {
     id: 2,
-    title: 'FinTech Cloud Infrastructure',
-    department: 'Cloud Engineering',
-    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800',
-    tech: ['AWS', 'Kubernetes', 'Go'],
-    description: 'High-availability microservices architecture handling millions of transactions daily.'
+    title: 'WeMurz - Lab Information Management System',
+    department: 'Software Engineering',
+    image: '/projects/WeMurz-LIMS.jpeg',
+    tech: ['Next.js', 'Tailwind', 'Java', 'Spring Boot', 'PostgreSQL', 'Docker', 'JWT'],
+    description: 'WeMurz LIMS is a comprehensive laboratory information management system designed to streamline laboratory workflows and improve data management.'
   },
   {
     id: 3,
-    title: 'E-Commerce Ecosystem',
-    department: 'Web Development',
-    image: 'https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=800',
-    tech: ['Next.js', 'Stripe', 'Tailwind'],
-    description: 'Global commerce platform featuring 3D product configurator and seamless payments.'
+    title: 'WeMurz - Employee & Event Management System',
+    department: 'Software Engineering',
+    image: '/projects/WeMurz-EMS.png',
+    tech: ['React', 'Node.js', 'PostgreSQL'],
+    description: 'EMS is a comprehensive employee and event management system designed to streamline employee and event management workflows and improve collaboration and productivity.'
   },
   {
     id: 4,
-    title: 'Secure Health Portal',
+    title: 'Swayam Siddhi College of Management & Research',
     department: 'Web Development',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800',
-    tech: ['React', 'Node.js', 'PostgreSQL'],
-    description: 'HIPAA-compliant telemedicine platform with video consultations and medical records.'
+    image: '/projects/SSCMR_College.png',
+    tech: ['Next.js', 'Tailwind', 'TypeScript', 'Node', 'Email API'],
+    description: 'This modern, responsive institutional website serves as a comprehensive digital gateway for Swayam Siddhi College of Management and Research. '
   },
   {
     id: 5,
-    title: 'Autonomous Drone Fleet',
-    department: 'Hardware & IoT',
-    image: 'https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&q=80&w=800',
-    tech: ['C++', 'ROS', 'Computer Vision'],
-    description: 'Swarm intelligence system for autonomous drone fleet coordination and mapping.'
+    title: 'ShopSphere',
+    department: 'DevOps Engineering',
+    image: '/projects/ShopSphere.png',
+    tech: ['Docker', 'kubernetes', 'Nginx', 'AWS', 'Azure'],
+    description: 'ShopSphere is a modern, responsive e-commerce platform designed to provide customers with a seamless and enjoyable shopping experience.'
   },
   {
     id: 6,
-    title: 'Blockchain Supply Chain',
-    department: 'Blockchain & Web3',
-    image: 'https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=800',
-    tech: ['Solidity', 'Ethereum', 'React'],
-    description: 'Transparent and immutable supply chain tracking system leveraging smart contracts.'
+    title: 'DevConnect',
+    department: 'DevOps Engineering',
+    image: '/projects/DevConnect-argo.png',
+    tech: ['Docker', 'kubernetes', 'Nginx', 'AWS',],
+    description: 'DevConnect is a modern, responsive platform designed to provide developers with a seamless and enjoyable experience for collaboration and productivity.'
+  },
+  {
+    id: 7,
+    title: 'Infrastructure Automation - AWS',
+    department: 'DevOps Engineering',
+    image: '/projects/infra-automation.png',
+    tech: ['Terraform', 'AWS', 'S3 Remote Backend', 'DynamoDB State Lock', 'Git Actions',],
+    description: 'Infrastructure Automation, automates the process of provisioning and managing infrastructure resources. Reduce manual intervention and save time. '
   }
-];
 
-const DEPARTMENTS = ['All', 'Artificial Intelligence', 'Cloud Engineering', 'Web Development', 'Hardware & IoT', 'Blockchain & Web3'];
+];
+// 'Cloud Engineering', "Artificial Intelligence"
+const DEPARTMENTS = ['All', 'Web Development', 'Software Engineering', "DevOps Engineering"];
 
 export const AllProjects = () => {
   const [activeDept, setActiveDept] = useState('All');
@@ -77,95 +102,114 @@ export const AllProjects = () => {
     : ALL_PROJECTS_DATA.filter(p => p.department === activeDept);
 
   return (
-    <div className="pt-32 pb-24 px-6 lg:px-8 max-w-7xl mx-auto min-h-screen">
-      <div className="text-center mb-16">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-cyan-400 mb-6 font-sans"
-        >
-          Our Complete Portfolio
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed"
-        >
-          Explore the technological innovations we've brought to life across various industries and departments.
-        </motion.p>
-      </div>
-
-      {/* Filters */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="flex flex-wrap justify-center gap-3 mb-12"
-      >
-        {DEPARTMENTS.map(dept => (
-          <button
-            key={dept}
-            onClick={() => setActiveDept(dept)}
-            className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${activeDept === dept
-              ? 'bg-blue-600 text-white shadow-[0_0_15px_rgba(37,99,235,0.5)] scale-105'
-              : 'glass text-slate-300 hover:bg-slate-800 hover:text-white hover:scale-105'
-              }`}
-          >
-            {dept}
-          </button>
-        ))}
-      </motion.div>
-
-      {/* Grid */}
-      <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <AnimatePresence>
-          {filteredProjects.map((project) => (
-            <motion.div
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.4 }}
-              key={project.id}
-              className="group relative overflow-hidden rounded-3xl glass-panel neon-border hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all duration-500 flex flex-col"
+    <div className='bg-gradient-to-br from-[#001d3d] to-[#f1f2f2]'>
+      <div className="pt-18 pb-24 px-6 lg:px-0 max-w-7xl mx-auto min-h-screen   ">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 mt-16">
+          <div className="max-w-3xl">
+            <motion.h1
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-5xl font-extrabold bg-gradient-to-r from-blue-100 to-blue-700 bg-clip-text text-transparent mb-6 tracking-tight font-sans uppercase"
             >
-              <div className="relative h-56 overflow-hidden">
-                <div className="absolute inset-0 bg-slate-900/40 group-hover:bg-transparent transition-all z-10" />
-                <img
-                  src={project.image}
-                  loading="lazy"
-                  alt={project.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                />
-              </div>
+              Our Complete Portfolio
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.1 }}
+              className="text-slate-100 text-xl leading-relaxed"
+            >
+              Explore the technological innovations we've brought to life across various industries and departments.
+            </motion.p>
+          </div>
 
-              <div className="p-6 flex flex-col flex-grow relative bg-[#0b1120]/80 backdrop-blur-md">
-                <div className="flex gap-2 mb-4 flex-wrap">
-                  {project.tech.slice(0, 3).map(tech => (
-                    <span key={tech} className="px-2.5 py-1 text-[10px] uppercase tracking-wider font-bold rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30">
-                      {tech}
-                    </span>
-                  ))}
+          {/* Filters */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="flex flex-wrap justify-start md:justify-end gap-3"
+          >
+            {DEPARTMENTS.map(dept => (
+              <button
+                key={dept}
+                onClick={() => setActiveDept(dept)}
+                className={`px-5 py-2.5 text-sm font-bold transition-all duration-300 ${activeDept === dept
+                  ? 'bg-blue-700 text-white shadow-[0_0_15px_rgba(37,99,235,0.6)] scale-105'
+                  : 'bg-white text-slate-900 hover:bg-blue-700 hover:text-white hover:scale-105'
+                  }`}
+              >
+                {dept}
+              </button>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Grid */}
+        <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <AnimatePresence>
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                key={project.id}
+                onClick={() => window.open(`/project/${project.id}`, '_blank')}
+                className="group relative overflow-hidden hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] interactive cursor-pointer transition-all duration-500 flex flex-col"
+              >
+                <div className="relative h-60 overflow-hidden">
+                  <div className="absolute inset-0 bg-[#030712]/50 group-hover:bg-transparent transition-all duration-500 z-10" />
+                  <img
+                    src={project.image}
+                    loading="lazy"
+                    alt={project.title}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  />
+
+                  {/* Floating Tech Tags */}
+                  <div className="absolute top-5 left-5 z-20 flex flex-wrap gap-2">
+                    {project.tech.slice(0, 2).map((tech, i) => (
+                      <motion.span
+                        key={tech}
+                        className="px-3 py-1.5 text-[10px] uppercase font-bold tracking-widest bg-[#0b1120]/90 text-white border border-blue-400/30 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 shadow-lg"
+                        style={{ transitionDelay: `${i * 100}ms` }}
+                      >
+                        {tech}
+                      </motion.span>
+                    ))}
+                  </div>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                <p className="text-slate-400 text-sm mb-6 flex-grow leading-relaxed">{project.description}</p>
+                <div className="p-8 relative bg-[#0b1120]/80 backdrop-blur-md flex-grow flex flex-col">
+                  <div className="absolute -top-16 -right-16 w-32 h-32 bg-blue-500/10 blur-3xl group-hover:bg-blue-500/20 transition-all duration-700 opacity-0 group-hover:opacity-100" />
 
-                <div className="flex items-center justify-between mt-auto">
-                  <span className="text-xs font-semibold text-cyan-400 uppercase tracking-widest">{project.department}</span>
-                  <Link
-                    to={`/project/${project.id}`}
-                    className="flex items-center gap-2 text-sm font-bold text-white bg-blue-600/20 hover:bg-blue-600 px-5 py-2.5 rounded-xl transition-colors duration-300 border border-blue-500/50 hover:border-blue-500 leading-none group-hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]"
-                  >
-                    Details <ExternalLink size={16} />
-                  </Link>
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    {project.title}
+                  </h3>
+                  <p className="text-slate-400 mb-4 flex-grow leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  <div className="flex justify-between items-center mt-auto">
+                    <span className="text-xs font-bold text-blue-500 uppercase tracking-widest">{project.department}</span>
+                    <Link
+                      to={`/project/${project.id}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center gap-2 text-sm font-bold text-white bg-blue-600/40 hover:bg-blue-600 px-5 py-2.5 transition-all duration-300 border border-blue-500/50 hover:border-blue-500 leading-none group-hover:shadow-[0_0_15px_rgba(59,130,246,0.6)] z-20"
+                    >
+                      Details <ExternalLink className='center' size={16} />
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      </div>
     </div>
   );
 };

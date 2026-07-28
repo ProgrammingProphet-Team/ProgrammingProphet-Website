@@ -22,8 +22,38 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
     requirements: ''
   });
 
+  const [files, setFiles] = useState<File[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const selectedFiles = Array.from(e.target.files);
+      if (selectedFiles.length + files.length > 3) {
+        alert('You can only attach up to 3 files.');
+        return;
+      }
+      
+      const validFiles = selectedFiles.filter(file => {
+        const isValidSize = file.size <= 3 * 1024 * 1024;
+        const validExtensions = ['.doc', '.docx', '.pdf', '.ppt', '.pptx'];
+        const isValidType = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+        return isValidSize && isValidType;
+      });
+
+      if (validFiles.length !== selectedFiles.length) {
+        alert('Some files were rejected due to invalid format or size exceeding 3MB.');
+      }
+      
+      setFiles(prev => [...prev, ...validFiles]);
+    }
+    // Reset input value so the same file can be selected again if removed
+    e.target.value = '';
+  };
+
+  const removeFile = (index: number) => {
+    setFiles(prev => prev.filter((_, i) => i !== index));
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -84,17 +114,24 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
       setSubmitStatus('idle');
 
       try {
+        const data = new FormData();
+        data.append('name', formData.name);
+        data.append('email', formData.email);
+        data.append('phone', formData.phone);
+        data.append('requirements', formData.requirements);
+        files.forEach(file => {
+          data.append('files', file);
+        });
+
         const response = await fetch('/api/contact', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData),
+          body: data,
         });
 
         if (response.ok) {
           setSubmitStatus('success');
           setFormData({ name: '', email: '', phone: '', requirements: '' });
+          setFiles([]);
           setTimeout(() => setSubmitStatus('idle'), 5000);
         } else {
           setSubmitStatus('error');
@@ -259,14 +296,33 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 ">
-                  <button type="button" className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 hover:border-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-300 text-sm font-semibold text-slate-900 w-full sm:w-auto shrink-0 group">
+                  <label className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 hover:border-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-300 text-sm font-semibold text-slate-900 w-full sm:w-auto shrink-0 group cursor-pointer">
                     <Paperclip size={18} className="text-black group-hover:text-white transition-colors" />
                     Attach file
-                  </button>
+                    <input
+                      type="file"
+                      multiple
+                      className="hidden"
+                      onChange={handleFileChange}
+                      accept=".doc,.docx,.pdf,.ppt,.pptx"
+                    />
+                  </label>
                   <p className="text-xs text-gray-600 leading-relaxed max-w-xs">
                     No more than 3 files may be attached up to 3MB each. Formats: doc, docx, pdf, ppt, pptx.
                   </p>
                 </div>
+                {files.length > 0 && (
+                  <div className="flex flex-col gap-2 mt-2">
+                    {files.map((file, idx) => (
+                      <div key={idx} className="flex items-center justify-between bg-slate-100 p-2 rounded text-sm max-w-md">
+                        <span className="truncate mr-2">{file.name}</span>
+                        <button type="button" onClick={() => removeFile(idx)} className="text-red-500 hover:text-red-700">
+                          <X size={16} />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
 
                 {/* <label className="flex items-start gap-3 cursor-pointer group">
                 <div className="relative flex items-start">

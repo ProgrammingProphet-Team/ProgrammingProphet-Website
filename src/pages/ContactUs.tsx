@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Paperclip, ShieldCheck, Star, Zap, Shield, Rocket, Handshake, X } from 'lucide-react';
+import { ChevronRight, Paperclip, ShieldCheck, Star, Zap, Shield, Rocket, Handshake, X, Phone, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const ContactUs = () => {
@@ -255,6 +255,28 @@ export const ContactUs = () => {
                   <p className="text-gray-300 text-[15px] leading-relaxed">
                     Once approved, we begin development with timely updates, testing, deployment, and post-launch support.
                   </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Direct Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="mb-12 p-6 bg-slate-800/50 rounded-xl border border-slate-700 max-w-lg"
+            >
+              <h3 className="text-xl font-semibold mb-4 text-white">Direct Contact</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3 text-gray-300">
+                  <Phone size={20} className="text-blue-500 shrink-0" />
+                  <span className="text-[15px]">+91 70391679055 / 7715933711</span>
+                </div>
+                <div className="flex items-center gap-3 text-gray-300">
+                  <Mail size={20} className="text-blue-500 shrink-0" />
+                  <a href="mailto:contact@programmingprophet.com" className="text-[15px] hover:text-blue-400 transition-colors">
+                    contact@programmingprophet.com
+                  </a>
                 </div>
               </div>
             </motion.div>

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Target, Zap, Rocket, CheckCircle, TestTubeDiagonal, ChartBarDecreasingIcon } from 'lucide-react';
+import { ClipboardList, FileText, Palette, Code, TestTubeDiagonal, Rocket, Headset } from 'lucide-react';
 
 
 // Requirement Gathering
@@ -17,13 +17,13 @@ import { Target, Zap, Rocket, CheckCircle, TestTubeDiagonal, ChartBarDecreasingI
 // Support
 
 const ROADMAP = [
-  { q: 'Q1', title: 'Requirement Gathering', icon: <Target size={18} />, status: 'completed', desc: 'Understanding your vision and business goals.' },
-  { q: 'Q2', title: 'Proposal', icon: <Rocket size={18} />, status: 'completed', desc: 'Delivering a detailed project proposal and timeline.' },
-  { q: 'Q3', title: 'Design ', icon: <ChartBarDecreasingIcon size={18} />, status: 'current', desc: 'Designing user-centric interfaces and scalable architecture.' },
-  { q: 'Q4', title: 'Development', icon: <CheckCircle size={18} />, status: 'upcoming', desc: 'Building high-performance applications with clean code.' },
+  { q: 'Q1', title: 'Requirement Gathering', icon: <ClipboardList size={18} />, status: 'completed', desc: 'Understanding your vision and business goals.' },
+  { q: 'Q2', title: 'Proposal', icon: <FileText size={18} />, status: 'completed', desc: 'Delivering a detailed project proposal and timeline.' },
+  { q: 'Q3', title: 'Design ', icon: <Palette size={18} />, status: 'current', desc: 'Designing user-centric interfaces and scalable architecture.' },
+  { q: 'Q4', title: 'Development', icon: <Code size={18} />, status: 'upcoming', desc: 'Building high-performance applications with clean code.' },
   { q: 'Q5', title: 'Testing', icon: <TestTubeDiagonal size={18} />, status: 'upcoming', desc: 'Rigorous testing to ensure quality and reliability.' },
   { q: 'Q6', title: 'Deployment', icon: <Rocket size={18} />, status: 'upcoming', desc: 'Launching your product smoothly to the market.' },
-  { q: 'Q7', title: 'Support', icon: <Zap size={18} />, status: 'upcoming', desc: 'Ongoing maintenance and continuous improvement.' },
+  { q: 'Q7', title: 'Support', icon: <Headset size={18} />, status: 'upcoming', desc: 'Ongoing maintenance and continuous improvement.' },
 ];
 
 export const Roadmap = () => {

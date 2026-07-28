@@ -25,7 +25,7 @@ export const AboutUs = () => {
             {/* About ProgrammingProphet */}
           </div>
           <span className=" flex ">
-            <span className="animate-ping absolute inline-flex h-[60vh] w-full rounded-full bg-blue-400 opacity-5"></span>
+            <span className="animate-ping absolute inline-flex h-[60vh] w-full rounded-full bg-blue-400 opacity-5 "></span>
           </span>
 
 
@@ -41,12 +41,12 @@ export const AboutUs = () => {
             ProgrammingProphet is dedicated to helping businesses transform ideas into reliable, scalable, and high-performing digital solutions.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+          <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4 mb-14 z-10">
             <Link to="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-3.5 transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] group">
               Start Your Project
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
-            <Link to="/#projects" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-transparent border-2 border-slate-700 hover:border-blue-500 text-white font-bold px-8 py-3.5  transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] group">
+            <Link to="/projects" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-transparent border-2 border-slate-700 hover:border-blue-500 text-white font-bold px-8 py-3.5  transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] group">
               View Our Work
             </Link>
           </div>

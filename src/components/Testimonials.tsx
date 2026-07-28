@@ -4,10 +4,10 @@ import { Star, Quote } from 'lucide-react';
 const TESTIMONIALS = [
   {
     id: 1,
-    name: "Sai Academy",
-    role: "Coaching Institute",
-    image: "https://ui-avatars.com/api/?name=Sai+Academy&background=0D8ABC&color=fff&size=128",
-    text: "Wemurz delivered a modern, user-friendly website for Sai Academy that has significantly improved our online presence and student engagement.",
+    name: "PCKeyZone",
+    role: "E-Commerce Plateform",
+    image: "https://ui-avatars.com/api/?name=PCKeyZone&background=0D8ABC&color=fff&size=128",
+    text: "ProgrammingProphet delivered a modern, user-friendly website for PCKeyZone that has significantly improved our online presence and student engagement.",
     rating: 5
   },
   {
@@ -15,23 +15,23 @@ const TESTIMONIALS = [
     name: "SSCMR College",
     role: "Educational Institution",
     image: "https://ui-avatars.com/api/?name=SSCMR+College&background=E5A50A&color=fff&size=128",
-    text: "The team at Wemurz built a professional and responsive website for SSCMR College that truly reflects our academic excellence and values.",
+    text: "The team at ProgrammingProphet built a professional and responsive website for SSCMR College that truly reflects our academic excellence and values.",
     rating: 5
   },
   {
     id: 3,
-    name: "Abhay Tutorials",
-    role: "Coaching Institute",
-    image: "https://ui-avatars.com/api/?name=Abhay+Tutorials&background=10B981&color=fff&size=128",
-    text: "Wemurz created a fast, clean and easy-to-manage website for Abhay Tutorials that has helped us reach and support more students online.",
+    name: "WeMurz Services",
+    role: "Web Development & SaaS Company",
+    image: "https://ui-avatars.com/api/?name=WeMurz+Services&background=10B981&color=fff&size=128",
+    text: "ProgrammingProphet created a fast, clean and easy-to-manage website for WeMurz Services that has helped us reach and support more clients online.",
     rating: 5
   },
   {
-    id: 4,
+    id: 4,  
     name: "SRaaz Enterprises",
     role: "Business Services",
     image: "https://ui-avatars.com/api/?name=Saras+Enterprises&background=F59E0B&color=fff&size=128",
-    text: "We're really impressed with the website developed by Wemurz. It has given Saras Enterprises a strong digital identity and helped us connect with more clients.",
+    text: "We're really impressed with the website developed by ProgrammingProphet. It has given SRaaz Enterprises a strong digital identity and helped us connect with more clients.",
     rating: 5
   },
   {
@@ -39,7 +39,7 @@ const TESTIMONIALS = [
     name: "Soubhagya Autoworks",
     role: "Automobile Workshop",
     image: "https://ui-avatars.com/api/?name=Soubhagya+Autoworks&background=EF4444&color=fff&size=128",
-    text: "Wemurz built a professional and mobile-friendly website for Soubhagya Autoworks that highlights our services and has brought in more customer inquiries.",
+    text: "ProgrammingProphet built a professional and mobile-friendly website for Soubhagya Autoworks that highlights our services",
     rating: 5
   },
   {
@@ -47,7 +47,7 @@ const TESTIMONIALS = [
     name: "Bodyblast Gym",
     role: "Fitness Center",
     image: "https://ui-avatars.com/api/?name=Bodyblast+Gym&background=8B5CF6&color=fff&size=128",
-    text: "The website designed by Wemurz for Bodyblast Gym is visually stunning and easy to navigate. It perfectly represents our brand and has boosted our sign-ups.",
+    text: "The website designed by ProgrammingProphet for Bodyblast Gym is visually stunning and easy to navigate. It perfectly represents our brand and has boosted our sign-ups.",
     rating: 5
   }
 ];
@@ -59,8 +59,8 @@ export const Testimonials = () => {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
       {/* <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/7 rounded-full blur-3xl pointer-events-none" /> */}
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 pt-12">
-        <div className="text-center mb-20 max-w-3xl mx-auto">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 pt-8">
+        <div className="text-center mb-10 max-w-3xl mx-auto">
 
 
           {/* <motion.div
@@ -79,7 +79,7 @@ export const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-50 to-blue-700 bg-clip-text text-transparent mb-6 tracking-tight"
+            className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-50 to-blue-700 bg-clip-text text-transparent mb-4 tracking-tight "
           >
             Client Success Stories
           </motion.h2>
@@ -112,7 +112,7 @@ export const Testimonials = () => {
                 ))}
               </div>
 
-              <p className="text-slate-300 dark:text-slate-300 mb-8 relative z-10 leading-relaxed flex-grow">
+              <p className="text-slate-300 dark:text-slate-300 mb-6 relative z-10 leading-relaxed flex-grow">
                 "{testimonial.text}"
               </p>
 
@@ -122,7 +122,7 @@ export const Testimonials = () => {
                     src={testimonial.image}
                     alt={testimonial.name}
                     loading="lazy"
-                    className="w-14 h-14 rounded-full object-cover border-2 border-white dark:border-slate-800 shadow-md"
+                    className="w-14 h-14 rounded-full object-cover border-2  border-white dark:border-slate-800 shadow-md"
                   />
                   <div className="absolute -bottom-1 -right-1 bg-blue-500 rounded-full p-1 border-2 border-white dark:border-slate-900">
                     <Star size={10} className="text-white fill-white" />

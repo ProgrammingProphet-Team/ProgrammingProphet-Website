@@ -20,6 +20,10 @@ import { JobApplication } from './pages/JobApplication';
 import { ContactUs } from './pages/ContactUs';
 import { Careers } from './components/Careers';
 import { NotFound } from './pages/NotFound';
+import { PrivacyPolicy } from './pages/PrivacyPolicy';
+import { TermsOfService } from './pages/TermsOfService';
+import { AllProjects } from './pages/AllProjects';
+import { ProjectDetails } from './pages/ProjectDetails';
 
 import { ScrollToTop } from './components/ScrollToTop';
 
@@ -33,8 +37,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<AboutUs />} />
-            {/* <Route path="/projects" element={<AllProjects />} /> */}
-            {/* <Route path="/project/:id" element={<ProjectDetails />} /> */}
+            <Route path="/projects" element={<AllProjects />} />
+            <Route path="/project/:id" element={<ProjectDetails />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/jobs" element={<JobsList />} />
@@ -42,6 +46,8 @@ function App() {
             <Route path="/jobs/:id/apply" element={<JobApplication />} />
             <Route path="/contact" element={<ContactUs />} />
             <Route path="/careers" element={<Careers />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           <Suspense fallback={null}>
