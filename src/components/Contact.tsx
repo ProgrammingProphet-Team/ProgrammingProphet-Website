@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Send, Globe, Clock, Mail, ChevronRight } from 'lucide-react';
+import { Send, Globe, Clock, Mail } from 'lucide-react';
 import React, { useState } from 'react';
 
 export const Contact = () => {
@@ -49,7 +49,7 @@ export const Contact = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className=" p-8 sm:p-14 relative overflow-hidden border-1 border-slate-500"
+            className=" p-6 sm:p-14 relative overflow-hidden border-1 border-slate-500"
           >
             {/* Decorative Background */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl transition-all duration-700 pointer-events-none" />
@@ -100,13 +100,13 @@ export const Contact = () => {
                         Failed to submit. Please ensure the backend server is running and try again.
                       </div>
                     )}
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-slate-200 uppercase tracking-widest pl-1 ">First Name</label>
                         <input required type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} className="w-full px-4 py-3 border border-slate-800 focus:outline-none focus:border-slate-500  focus:ring-slate-500 transition-all font-medium text-slate-300  placeholder-slate-400 dark:placeholder-slate-600 " placeholder="" />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-xs font-bold text-white uppercase tracking-widest pl-1 mt-2">Last Name</label>
+                        <label className="text-xs font-bold text-white uppercase tracking-widest pl-1">Last Name</label>
                         <input required type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} className="w-full px-4 py-3 border border-slate-800 focus:outline-none focus:border-slate-500  focus:ring-slate-500 transition-all font-medium text-slate-300  placeholder-slate-400 dark:placeholder-slate-600" placeholder="" />
                       </div>
                     </div>

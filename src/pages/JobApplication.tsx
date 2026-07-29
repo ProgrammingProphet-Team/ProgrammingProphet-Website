@@ -180,19 +180,19 @@ export const JobApplication = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                      <div className="space-y-2">
                       <label className="text-xs font-bold text-slate-400 uppercase tracking-widest pl-1">Notice Period</label>
-                      <select name="noticePeriod" onChange={handleInputChange} value={formData.noticePeriod} className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/5 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all font-medium text-slate-900 dark:text-white">
-                        <option>Immediately</option>
-                        <option>1-2 Weeks</option>
-                        <option>1 Month</option>
-                        <option>2+ Months</option>
+                      <select name="noticePeriod" onChange={handleInputChange} value={formData.noticePeriod} className="w-full px-4 py-3 rounded-xl bg-slate-100/80 dark:bg-black/40 border border-white/5 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all font-medium text-slate-900 dark:text-white">
+                        <option className="bg-white dark:bg-slate-900">Immediately</option>
+                        <option className="bg-white dark:bg-slate-900">1-2 Weeks</option>
+                        <option className="bg-white dark:bg-slate-900">1 Month</option>
+                        <option className="bg-white dark:bg-slate-900">2+ Months</option>
                       </select>
                     </div>
                     <div className="space-y-2">
                       <label className="text-xs font-bold text-slate-400 uppercase tracking-widest pl-1">Open to Relocation?</label>
-                      <select name="relocation" onChange={handleInputChange} value={formData.relocation} className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-white/5 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all font-medium text-slate-900 dark:text-white">
-                        <option>Yes</option>
-                        <option>No</option>
-                        <option>Remote Only</option>
+                      <select name="relocation" onChange={handleInputChange} value={formData.relocation} className="w-full px-4 py-3 rounded-xl bg-slate-100/80 dark:bg-black/40 border border-white/5 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all font-medium text-slate-900 dark:text-white">
+                        <option className="bg-white dark:bg-slate-900">Yes</option>
+                        <option className="bg-white dark:bg-slate-900">No</option>
+                        <option className="bg-white dark:bg-slate-900">Remote Only</option>
                       </select>
                     </div>
                   </div>

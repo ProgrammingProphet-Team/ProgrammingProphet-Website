@@ -27,7 +27,7 @@ const TESTIMONIALS = [
     rating: 5
   },
   {
-    id: 4,  
+    id: 4,
     name: "SRaaz Enterprises",
     role: "Business Services",
     image: "https://ui-avatars.com/api/?name=Saras+Enterprises&background=F59E0B&color=fff&size=128",
@@ -54,7 +54,7 @@ const TESTIMONIALS = [
 
 export const Testimonials = () => {
   return (
-    <section id="testimonials" className="py-24 relative overflow-hidden bg-[#0A0F1E]">
+    <section id="testimonials" className="lg:py-24 py-12 relative overflow-hidden bg-[#0A0F1E]">
       {/* Background decoration */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
       {/* <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/7 rounded-full blur-3xl pointer-events-none" /> */}
@@ -88,7 +88,7 @@ export const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-slate-400  text-lg md:text-xl"
+            className="text-slate-400  lg:text-lg md:text-xl"
           >
             Don't just take our word for it. Hear from the visionary leaders who have partnered with us to transform their digital presence.
           </motion.p>

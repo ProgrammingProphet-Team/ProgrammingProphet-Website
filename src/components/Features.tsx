@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { div } from 'framer-motion/client';
-import { Layers, Zap, Lock, Database, LineChart, RocketIcon, Wrench, WrenchIcon, MessageCircleQuestionMarkIcon, HandshakeIcon, Shield } from 'lucide-react';
+import { Zap, RocketIcon, WrenchIcon, HandshakeIcon, Shield } from 'lucide-react';
 
 const FEATURES = [
   {
@@ -47,17 +46,17 @@ export const Features = () => {
   return (
     <div className=" w-full dark:border-slate-800 bg-[#0A0F1E]">
       <section id="features" className="  py-24 px-6 lg:px-6 max-w-7xl mx-auto  dark:border-slate-800 ">
-        <div className="text-white grid lg:grid-cols-2 gap-16 items-center">
+        <div className="text-white grid lg:grid-cols-2 gap-8 items-center">
           <div>
             <motion.h2
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-white text-3xl lg:text-5xl  font-extrabold text-slate-900 dark:text-white mb-6"
+              className="text-white text-[32px] lg:text-5xl text-center lg:text-left  font-bold text-slate-900 dark:text-white mb-2 lg:mb-6 px-0"
             >
-              Building Technology 
+              Building Technology
               <br className="hidden md:block" />
-              <div className="text-transparent text-3xl lg:text-5xl bg-clip-text bg-gradient-to-r from-blue-800 to-blue-400 text-glow-soft">
+              <div className="text-transparent  lg:text-5xl bg-clip-text bg-gradient-to-r from-blue-800 to-blue-400 text-glow-soft">
                 That Empowers You
               </div>
             </motion.h2>
@@ -66,16 +65,26 @@ export const Features = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-slate-400 dark:text-slate-400 text-lg mb-8 leading-relaxed"
+              className="text-slate-400 dark:text-slate-400 text-lg mb-8 lg:mr-20 leading-relaxed hidden lg:flex"
             >
-              Technology shouldn't slow your business down. We build secure, scalable, and high-performance software that empowers you to move faster, serve customers better, and grow with confidence.            </motion.p>
+              Technology shouldn't slow your business down. <br /> We build secure, scalable, and high-performance software that empowers you to move faster, serve customers better, and grow with confidence. </motion.p>
+
+
+            <motion.p
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-slate-400 dark:text-slate-400 text-sm text-center lg:text-left leading-relaxed  lg:hidden"
+            >
+              Technology shouldn't slow your business down.  </motion.p>
             <Link to="/contact">
               <motion.button
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="px-8 py-3  lg:start-0 transition-all outline outline-1 outline-blue-500 text-white-600 hover:text-blue-600 font-semibold hover:bg-blue-50 dark:hover:bg-blue-900/20"
+                className="px-8 py-3  lg:start-0 transition-all outline outline-1 outline-blue-500 text-white-600 hover:text-blue-600 font-semibold hover:bg-blue-50 dark:hover:bg-blue-900/20 hidden lg:flex"
               >
                 Start Your Project
               </motion.button>
@@ -91,14 +100,14 @@ export const Features = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ x: -5 }}
-                className="bg-[#0A0F1E] flex items-start gap-4 p-6  group transition-all duration-300 border border-slate-600 hover:border-slate-400 dark:hover:border-slate-700"
+                className="bg-[#0A0F1E] flex items-start lg:gap-4 lg:p-6 align-center p-2 group transition-all duration-300 border border-slate-600 hover:border-slate-400 dark:hover:border-slate-700"
               >
                 <div className="p-3 bg-blue-500/10 text-blue-600 dark:text-purple-400  group-hover:bg-blue-500 group-hover:text-white transition-colors shrink-0">
                   {feature.icon}
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold   dark:text-white mb-1 group-hover:text-glow-soft transition-all">{feature.title}</h4>
-                  <p className="text-slate-400">{feature.description}</p>
+                  <h4 className="h-8 p-3 lg:p-0 lg:text-xl font-bold   dark:text-white mb-1 group-hover:text-glow-soft transition-all">{feature.title}</h4>
+                  <p className="text-slate-400 hidden lg:block">{feature.description}</p>
                 </div>
               </motion.div>
             ))}

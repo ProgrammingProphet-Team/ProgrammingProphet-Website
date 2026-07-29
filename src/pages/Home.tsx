@@ -4,7 +4,6 @@ import { SectionDivider } from '../components/SectionDivider';
 import { Projects } from '../components/Projects';
 import { ProjectCTA } from '../components/ProjectCTA';
 
-const Metrics = React.lazy(() => import('../components/Metrics').then(module => ({ default: module.Metrics })));
 const Credibility = React.lazy(() => import('../components/Credibility').then(module => ({ default: module.Credibility })));
 // const DashboardPreview = React.lazy(() => import('../components/DashboardPreview').then(module => ({ default: module.DashboardPreview })));
 const Features = React.lazy(() => import('../components/Features').then(module => ({ default: module.Features })));
@@ -15,9 +14,7 @@ const Services = React.lazy(() => import('../components/Services').then(module =
 const Roadmap = React.lazy(() => import('../components/Roadmap').then(module => ({ default: module.Roadmap })));
 const TechStack = React.lazy(() => import('../components/TechStack').then(module => ({ default: module.TechStack })));
 const Testimonials = React.lazy(() => import('../components/Testimonials').then(module => ({ default: module.Testimonials })));
-const LiveUpdates = React.lazy(() => import('../components/LiveUpdates').then(module => ({ default: module.LiveUpdates })));
 const FAQ = React.lazy(() => import('../components/FAQ').then(module => ({ default: module.FAQ })));
-const Contact = React.lazy(() => import('../components/Contact').then(module => ({ default: module.Contact })));
 
 // Loading fallback
 const SectionLoader = () => (
@@ -29,7 +26,7 @@ const SectionLoader = () => (
 export const Home = () => {
   return (
     <main >
-      
+
       <Hero />
       <Suspense fallback={<SectionLoader />}>
         <Credibility />
@@ -46,7 +43,6 @@ export const Home = () => {
         {/* <SectionDivider type="glowing-line" /> */}
 
         <TechStack />
-
         <Services />
         {/* <About /> */}
         {/* <Timeline /> */}
@@ -57,7 +53,13 @@ export const Home = () => {
 
           <Projects />
           <ProjectCTA />
-          <Roadmap />
+
+          <div className='hidden lg:block'>
+            <Roadmap />
+
+          </div>
+
+
         </div>
 
 
@@ -71,8 +73,8 @@ export const Home = () => {
         <LiveUpdates />
 
         </div> */}
-          <SectionDivider type="glowing-line" />
-          <FAQ />
+        <SectionDivider type="glowing-line" />
+        <FAQ />
 
 
         {/* <SectionDivider type="glowing-line" /> */}

@@ -13,22 +13,22 @@ const TECHNOLOGIES = [
 
 export const TechStack = () => {
   return (
-    <section id="tech-stack" className="py-24 relative overflow-hidden bg-slate-200 dark:bg-[#0a0a0a] ">
+    <section id="tech-stack" className="py-6 lg:py-14 relative overflow-hidden bg-slate-200 dark:bg-[#0a0a0a] ">
       {/* Professional glassmorphism background blobs */}
       {/* <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-400/10 dark:bg-blue-500/10 rounded-full blur-[100px] -translate-y-1/2 pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-400/10 dark:bg-purple-500/10 rounded-full blur-[100px] translate-y-1/2 pointer-events-none" /> */}
 
       <div className="w-full z-10 relative">
-        <div className="text-center mb-16 px-6">
-          <h3 className="text-sm font-bold tracking-[0.25em] text-slate-700 dark:text-slate-400 uppercase">
+        <div className="text-center mb-6 lg:mb-16 px-6">
+          <h3 className="text-xs lg:text-sm font-bold tracking-[0.25em] text-slate-700 dark:text-slate-400 uppercase">
             Powering Modern Solutions With
           </h3>
         </div>
 
         <div className="relative overflow-hidden w-full flex items-center group">
           {/* Fading edges to blend with full width */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-slate-50 dark:from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-50 dark:from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-32  bg-gradient-to-r from-slate-200 dark:from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-slate-200 dark:from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
 
           <motion.div
             animate={{ x: ["0%", "-50%"] }}
@@ -43,7 +43,7 @@ export const TechStack = () => {
             {[...TECHNOLOGIES, ...TECHNOLOGIES, ...TECHNOLOGIES, ...TECHNOLOGIES].map((tech, index) => (
               <div
                 key={`${tech.name}-${index}`}
-                className="group/tech flex items-center gap-4 px-8 py-5 cursor-pointer transition-all duration-500 bg-slate-100 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 backdrop-blur-md border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:hover:shadow-[0_8px_30px_rgba(255,255,255,0.04)] hover:-translate-y-2"
+                className="group/tech flex items-center gap-4 px-4 lg:px-8 py-3 md:py-5 cursor-pointer transition-all duration-500 bg-slate-100 dark:bg-white/5 hover:bg-white/60 dark:hover:bg-white/10 backdrop-blur-md border border-slate-200 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:hover:shadow-[0_8px_30px_rgba(255,255,255,0.04)] hover:-translate-y-2"
               >
                 <div className="flex items-center justify-center bg-transparent transition-transform duration-500 group-hover/tech:scale-110 group-hover/tech:-rotate-3">
                   <img

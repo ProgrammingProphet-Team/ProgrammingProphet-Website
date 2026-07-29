@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowUp } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { ArrowUp, ChevronsUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const ScrollToTopButton = () => {
@@ -8,7 +8,7 @@ export const ScrollToTopButton = () => {
   useEffect(() => {
     const toggleVisibility = () => {
       // Show button when user scrolls down 1500px (around the FAQ section on most screens)
-      if (window.scrollY > 4000) {
+      if (window.scrollY > 5200) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
@@ -39,10 +39,10 @@ export const ScrollToTopButton = () => {
           exit={{ opacity: 0, scale: 0.5, y: 20 }}
           transition={{ duration: 0.3 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-[99] p-3 bg-blue-600 hover:bg-blue-700 text-white  shadow-lg hover:shadow-xl transition-colors outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2"
+          className="fixed bottom-8 right-8 z-[99] text-white hover:text-blue-500  shadow-lg hover:shadow-xl transition-colors outline-none "
           aria-label="Scroll to top"
         >
-          <ArrowUp className="w-6 h-6" />
+          <ChevronsUp className="animate-bounce animate-duration-600 w-12 h-12" />
         </motion.button>
       )}
     </AnimatePresence>

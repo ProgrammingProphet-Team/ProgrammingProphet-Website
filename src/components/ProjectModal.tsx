@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Paperclip, Smartphone, Mail, CheckCircle2, ShieldCheck } from 'lucide-react';
+import { X, Paperclip, Smartphone, Mail, ShieldCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ProjectModalProps {

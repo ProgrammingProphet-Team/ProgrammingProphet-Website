@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
-
-const NAV_LINKS = [
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+const NAV_LINKS: { name: string; href: string; hasDropdown?: boolean; openInNewTab?: boolean }[] = [
   // { name: 'Tech Stack', href: '/#tech-stack', hasDropdown: true },
   { name: 'Home', href: '/#home', hasDropdown: false },
   { name: 'Services', href: '/#services', hasDropdown: false },
@@ -57,6 +56,48 @@ export const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [activeTechCategory, setActiveTechCategory] = useState<keyof typeof TECH_STACK_DATA>('Front-end');
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setIsMobileMenuOpen(false);
+
+    if (href.startsWith('/#')) {
+      e.preventDefault();
+      const targetId = href.replace('/#', '');
+      
+      if (location.pathname === '/') {
+        // We are already on home page, just scroll smoothly
+        const element = document.getElementById(targetId);
+        if (element) {
+          const top = element.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      } else {
+        // Navigate to home and hash
+        navigate(href);
+      }
+    } else if (href.startsWith('/')) {
+      // For non-hash internal links like /about
+      e.preventDefault();
+      navigate(href);
+    }
+  };
+
+  useEffect(() => {
+    // Scroll to hash on location change if it exists
+    if (location.hash) {
+      const targetId = location.hash.substring(1);
+      const element = document.getElementById(targetId);
+      if (element) {
+        setTimeout(() => {
+          const top = element.getBoundingClientRect().top + window.scrollY - 80;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }, 100);
+      }
+    }
+  }, [location]);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -67,8 +108,8 @@ export const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 bg-white ${isScrolled ? 'shadow-md border-b border-gray-200' : 'border-b border-gray-100'}`}>
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[80px]">
+      <div className="mx-auto lg:max-w-[1400px] px-4 lg:px-8">
+        <div className="flex items-center justify-between lg:h-[80px] h-[64px]">
 
           {/* Logo (Left) */}
           <Link 
@@ -76,7 +117,7 @@ export const Navbar = () => {
             className="flex items-center group cursor-pointer shrink-0"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <img src="/logo-light.png" alt="ProgrammingProphet Logo" className="h-12 w-auto object-contain mix-blend-multiply" />
+            <img src="/logo-light.png" alt="ProgrammingProphet Logo" className="h-11 lg:h-12 w-auto object-contain mix-blend-multiply" />
 
             <div className="flex ">
               <span className="text-xl font-bold text-slate-900 tracking-tight leading-tight">Programming</span><span className="text-xl font-bold text-blue-600 tracking-tight leading-tight">Prophet</span>
@@ -97,6 +138,7 @@ export const Navbar = () => {
                     href={link.href}
                     target={link.openInNewTab ? "_blank" : undefined}
                     rel={link.openInNewTab ? "noopener noreferrer" : undefined}
+                    onClick={(e) => link.openInNewTab ? null : handleNavClick(e, link.href)}
                     className={`text-base font-semibold transition-colors flex items-center gap-1 ${activeMenu === link.name ? 'text-blue-600' : 'text-slate-700 hover:text-blue-600 '}`}
                   >
                     {link.name}
@@ -170,13 +212,13 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="flex items-center gap-4 lg:hidden ml-auto">
+          <div className="flex items-center  lg:hidden ml-auto">
             <button
               aria-label="Toggle Mobile Menu"
-              className="p-2 text-slate-700 transition-colors"
+              className="p-2  text-slate-900 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
           </div>
         </div>
@@ -189,7 +231,7 @@ export const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden absolute top-full left-0 right-0 border-b border-gray-200 bg-white shadow-xl overflow-hidden"
+            className="lg:hidden absolute top-full left-0 right-0 border-b border-gray-200 bg-white shadow-xl max-h-[calc(100vh-80px)] overflow-y-auto"
           >
             <div className="flex flex-col p-6 gap-6">
               {NAV_LINKS.map((link) => (
@@ -198,7 +240,13 @@ export const Navbar = () => {
                   href={link.href}
                   target={link.openInNewTab ? "_blank" : undefined}
                   rel={link.openInNewTab ? "noopener noreferrer" : undefined}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    if (link.openInNewTab) {
+                      setIsMobileMenuOpen(false);
+                    } else {
+                      handleNavClick(e, link.href);
+                    }
+                  }}
                   className="text-lg font-semibold text-slate-700 hover:text-blue-600 transition-colors flex items-center justify-between"
                 >
                   {link.name}
@@ -206,8 +254,9 @@ export const Navbar = () => {
                 </a>
               ))}
               <div className="h-[1px] bg-gray-100 my-2"></div>
-              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md text-center transition-colors w-full flex items-center justify-center gap-2">
-                Contact Us <ArrowRight size={18} />
+              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3  text-center transition-colors w-full flex items-center justify-center gap-2">
+                Contact Us 
+                {/* <ArrowRight size={18} /> */}
               </Link>
             </div>
           </motion.div>

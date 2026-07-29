@@ -6,8 +6,8 @@ const LOGOS = [
 
 export const Credibility = () => {
   return (
-    <section className="py-12 border-y border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/20 backdrop-blur-sm overflow-hidden flex flex-col items-center">
-      <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest mb-8 text-center">
+    <section className="py-6 lg:py-12 border-y border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/20 backdrop-blur-sm overflow-hidden flex flex-col items-center">
+      <p className="lg:text-sm text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest lg:mb-8 mb-6 text-center">
         Trusted by Innovative Teams
       </p>
 
@@ -28,7 +28,7 @@ export const Credibility = () => {
           {/* Double map for seamless loop */}
           {[...LOGOS, ...LOGOS, ...LOGOS].map((name, i) => (
             <div key={i} className="flex items-center justify-center opacity-60 hover:opacity-100 transition-opacity duration-300 filter grayscale hover:grayscale-0">
-              <span className="text-2xl font-black text-slate-800 dark:text-white tracking-tighter">
+              <span className="lg:text-2xl text-xl font-black text-slate-800 dark:text-white tracking-tighter">
                 {name}
               </span>
             </div>
@@ -36,11 +36,11 @@ export const Credibility = () => {
         </motion.div>
       </div>
 
-      <div className="mt-8 flex gap-8 text-sm font-medium text-slate-600 dark:text-slate-400">
+      {/* <div className="mt-6 lg:mt-8 flex gap-8 text-sm font-medium text-slate-600 dark:text-slate-400">
         <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-blue-500" /> 99.99% Uptime
+          <span className="w-2 h-2  bg-blue-500" /> 99.99\% Uptime
         </div>
-      </div>
+      </div> */}
     </section>
   );
 };

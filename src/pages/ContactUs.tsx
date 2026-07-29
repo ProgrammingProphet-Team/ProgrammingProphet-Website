@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Paperclip, ShieldCheck, Star, Zap, Shield, Rocket, Handshake, X, Phone, Mail } from 'lucide-react';
+import { ChevronRight, Paperclip, ShieldCheck, Zap, Shield, Rocket, Handshake, X, Phone, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const ContactUs = () => {
@@ -121,7 +121,7 @@ export const ContactUs = () => {
       isValid = false;
     }
     if (!formData.requirements.trim()) {
-      newErrors.requirements = 'Please, describe your IT project in a few words';
+      newErrors.requirements = 'Please, describe your project in a few words';
       isValid = false;
     }
 
@@ -184,16 +184,16 @@ export const ContactUs = () => {
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 pt-6 ">
 
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-white mb-12 ">
+        <div className="flex items-center gap-2 text-sm text-white lg:mb-12 ">
           <Link to="/" className="hover:text-white transition-colors">Home</Link>
           <ChevronRight size={14} />
-          <span className="text-blue-500 font-medium">Contact Us</span>
+          <span className="text-blue-500 font-medium ">Contact Us</span>
         </div>
 
-        <div className="grid lg:grid-cols-2  items-start lg:mx-20 mt-18">
+        <div className="grid lg:grid-cols-2  items-start lg:mx-20 mt-10 lg:mt-18">
 
           {/* Left Column */}
-          <div className="text-white lg:pr-12 mx-8">
+          <div className="text-white lg:pr-12 mx-8 hidden lg:block">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -260,7 +260,7 @@ export const ContactUs = () => {
             </motion.div>
 
             {/* Direct Contact Info */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -279,14 +279,14 @@ export const ContactUs = () => {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
 
             {/* Trust Pillars */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="relative w-[1200px] mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-14 text-xl pb-18"
+              className="relative w-6xl grid grid-cols-1 sm:grid-cols-4 gap-6 mt-14 pb-18 hidden lg:grid"
             >
               <div className="flex items-start gap-4">
                 <div className="w-10 h-10   border border-blue-500/20 flex items-center justify-center flex-shrink-0 text-blue-500">
@@ -347,16 +347,16 @@ export const ContactUs = () => {
                   value={formData.name}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`peer block w-full appearance-none bg-transparent border-0 border-b pb-2 pt-3 text-[18px] text-slate-900 focus:outline-none focus:ring-0 transition-colors duration-300 ${errors.name ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500'
+                  className={`peer block w-full appearance-none bg-transparent border-0 border-b pb-2 pt-3 lg:text-[18px] text-slate-900 focus:outline-none focus:ring-0 transition-colors duration-300 ${errors.name ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500'
                     }`}
                   placeholder=" "
                 />
                 <label
                   htmlFor="name"
-                  className={`pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform text-[18px] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 ${errors.name ? 'text-gray-500' : 'text-gray-500'
+                  className={`pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform lg:text-[18px] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 ${errors.name ? 'text-gray-500' : 'text-gray-500'
                     }`}
                 >
-                  Name *
+                  Name
                 </label>
                 {errors.name && (
                   <motion.p
@@ -378,15 +378,15 @@ export const ContactUs = () => {
                   value={formData.email}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`peer block w-full appearance-none bg-transparent border-0 border-b pb-2 pt-3 text-[18px] text-slate-900 focus:outline-none focus:ring-0 transition-colors duration-300 ${errors.email ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500'
+                  className={`peer block w-full appearance-none bg-transparent border-0 border-b pb-2 pt-3 lg:text-[18px] text-slate-900 focus:outline-none focus:ring-0 transition-colors duration-300 ${errors.email ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500'
                     }`}
                   placeholder=" "
                 />
                 <label
                   htmlFor="email"
-                  className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
+                  className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform lg:text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
                 >
-                  E-mail *
+                  E-mail
                 </label>
                 {errors.email && (
                   <motion.p
@@ -408,15 +408,15 @@ export const ContactUs = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  className={`peer block w-full appearance-none bg-transparent border-0 border-b pb-2 pt-3 text-[18px] text-slate-900 focus:outline-none focus:ring-0 transition-colors duration-300 ${errors.phone ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500'
+                  className={`peer block w-full appearance-none bg-transparent border-0 border-b pb-2 pt-3 text-[14px] lg:text-[18px] text-slate-900 focus:outline-none focus:ring-0 transition-colors duration-300 ${errors.phone ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500'
                     }`}
                   placeholder=" "
                 />
                 <label
                   htmlFor="phone"
-                  className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
+                  className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform ] lg:text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
                 >
-                  Phone number *
+                  Phone number
                 </label>
                 {errors.phone && (
                   <motion.p
@@ -438,15 +438,15 @@ export const ContactUs = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                   rows={1}
-                  className={`peer block w-full max-h-[140px] appearance-none bg-transparent border-0 border-b pb-2 pt-3 text-[18px] text-slate-900 focus:outline-none focus:ring-0 resize-none transition-colors duration-300 ${errors.requirements ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500 expand'
+                  className={`peer block w-full max-h-[140px] appearance-none bg-transparent border-0 border-b pb-2 pt-3 lg:text-[18px] text-slate-900 focus:outline-none focus:ring-0 resize-none transition-colors duration-300 ${errors.requirements ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500 expand'
                     }`}
                   placeholder=" "
                 ></textarea>
                 <label
                   htmlFor="requirements"
-                  className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
+                  className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform  lg:text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
                 >
-                  Describe your project requirements *
+                  Describe your project requirements
                 </label>
                 {errors.requirements && (
                   <motion.p
@@ -523,7 +523,7 @@ export const ContactUs = () => {
                     </>
                   ) : 'Let\'s Build Together'}
                 </button>
-                <div className="flex items-center gap-2 md:text-sm lg:text-base text-gray-500 font-medium">
+                <div className="flex items-center gap-2 md:text-sm lg:text-base text-gray-500 font-medium hidden lg:block">
                   <ShieldCheck size={24} className=" text-green-600" />
                   Your privacy is protected
                 </div>
@@ -542,6 +542,8 @@ export const ContactUs = () => {
 
             </form>
           </motion.div>
+
+
         </div>
       </div>
     </main>

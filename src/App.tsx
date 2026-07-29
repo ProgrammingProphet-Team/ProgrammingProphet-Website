@@ -53,7 +53,10 @@ function App() {
           <Suspense fallback={null}>
             <Footer />
           </Suspense>
-          <ScrollToTopButton />
+          <div className='hidden lg:block'>
+            <ScrollToTopButton />
+          </div>
+
           {/* <ChatAssistant /> */}
         </div>
       </SmoothScroll>

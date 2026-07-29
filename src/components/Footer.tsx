@@ -1,4 +1,4 @@
-import { Twitter, Linkedin, Phone, Mail } from 'lucide-react';
+import { Phone, Mail } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const COMPANY_LINKS = [

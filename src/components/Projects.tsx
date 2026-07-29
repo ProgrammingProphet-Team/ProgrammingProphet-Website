@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, X, ArrowRight, ExternalLink } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ALL_PROJECTS_DATA } from '../pages/AllProjects';
 
@@ -14,14 +14,14 @@ export const Projects = () => {
     : ALL_PROJECTS_DATA.filter(p => p.department === activeCategory);
 
   return (
-    <section id="projects" className="pt-12 md:pt-16 px-8 lg:px-12 max-w-[1400px] mx-auto">
+    <section id="projects" className="pt-12 md:pt-16 px-6 lg:px-12 max-w-[1400px] mx-auto">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 mt-16">
         <div className="max-w-3xl">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-5xl font-extrabold bg-gradient-to-r from-blue-100 to-blue-700 bg-clip-text text-transparent mb-6 tracking-tight font-sans uppercase tracking-tight"
+            className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-100 to-blue-700 bg-clip-text text-transparent mb-6 tracking-tight font-sans uppercase tracking-tight"
           >
             Featured Projects
           </motion.h2>
@@ -30,7 +30,7 @@ export const Projects = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-slate-100 text-xl leading-relaxed"
+            className="text-slate-100 text-xl leading-relaxed hidden lg:block"
           >
             Explore our latest projects showcasing our technical expertise and innovative problem-solving in building next-level advanced systems.
           </motion.p>
@@ -59,7 +59,7 @@ export const Projects = () => {
       </div>
 
       {/* Projects Grid: 2 rows x 3 columns for desktop */}
-      <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+      <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 lg:mb-20">
         <AnimatePresence>
           {filteredProjects.slice(0, 6).map((project, index) => (
             <motion.div
@@ -73,7 +73,7 @@ export const Projects = () => {
               className="group relative overflow-hidden  hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] interactive cursor-pointer transition-all duration-500 flex flex-col"
             >
               <div className="relative h-60 overflow-hidden">
-                <div className="absolute inset-0 bg-[#030712]/50 group-hover:bg-transparent transition-all duration-500 z-10" />
+                <div className="absolute inset-0 lg:bg-[#030712]/50 lg:group-hover:bg-transparent transition-all duration-500 z-10" />
                 <img
                   src={project.image}
                   loading="lazy"
@@ -86,7 +86,7 @@ export const Projects = () => {
                   {project.tech.slice(0, 2).map((tech, i) => (
                     <motion.span
                       key={tech}
-                      className="px-3 py-1.5 text-[10px] uppercase font-bold tracking-widest  bg-[#0b1120]/90 text-white border border-blue-400/30 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0 shadow-lg"
+                      className="px-3 py-1.5 text-[10px] uppercase font-bold tracking-widest bg-[#0b1120]/90 text-white border border-blue-400/30 backdrop-blur-md opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 shadow-lg"
                       style={{ transitionDelay: `${i * 100}ms` }}
                     >
                       {tech}

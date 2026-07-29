@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Target, Users, Shield, ArrowRight, Eye, Zap, CheckCircle2, Rocket, RefreshCw, Check, Code, Cloud, LayoutTemplate, Network, Settings, Layers, Clock, Handshake, Heart, Star } from 'lucide-react';
+import { Target, Users, Shield, ArrowRight, Eye, Zap, CheckCircle2, RefreshCw, Check, Layers, Clock, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const AboutUs = () => {
@@ -7,7 +7,7 @@ export const AboutUs = () => {
     <div className="min-h-screen bg-[#030712] text-white transition-colors duration-500 overflow-hidden">
 
       {/* 1. Hero Section - The Hook */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-24 px-6 lg:px-12 max-w-[1400px] mx-auto">
+      <section className="relative lg:pt-32 pt-16 pb-20 lg:pt-40 lg:pb-24 px-6 lg:px-12 max-w-[1400px] mx-auto">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none" />
 
         <motion.div
@@ -30,15 +30,15 @@ export const AboutUs = () => {
 
 
 
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white tracking-tight mb-8 leading-[1.1]">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white tracking-tight mb-8 leading-[1.1]">
             Building Digital Solutions That <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-300">
               Drive Business Growth.
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-slate-400 leading-relaxed max-w-4xl mx-auto mb-10">
-            ProgrammingProphet is dedicated to helping businesses transform ideas into reliable, scalable, and high-performing digital solutions.
+          <p className=" md:text-xl text-slate-400 leading-relaxed max-w-3xl mx-auto mb-10">
+            Helping businesses transform ideas into reliable, scalable, and high-performing digital solutions.
           </p>
 
           <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4 mb-14 z-10">

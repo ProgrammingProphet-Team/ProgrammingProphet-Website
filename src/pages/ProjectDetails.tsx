@@ -1,13 +1,13 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Globe, Github, Calendar, Users, Star, CheckCircle, Target, Zap, Award, Check, Clock } from 'lucide-react';
+import { ArrowLeft, Calendar, Users, Star, CheckCircle, Target, Zap, Award, Check, Clock } from 'lucide-react';
 import { ALL_PROJECTS_DATA } from './AllProjects';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 export const ProjectDetails = () => {
   const { id } = useParams();
   const project = ALL_PROJECTS_DATA.find(p => p.id === Number(id));
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const activeImageIndex = 0;
 
   useEffect(() => {
     window.scrollTo(0, 0);

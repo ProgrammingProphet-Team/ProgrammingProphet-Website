@@ -1,6 +1,5 @@
-import { motion } from 'framer-motion';
-import { Monitor, Code, Cpu, Brain, Smartphone, Cloud, ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
+import { Code, Cpu, Cloud, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const SERVICES = [
   // {
@@ -119,7 +118,7 @@ export const Services = () => {
           {/* Navigation Arrow Left (Outside Card) */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 md:-left-2 lg:-left-4 xl:left-0 z-20 w-12 h-12 md:w-14 md:h-14  border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all shadow-xl  opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 disabled:opacity-0"
+            className="hidden md:flex absolute left-0 md:-left-2 lg:-left-4 xl:left-0 z-20 w-12 h-12 md:w-14 md:h-14 border border-white/20 items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all shadow-xl opacity-100 lg:opacity-0 lg:group-hover/carousel:opacity-100 focus:opacity-100 disabled:opacity-0"
           >
             <ChevronLeft className="w-8 h-8 md:w-10 md:h-14" />
           </button>
@@ -128,14 +127,14 @@ export const Services = () => {
           {/* rounded-[2rem] md:rounded-[3rem] */}
           <div className="relative w-full max-w-6xl bg-[#0A0F1E] border border-white/5 backdrop-blur-xl shadow-2xl overflow-hidden mx-auto">
             <div
-              className="flex transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] h-[65vh] min-h-[500px]"
-              style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              className="flex md:transition-transform md:duration-700 md:ease-[cubic-bezier(0.25,1,0.5,1)] h-auto  lg:h-[65vh] lg:min-h-[500px] overflow-x-auto overflow-y-hidden md:overflow-visible snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] md:[transform:translateX(var(--slider-translate))]"
+              style={{ '--slider-translate': `-${currentIndex * 100}%` } as React.CSSProperties}
             >
               {/* Cards */}
               {SERVICES.map((service, index) => {
                 const Icon = service.icon;
                 return (
-                  <div key={index} className="w-full h-full flex-shrink-0 relative flex items-center justify-center p-6 md:p-12 lg:p-16">
+                  <div key={index} className="w-full min-h-[60vh] flex-shrink-0 relative flex items-center justify-center p-6  md:p-12 lg:p-16 snap-center">
                     {/* Subtle hover gradient blob */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-5 group-hover/carousel:opacity-5 transition-opacity duration-700`} />
 
@@ -148,7 +147,7 @@ export const Services = () => {
                       {/* Left Column: Huge Typography */}
                       <div className="flex flex-col justify-top h-full">
                         <div className="flex items-center gap-4 mb-4 md:mb-10">
-                          <span className="text-5xl md:text-7xl font-black text-slate-700 tracking-tighter">
+                          <span className="text-5xl md:text-7xl font-black text-slate-700 lg:text-slate-800 tracking-tighter">
                             0{index + 1}
                           </span>
                           {/* <div className="h-px w-16 md:w-24 bg-white/20" />
@@ -158,7 +157,7 @@ export const Services = () => {
                         </div>
 
                         <h3
-                          className="text-5xl md:text-6xl lg:text-8xl font-black mb-8 leading-[0.9] tracking-tighter relative group/text w-max"
+                          className="text-[48px] md:text-6xl lg:text-8xl text-white font-bold lg:font-black mb-8 leading-[0.9] tracking-tighter relative group/text w-max"
                           onMouseMove={(e) => {
                             const rect = e.currentTarget.getBoundingClientRect();
                             const x = e.clientX - rect.left;
@@ -168,7 +167,7 @@ export const Services = () => {
                           }}
                         >
                           {/* Base text (Outline) */}
-                          <div className="text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.3)' }}>
+                          <div className="lg:text-transparent" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.3)' }}>
                             {service.title.split(' ').map((word, i) => (
                               <div key={i}>{word}</div>
                             ))}
@@ -176,7 +175,7 @@ export const Services = () => {
 
                           {/* Spotlight text (Filled) */}
                           <div
-                            className={`absolute inset-0 -m-8 p-8 text-transparent bg-clip-text bg-gradient-to-br ${service.color} opacity-0 group-hover/text:opacity-100 transition-opacity duration-300 pointer-events-none`}
+                            className={`absolute top-0  inset-0 -m-8 p-8 text-transparent bg-clip-text bg-gradient-to-br ${service.color} opacity-0 group-hover/text:opacity-100 transition-opacity duration-300 pointer-events-none`}
                             style={{
                               WebkitMaskImage: `radial-gradient(circle 200px at calc(var(--mouse-x, 0px) + 2rem) calc(var(--mouse-y, 0px) + 2rem), black 0%, transparent 100%)`,
                               maskImage: `radial-gradient(circle 200px at calc(var(--mouse-x, 0px) + 2rem) calc(var(--mouse-y, 0px) + 2rem), black 0%, transparent 100%)`,
@@ -190,7 +189,7 @@ export const Services = () => {
                       </div>
 
                       {/* Right Column: Details & Sub-services */}
-                      <div className="flex flex-col justify-center h-full ml-12">
+                      <div className="flex flex-col justify-center h-full ml-0 lg:ml-12">
                         <h4 className="text-2xl md:text-4xl font-semibold mb-6 md:mb-12 text-white ">
                           Core Capabilities
                         </h4>
@@ -204,12 +203,12 @@ export const Services = () => {
                         </ul>
 
                         {/* Mobile Stats (visible only on small screens) */}
-                        <div className="mt-8 md:hidden">
+                        {/* <div className="mt-8 md:hidden">
                           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/90">
                             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                             {service.stats}
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </div>
@@ -221,14 +220,14 @@ export const Services = () => {
           {/* Navigation Arrow Right (Outside Card) */}
           <button
             onClick={nextSlide}
-            className="absolute right-0 md:-right-4 lg:-right-6 xl:right-0 z-20 w-12 h-12 md:w-14 md:h-14  border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all shadow-xl opacity-0 group-hover/carousel:opacity-100 focus:opacity-100 disabled:opacity-0"
+            className="hidden md:flex absolute right-0 md:-right-4 lg:-right-6 xl:right-0 z-20 w-12 h-12 md:w-14 md:h-14 border border-white/20 items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all shadow-xl opacity-100 lg:opacity-0 lg:group-hover/carousel:opacity-100 focus:opacity-100 disabled:opacity-0"
           >
             <ChevronRight className="w-8 h-8 md:w-10 md:h-14" />
           </button>
         </div>
 
         {/* Pagination Lines */}
-        <div className="flex justify-center items-center gap-4 mt-8 md:mt-12">
+        <div className="hidden md:flex justify-center items-center gap-4 mt-8 md:mt-12 ">
           {SERVICES.map((_, index) => (
             <button
               key={index}
