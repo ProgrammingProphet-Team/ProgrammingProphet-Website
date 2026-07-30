@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export const ProjectCTA = () => {
   return (
-    <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 pb-12 lg:mb-0">
+    <div className="w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 pb-12 lg:mb-0 lg:pb-18">
       <div className="bg-gradient-to-r from-[#071343] via-[#101b6c] to-[#071343] shadow-2xl flex flex-col xl:flex-row items-center justify-between p-5 lg:p-6 gap-4 xl:gap-5 relative overflow-hidden">
 
         {/* Background texture/pattern */}

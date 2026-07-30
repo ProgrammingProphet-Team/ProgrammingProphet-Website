@@ -21,7 +21,7 @@ const TESTIMONIALS = [
   {
     id: 3,
     name: "WeMurz Services",
-    role: "Web Development & SaaS Company",
+    role: "IT Company",
     image: "https://ui-avatars.com/api/?name=WeMurz+Services&background=10B981&color=fff&size=128",
     text: "ProgrammingProphet created a fast, clean and easy-to-manage website for WeMurz Services that has helped us reach and support more clients online.",
     rating: 5

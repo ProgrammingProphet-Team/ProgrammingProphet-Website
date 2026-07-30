@@ -54,10 +54,10 @@ export const Home = () => {
           <Projects />
           <ProjectCTA />
 
-          <div className='hidden lg:block'>
+          {/* <div className='hidden lg:block'>
             <Roadmap />
 
-          </div>
+          </div> */}
 
 
         </div>
