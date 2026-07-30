@@ -94,9 +94,9 @@ export const ContactUs = () => {
 
     if (!value.trim()) {
       if (name === 'name') error = 'Please, enter your name';
-      if (name === 'email') error = 'Please, enter your corporate E-mail';
+      if (name === 'email') error = 'Please, enter your  E-mail';
       if (name === 'phone') error = 'Please, enter your phone number';
-      if (name === 'requirements') error = 'Please, describe your IT project in a few words';
+      if (name === 'requirements') error = 'Please, describe your project in a few words';
     }
 
     setErrors(prev => ({ ...prev, [name]: error }));
@@ -363,7 +363,7 @@ export const ContactUs = () => {
                     initial={{ opacity: 0, x: 0 }}
                     animate={{ opacity: 1, x: [-5, 5, -5, 5, 0] }}
                     transition={{ duration: 0.4 }}
-                    className="absolute bottom-0 left-0 text-sm text-orange-500"
+                    className="absolute bottom-0 left-0 text-xs lg:text-sm text-orange-500"
                   >
                     {errors.name}
                   </motion.p>
@@ -393,7 +393,7 @@ export const ContactUs = () => {
                     initial={{ opacity: 0, x: 0 }}
                     animate={{ opacity: 1, x: [-5, 5, -5, 5, 0] }}
                     transition={{ duration: 0.4 }}
-                    className="absolute bottom-0 left-0 text-sm text-orange-500"
+                    className="absolute bottom-0 left-0 text-xs lg:text-sm text-orange-500"
                   >
                     {errors.email}
                   </motion.p>
@@ -423,7 +423,7 @@ export const ContactUs = () => {
                     initial={{ opacity: 0, x: 0 }}
                     animate={{ opacity: 1, x: [-5, 5, -5, 5, 0] }}
                     transition={{ duration: 0.4 }}
-                    className="absolute bottom-0 left-0 text-sm text-orange-500"
+                    className="absolute bottom-0 left-0 text-xs lg:text-sm text-orange-500"
                   >
                     {errors.phone}
                   </motion.p>
@@ -453,7 +453,7 @@ export const ContactUs = () => {
                     initial={{ opacity: 0, x: 0 }}
                     animate={{ opacity: 1, x: [-5, 5, -5, 5, 0] }}
                     transition={{ duration: 0.4 }}
-                    className="absolute bottom-0 left-0 text-sm text-orange-500"
+                    className="absolute bottom-0 left-0 text-xs lg:text-sm text-orange-500"
                   >
                     {errors.requirements}
                   </motion.p>
@@ -523,7 +523,7 @@ export const ContactUs = () => {
                     </>
                   ) : 'Let\'s Build Together'}
                 </button>
-                <div className="flex items-center gap-2 md:text-sm lg:text-base text-gray-500 font-medium hidden lg:block">
+                <div className="flex items-center gap-2 md:text-sm lg:text-base text-gray-500 font-medium hidden lg:flex">
                   <ShieldCheck size={24} className=" text-green-600" />
                   Your privacy is protected
                 </div>
