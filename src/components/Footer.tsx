@@ -1,4 +1,4 @@
-import { useState, ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { Phone, Mail, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
