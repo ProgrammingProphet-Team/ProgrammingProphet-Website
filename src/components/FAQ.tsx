@@ -33,7 +33,7 @@ export const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="lg:py-12 py-6 pb-12 relative overflow-hidden bg-[#0A0F1E] dark:bg-slate-900/50 transition-colors duration-500 ">
+    <section id="faq" className="lg:py-8 py-6 lg:pb-16 relative overflow-hidden bg-[#0A0F1E] dark:bg-slate-900/50 transition-colors duration-500 ">
       {/* Background decorations */}
 
       {/* <div className="absolute top-55 left-1/3 w-50 h-50 bg-blue-500/10 dark:bg-blue-500/5  blur-3xl -translate-y-1/2 pointer-events-none" /> */}
