@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Paperclip, ShieldCheck, Zap, Shield, Rocket, Handshake, X, Phone, Mail } from 'lucide-react';
+import { ChevronRight, Paperclip, ShieldCheck, Zap, Shield, Rocket, Handshake, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const ContactUs = () => {

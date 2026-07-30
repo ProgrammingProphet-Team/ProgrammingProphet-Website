@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronDown, ArrowRight } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 const NAV_LINKS: { name: string; href: string; hasDropdown?: boolean; openInNewTab?: boolean }[] = [
   // { name: 'Tech Stack', href: '/#tech-stack', hasDropdown: true },

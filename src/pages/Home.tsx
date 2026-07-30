@@ -11,7 +11,7 @@ const Services = React.lazy(() => import('../components/Services').then(module =
 // const About = React.lazy(() => import('../components/About').then(module => ({ default: module.About })));
 // const Timeline = React.lazy(() => import('../components/Timeline').then(module => ({ default: module.Timeline })));
 
-const Roadmap = React.lazy(() => import('../components/Roadmap').then(module => ({ default: module.Roadmap })));
+// const Roadmap = React.lazy(() => import('../components/Roadmap').then(module => ({ default: module.Roadmap })));
 const TechStack = React.lazy(() => import('../components/TechStack').then(module => ({ default: module.TechStack })));
 const Testimonials = React.lazy(() => import('../components/Testimonials').then(module => ({ default: module.Testimonials })));
 const FAQ = React.lazy(() => import('../components/FAQ').then(module => ({ default: module.FAQ })));

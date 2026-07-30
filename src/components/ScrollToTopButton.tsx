@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ArrowUp, ChevronsUp } from 'lucide-react';
+import { ChevronsUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export const ScrollToTopButton = () => {
