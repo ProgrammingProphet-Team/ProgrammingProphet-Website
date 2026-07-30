@@ -5,26 +5,26 @@ interface SectionDividerProps {
 }
 
 export const SectionDivider = ({ type = 'glowing-line' }: SectionDividerProps) => {
-  if (type === 'diagonal') {
-    return (
-      <div 
-        className="relative w-full overflow-hidden z-10 pointer-events-none"
-        style={{ height: 'min(5.5vw, 150px)', marginTop: 'max(-2.75vw, -75px)', marginBottom: 'max(-2.75vw, -75px)' }}
-      >
-        <div className="absolute top-0 left-0 w-full h-[500px] bg-slate-50 dark:bg-slate-950 transform -skew-y-[3deg] origin-top-left border-t border-slate-200/50 dark:border-slate-800/50" />
-      </div>
-    );
-  }
+  // if (type === 'diagonal') {
+  //   return (
+  //     <div 
+  //       className="relative w-full overflow-hidden z-10 pointer-events-none"
+  //       style={{ height: 'min(5.5vw, 150px)', marginTop: 'max(-2.75vw, -75px)', marginBottom: 'max(-2.75vw, -75px)' }}
+  //     >
+  //       <div className="absolute top-0 left-0 w-full h-[500px]  dark:bg-slate-950 transform -skew-y-[3deg] origin-top-left border-t border-slate-200/50 dark:border-slate-800/50" />
+  //     </div>
+  //   );
+  // }
 
-  if (type === 'wave') {
-    return (
-      <div className="w-full h-16 overflow-hidden -my-8 z-10 pointer-events-none opacity-50 flex items-center justify-center">
-        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-full fill-blue-500/20">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
-        </svg>
-      </div>
-    );
-  }
+  // if (type === 'wave') {
+  //   return (
+  //     <div className="w-full h-16 overflow-hidden -my-8 z-10 pointer-events-none opacity-50 flex items-center justify-center">
+  //       <svg viewBox="0 0 1200 120" preserveAspectRatio="none" className="w-full h-full fill-blue-500/20">
+  //         <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
+  //       </svg>
+  //     </div>
+  //   );
+  // }
 
   // default glowing-line
   return (

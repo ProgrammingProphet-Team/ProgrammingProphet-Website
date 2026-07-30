@@ -16,7 +16,7 @@ const COMPANY_LINKS = [
 export const Footer = () => {
   return (
     // bg-[#020d1c] border-t border-slate-200  bg-[#0b1120]  bg-[#0A0F1E]
-    <footer className=" dark:border-slate-800 border-t border-slate-400  bg-[#0A0F1E] pt-20 pb-10">
+    <footer className=" dark:border-slate-800 border-t border-slate-400  bg-[#0A0F1E] pt-12 pb-10">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-8 mb-8">
 

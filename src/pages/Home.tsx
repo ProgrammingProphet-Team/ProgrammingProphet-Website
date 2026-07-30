@@ -67,14 +67,17 @@ export const Home = () => {
         {/* <SectionDivider type="glowing-line" /> */}
 
 
-        <Testimonials />
+        
         {/* <SectionDivider type="glowing-line" /> */}
         {/* <div className='bg-gradient-to-br from-[#001d3d] to-[#f1f2f2]'>
         <LiveUpdates />
 
         </div> */}
+        <div className='bg-[#0A0F1E]'>
+        <Testimonials />
         <SectionDivider type="glowing-line" />
         <FAQ />
+        </div>
 
 
         {/* <SectionDivider type="glowing-line" /> */}

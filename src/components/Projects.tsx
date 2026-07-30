@@ -14,8 +14,8 @@ export const Projects = () => {
     : ALL_PROJECTS_DATA.filter(p => p.department === activeCategory);
 
   return (
-    <section id="projects" className="pt-12 md:pt-16 px-6 lg:px-12 max-w-[1400px] mx-auto">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 mt-16">
+    <section id="projects" className="pt-12 md:pt-4 px-6 lg:px-12 max-w-[1400px] mx-auto">
+      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 lg:mt-10">
         <div className="max-w-3xl">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
@@ -59,7 +59,7 @@ export const Projects = () => {
       </div>
 
       {/* Projects Grid: 2 rows x 3 columns for desktop */}
-      <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 lg:mb-20">
+      <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 lg:mb-12">
         <AnimatePresence>
           {filteredProjects.slice(0, 6).map((project, index) => (
             <motion.div

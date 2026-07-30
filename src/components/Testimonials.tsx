@@ -54,7 +54,7 @@ const TESTIMONIALS = [
 
 export const Testimonials = () => {
   return (
-    <section id="testimonials" className="lg:py-24 py-12 relative overflow-hidden bg-[#0A0F1E]">
+    <section id="testimonials" className="lg:py-6 py-6 relative overflow-hidden bg-[#0A0F1E]">
       {/* Background decoration */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
       {/* <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/7 rounded-full blur-3xl pointer-events-none" /> */}

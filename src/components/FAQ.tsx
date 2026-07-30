@@ -33,7 +33,7 @@ export const FAQ = () => {
   };
 
   return (
-    <section id="faq" className="lg:py-24 py-12 relative overflow-hidden bg-[#0A0F1E] dark:bg-slate-900/50 transition-colors duration-500 ">
+    <section id="faq" className="lg:py-12 py-6 pb-12 relative overflow-hidden bg-[#0A0F1E] dark:bg-slate-900/50 transition-colors duration-500 ">
       {/* Background decorations */}
 
       {/* <div className="absolute top-55 left-1/3 w-50 h-50 bg-blue-500/10 dark:bg-blue-500/5  blur-3xl -translate-y-1/2 pointer-events-none" /> */}
@@ -41,7 +41,7 @@ export const FAQ = () => {
       {/* <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 dark:bg-purple-500/5  blur-3xl translate-y-1/2 pointer-events-none" /> */}
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center lg:mb-16 mb-8">
+        <div className="text-center lg:mb-12 mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
             <MessageCircleQuestion className="w-6 h-6 md:w-8 md:h-8 text-blue-600 hidden lg:block" />
             <h2 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-300">
