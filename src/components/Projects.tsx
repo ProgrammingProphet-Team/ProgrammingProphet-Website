@@ -15,13 +15,13 @@ export const Projects = () => {
 
   return (
     <section id="projects" className="pt-12 md:pt-4 px-6 lg:px-12 max-w-[1400px] mx-auto">
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6 lg:mt-10">
+      <div className="flex flex-col md:flex-row md:items-end justify-between lg:mb-16 mb-8 gap-6 lg:mt-10">
         <div className="max-w-3xl">
           <motion.h2
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-100 to-blue-700 bg-clip-text text-transparent mb-6 tracking-tight font-sans uppercase tracking-tight"
+            className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-100 to-blue-700 bg-clip-text text-transparent lg:mb-6  tracking-tight font-sans uppercase tracking-tight"
           >
             Featured Projects
           </motion.h2>
@@ -47,7 +47,7 @@ export const Projects = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-5 py-2.5  text-sm font-bold transition-all duration-300  ${activeCategory === category
+              className={`px-4.5 lg:px-5 py-2.5   text-xs lg:text-sm font-bold transition-all duration-300  ${activeCategory === category
                 ? 'bg-blue-700 text-white shadow-[0_0_15px_rgba(37,99,235,0.6)] scale-105'
                 : 'bg-white text-slate-900 hover:bg-blue-700 hover:text-white hover:scale-105'
                 }`}
@@ -59,7 +59,7 @@ export const Projects = () => {
       </div>
 
       {/* Projects Grid: 2 rows x 3 columns for desktop */}
-      <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 lg:mb-12">
+      <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 lg:gap-8 mb-10 lg:mb-12 gap-6">
         <AnimatePresence>
           {filteredProjects.slice(0, 6).map((project, index) => (
             <motion.div
@@ -72,7 +72,7 @@ export const Projects = () => {
               onClick={() => window.open(`/project/${project.id}`, '_blank')}
               className="group relative overflow-hidden  hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] interactive cursor-pointer transition-all duration-500 flex flex-col"
             >
-              <div className="relative h-60 overflow-hidden">
+              <div className="relative h-48 lg:h-60 overflow-hidden">
                 <div className="absolute inset-0 lg:bg-[#030712]/50 lg:group-hover:bg-transparent transition-all duration-500 z-10" />
                 <img
                   src={project.image}
@@ -86,7 +86,7 @@ export const Projects = () => {
                   {project.tech.slice(0, 2).map((tech, i) => (
                     <motion.span
                       key={tech}
-                      className="px-3 py-1.5 text-[10px] uppercase font-bold tracking-widest bg-[#0b1120]/90 text-white border border-blue-400/30 backdrop-blur-md opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 shadow-lg"
+                      className="px-1.5 lg:px-3 py-1 lg:py-1.5 text-[8px] lg:text-[10px] uppercase font-bold tracking-widest bg-[#0b1120]/90 text-white border border-blue-400/30 backdrop-blur-md opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all duration-500 translate-y-0 md:translate-y-2 md:group-hover:translate-y-0 shadow-lg"
                       style={{ transitionDelay: `${i * 100}ms` }}
                     >
                       {tech}
@@ -95,13 +95,13 @@ export const Projects = () => {
                 </div>
               </div>
 
-              <div className="p-8 relative bg-[#0b1120]/80 backdrop-blur-md flex-grow flex flex-col">
+              <div className="lg:p-8 px-6 py-4 relative bg-[#0b1120]/80 backdrop-blur-md flex-grow flex flex-col">
                 <div className="absolute -top-16 -right-16 w-32 h-32 bg-blue-500/10  blur-3xl group-hover:bg-blue-500/20 transition-all duration-700 opacity-0 group-hover:opacity-100" />
 
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="lg:text-2xl text-xl font-bold text-white lg:mb-4 mb-2">
                   {project.title}
                 </h3>
-                <p className="text-slate-400 mb-8 flex-grow leading-relaxed">
+                <p className="text-slate-400 mb-8 flex-grow leading-relaxed hidden lg:block">
                   {project.description}
                 </p>
 
@@ -113,11 +113,11 @@ export const Projects = () => {
                     target="_self"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="flex items-center gap-2 text-sm font-bold text-white bg-blue-600/40 hover:bg-blue-600 px-5 py-2.5  transition-all duration-300 border border-blue-500/50 hover:border-blue-500 leading-none group-hover:shadow-[0_0_15px_rgba(59,130,246,0.6)] z-20"
+                    className="flex items-center gap-2 text-sm font-bold text-white bg-blue-600/40 hover:bg-blue-600 px-3 lg:px-5 py-2.5  transition-all duration-300 border border-blue-500/50 hover:border-blue-500 leading-none group-hover:shadow-[0_0_15px_rgba(59,130,246,0.6)] z-20"
                   >
                     {/* Details <ArrowRight size={16} />
                      */}
-                    Details <ExternalLink className='center' size={16} />
+                    Details <ExternalLink className='center ' size={16} />
                   </Link>
                 </div>
               </div>

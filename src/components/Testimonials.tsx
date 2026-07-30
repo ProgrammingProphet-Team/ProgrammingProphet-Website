@@ -94,7 +94,7 @@ export const Testimonials = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 ">
           {TESTIMONIALS.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
@@ -106,25 +106,25 @@ export const Testimonials = () => {
             >
               <Quote className="absolute top-5 right-8 text-blue-500/10 dark:text-blue-400/5 w-16 h-16 rotate-180 transition-transform group-hover:scale-110 group-hover:text-blue-500/10 dark:group-hover:text-blue-400/10 duration-300" />
 
-              <div className="flex gap-1 mb-6 relative z-10">
+              <div className="flex gap-1 mb-2 lg:mb-6 relative z-10">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} size={18} className="fill-amber-400 text-amber-400" />
+                  <Star key={i} size={20} className="fill-amber-400 text-amber-400" />
                 ))}
               </div>
 
-              <p className="text-slate-300 dark:text-slate-300 mb-6 relative z-10 leading-relaxed flex-grow">
+              <p className="text-slate-300 dark:text-slate-300 mb-3 lg:mb-6 relative z-10 leading-relaxed flex-grow">
                 "{testimonial.text}"
               </p>
 
-              <div className="flex items-center gap-4 mt-auto relative z-10">
+              <div className="flex items-center lg:gap-4 gap-3 mt-auto relative z-10">
                 <div className="relative">
                   <img
                     src={testimonial.image}
                     alt={testimonial.name}
                     loading="lazy"
-                    className="w-14 h-14 rounded-full object-cover border-2  border-white dark:border-slate-800 shadow-md"
+                    className="lg:w-14 lg:h-14 w-12 h-12 rounded-full object-cover border-2  border-white dark:border-slate-800 shadow-md"
                   />
-                  <div className="absolute -bottom-1 -right-1 bg-blue-500 rounded-full p-1 border-2 border-white dark:border-slate-900">
+                  <div className="absolute lg:-bottom-1 lg:-right-1 -bottom-0 -right-1 bg-blue-500 rounded-full lg:p-1 p-0.5 border-2 border-white dark:border-slate-900">
                     <Star size={10} className="text-white fill-white" />
                   </div>
                 </div>

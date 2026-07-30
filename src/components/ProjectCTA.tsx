@@ -25,7 +25,7 @@ export const ProjectCTA = () => {
         {/* Divider 1 */}
         <div className="hidden xl:block w-px h-12 bg-white/10 z-10"></div>
 
-        <div className="flex flex-col md:flex-row w-full xl:w-auto items-start md:items-center justify-between flex-1 gap-4 lg:gap-6 z-10">
+        <div className="flex flex-col md:flex-row w-full xl:w-auto items-start md:items-center justify-between flex-1 gap-4 lg:gap-6 z-10 hidden lg:flex">
           {/* 2. Modern Technologies */}
           <div className="flex items-center gap-3 flex-1 min-w-0">
             <div className="bg-white/5 w-10 h-10 flex items-center justify-center flex-shrink-0 border border-white/10">
@@ -70,7 +70,7 @@ export const ProjectCTA = () => {
         <div className="hidden xl:block w-px h-12 bg-white/10 z-10"></div>
 
         {/* Button */}
-        <div className="flex-shrink-0 z-10 w-full xl:w-auto mt-4 xl:mt-0">
+        <div className="flex-shrink-0 z-10 w-full xl:w-auto lg:mt-4 xl:mt-0">
           <Link to="/contact" className="w-full xl:w-auto flex items-center justify-center gap-2 bg-white text-[#071343] font-bold px-6 py-3 hover:bg-gray-100 transition-colors shadow-md text-sm">
             Get In Touch
             <ArrowRight className="w-4 h-4" />
