@@ -123,7 +123,7 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
           data.append('files', file);
         });
 
-        const response = await fetch('/api/contact', {
+        const response = await fetch('https://server.programmingprophet.site/api/contact', {
           method: 'POST',
           body: data,
         });

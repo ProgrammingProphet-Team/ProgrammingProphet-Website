@@ -67,7 +67,7 @@ export const JobApplication = () => {
         }
       });
 
-      const response = await fetch('/api/apply', {
+      const response = await fetch('https://server.programmingprophet.site/api/apply', {
         method: 'POST',
         body: data,
       });

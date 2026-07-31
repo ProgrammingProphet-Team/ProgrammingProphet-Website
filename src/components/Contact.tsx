@@ -20,7 +20,7 @@ export const Contact = () => {
     setFormState('submitting');
 
     try {
-      const response = await fetch('/api/contact', {
+      const response = await fetch('https://server.programmingprophet.site/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

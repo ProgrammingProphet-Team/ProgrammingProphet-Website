@@ -145,7 +145,7 @@ export const ContactUs = () => {
           formDataToSend.append('files', file);
         });
 
-        const response = await fetch('/api/contact', {
+        const response = await fetch('https://server.programmingprophet.site/api/contact', {
           method: 'POST',
           body: formDataToSend,
         });
