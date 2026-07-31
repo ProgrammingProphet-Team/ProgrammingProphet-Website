@@ -7,10 +7,19 @@ export default defineConfig({
   server: {
     allowedHosts: [
       '1947-113-30-186-185.ngrok-free.app',
+      'programmingprophet.site',
+
     ],
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://127.0.0.1:5000',
+    //     changeOrigin: true,
+    //     secure: false,
+    //   },
+    // },
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:5000',
+        target: 'https://programmingprophet.site:5000',
         changeOrigin: true,
         secure: false,
       },
