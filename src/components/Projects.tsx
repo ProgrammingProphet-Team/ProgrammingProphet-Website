@@ -72,7 +72,7 @@ export const Projects = () => {
               onClick={() => window.open(`/project/${project.id}`, '_blank')}
               className="group relative overflow-hidden  hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] interactive cursor-pointer transition-all duration-500 flex flex-col"
             >
-              <div className="relative h-48 lg:h-60 overflow-hidden">
+              <div className="relative h-48 lg:h-55 overflow-hidden">
                 <div className="absolute inset-0 lg:bg-[#030712]/50 lg:group-hover:bg-transparent transition-all duration-500 z-10" />
                 <img
                   src={project.image}

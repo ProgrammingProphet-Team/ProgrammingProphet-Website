@@ -11,9 +11,19 @@ const SERVICES = [
   //   textColor: 'text-blue-400',
   //   bgIcon: 'text-blue-500'
   // },
+
   {
-    title: 'Software Development',
-    subServices: ['Web Application Development', 'API & Backend Development', 'SaaS Product Development', 'Custom Software Development', "Modern Web Development",],
+    title: 'Web Development',
+    subServices: ['Web Application Development', 'Modern Web Development', "SEO Optimization ", "E-Commerce Development", " CMS Development"],
+    icon: Code,
+    stats: '10M+ Lines of Code',
+    color: 'from-blue-500 to-blue-700',
+    textColor: 'text-blue-400',
+    bgIcon: 'text-blue-500'
+  },
+  {
+    title: 'Software Engineering',
+    subServices: ['API & Backend Development', 'SaaS Product Development', 'Custom Software Development',],
     icon: Code,
     stats: '10M+ Lines of Code',
     color: 'from-indigo-500 to-purple-400',
@@ -21,7 +31,7 @@ const SERVICES = [
     bgIcon: 'text-indigo-500'
   },
   {
-    title: 'DevOps Services',
+    title: 'DevOps Consulting',
     subServices: ['CI/CD Implementation', 'Cloud Infrastructure', 'Monitoring & Logging', 'Security & Compliance'],
     icon: Cpu,
     stats: '99.99% Uptime',

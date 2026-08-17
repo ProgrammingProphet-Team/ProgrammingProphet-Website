@@ -38,7 +38,9 @@ export const AboutUs = () => {
           </h1>
 
           <p className=" md:text-xl text-slate-400 leading-relaxed max-w-3xl mx-auto mb-10">
-            Helping businesses transform ideas into reliable, scalable, and high-performing digital solutions.
+            {/* Helping businesses transform ideas into reliable, scalable, and high-performing digital solutions. */}
+
+            Digital Engineering Partner for Growing Businesses.
           </p>
 
           <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4 mb-14 z-10">

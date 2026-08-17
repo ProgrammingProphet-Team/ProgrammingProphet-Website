@@ -109,7 +109,7 @@ export const ProjectDetails = () => {
               className="space-y-4"
             >
               {/* Big Active Image */}
-              <div className="w-full h-[250px] md:h-[400px] lg:h-[500px] rounded-none overflow-hidden   border-slate-800">
+              <div className="w-full h-[250px] md:h-[400px] lg:h-[460px] rounded-none overflow-hidden   border-slate-800">
                 <img
                   src={galleryImages[activeImageIndex]}
                   alt="Project Preview"
