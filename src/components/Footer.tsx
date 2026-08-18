@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react';
-import { Phone, Mail, ChevronDown, House, MapPin } from 'lucide-react';
+import { Phone, Mail, ChevronDown, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const COMPANY_LINKS = [

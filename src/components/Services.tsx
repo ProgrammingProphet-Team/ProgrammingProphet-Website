@@ -1,4 +1,4 @@
-import { Globe, Code, Cloud, RefreshCw, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { ProjectModal } from './ProjectModal';
 

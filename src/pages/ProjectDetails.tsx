@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, Users, Star, CheckCircle, Target, Zap, Award, Check, Clock } from 'lucide-react';
+import { ArrowLeft, Calendar, Users, Star, Award } from 'lucide-react';
 import { ALL_PROJECTS_DATA } from './AllProjects';
 import { useEffect } from 'react';
 

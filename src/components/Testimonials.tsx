@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Star, Quote, Shield, Handshake, HandshakeIcon } from 'lucide-react';
+import { Star, Quote, HandshakeIcon } from 'lucide-react';
 
 const TESTIMONIALS = [
   {

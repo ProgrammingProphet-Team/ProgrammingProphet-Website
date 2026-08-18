@@ -1,5 +1,5 @@
 
-import { Rocket, Cpu, RefreshCcw, Clock, ArrowRight, Handshake } from 'lucide-react';
+import { Rocket, Cpu, RefreshCcw, Clock, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const ProjectCTA = () => {
