@@ -35,11 +35,53 @@ export const ALL_PROJECTS_DATA = [
   // },
   {
     id: 1,
-    title: 'PCKeyZone',
+    title: 'PCKeyZone - E-Commerce Platform',
     department: 'Web Development',
     image: '/projects/PC-Key-Zone.png',
-    tech: ['Next.js', 'Tailwind', 'TypeScript', 'Node', 'MongoDB', 'Google Pay', 'Rozer Pay', 'JWT'],
-    description: 'PCKeyZone is a modern, responsive e-commerce platform designed to provide customers with a seamless and enjoyable shopping experience.'
+    tech: ['Next.js', 'Tailwind', 'TypeScript', 'NodeJS', 'MongoDB', 'Google Pay', 'Rozer Pay', 'JWT'],
+    description: 'PCKeyZone is a modern, responsive e-commerce platform designed to provide customers with a seamless and enjoyable shopping experience.',
+    duration: '2025-2026',
+    teamSize: '2 developers',
+    score: '4.9 Score',
+    challenges: [
+      "Processing large volumes of real-time data efficiently",
+      "Creating intuitive visualizations for complex datasets",
+      "Ensuring high availability and 99.9% uptime performance",
+      "Implementing advanced enterprise-grade security measures"
+    ],
+    solutions: [
+      "Implemented distributed data processing pipeline using Apache Kafka",
+      "Developed custom visualization rendering engine minimizing DOM nodes",
+      "Built a highly scalable microservices architecture via Docker & K8s",
+      "Integrated military-grade multi-factor authentication and encryption layer"
+    ],
+    results: [
+      { label: "40% improvement in decision-making speed", icon: "Zap" },
+      { label: "60% reduction in manual reporting time", icon: "Clock" },
+      { label: "99.9% uptime achieved", icon: "Target" },
+      { label: "10+ concurrent users supported", icon: "Users" }
+    ],
+    testimonial: {
+      text: "has revolutionized how we handle our internal processes. The real-time capabilities and predictive analytics have helped us make faster, more informed decisions across the board.",
+      name: "SRaaz Enterprises",
+      title: "PcKeyZone"
+    },
+    projectDetails: {
+      client: "SRaaz Enterprises",
+      industry: "E-Commerce",
+      durationText: "2 months",
+      teamSizeText: "2 developers"
+    },
+    keyFeatures: [
+      "Real-time Dashboards",
+      "Predictive Analytics",
+      "Custom Reports Generator",
+      "Comprehensive API Integration",
+      "Scalable Multi-tenant Arch",
+      "Advanced SOC2 Security",
+      "Fully Mobile Responsive",
+      "Automated Export Capabilities"
+    ]
   },
   {
     id: 2,
@@ -47,48 +89,303 @@ export const ALL_PROJECTS_DATA = [
     department: 'Software Engineering',
     image: '/projects/WeMurz-LIMS.jpeg',
     tech: ['Next.js', 'Tailwind', 'Java', 'Spring Boot', 'PostgreSQL', 'Docker', 'JWT'],
-    description: 'WeMurz LIMS is a comprehensive laboratory information management system designed to streamline laboratory workflows and improve data management.'
+    description: 'WeMurz LIMS is a comprehensive laboratory information management system designed to streamline laboratory workflows and improve data management.',
+    duration: '2025-2026',
+    teamSize: '4 developers',
+    score: '4.9 Score',
+    challenges: [
+      "Processing large volumes of real-time data efficiently",
+      "Creating intuitive visualizations for complex datasets",
+      "Ensuring high availability and 99.9% uptime performance",
+      "Implementing advanced enterprise-grade security measures"
+    ],
+    solutions: [
+      "Implemented distributed data processing pipeline using Apache Kafka",
+      "Developed custom visualization rendering engine minimizing DOM nodes",
+      "Built a highly scalable microservices architecture via Docker & K8s",
+      "Integrated military-grade multi-factor authentication and encryption layer"
+    ],
+    results: [
+      { label: "40% improvement in decision-making speed", icon: "Zap" },
+      { label: "60% reduction in manual reporting time", icon: "Clock" },
+      { label: "99.9% uptime achieved", icon: "Target" },
+      { label: "10+ concurrent users supported", icon: "Users" }
+    ],
+    testimonial: {
+      text: "has revolutionized how we handle our internal processes. The real-time capabilities and predictive analytics have helped us make faster, more informed decisions across the board.",
+      name: "WeMurz Services LLP.",
+      title: "Lab Information Management System"
+    },
+    projectDetails: {
+      client: "WeMurz Services LLP.",
+      industry: "IT Services and Consulting",
+      durationText: "3 months",
+      teamSizeText: "4 developers"
+    },
+    keyFeatures: [
+      "Real-time Dashboards",
+      "Predictive Analytics",
+      "Custom Reports Generator",
+      "Comprehensive API Integration",
+      "Scalable Multi-tenant Arch",
+      "Advanced SOC2 Security",
+      "Fully Mobile Responsive",
+      "Automated Export Capabilities"
+    ]
   },
   {
     id: 3,
     title: 'WeMurz - Employee & Event Management System',
     department: 'Software Engineering',
     image: '/projects/WeMurz-EMS.png',
-    tech: ['React', 'Node.js', 'PostgreSQL'],
-    description: 'EMS is a comprehensive employee and event management system designed to streamline employee and event management workflows and improve collaboration and productivity.'
+    tech: ['React', 'Tailwind', 'Java', 'Spring Boot', 'MySQL', 'Docker', 'JWT'],
+    description: 'EMS is a comprehensive employee and event management system designed to streamline employee and event management workflows and improve collaboration and productivity.',
+    duration: '2025-2026',
+    teamSize: '4 developers',
+    score: '4.9 Score',
+    challenges: [
+      "Processing large volumes of real-time data efficiently",
+      "Creating intuitive visualizations for complex datasets",
+      "Ensuring high availability and 99.9% uptime performance",
+      "Implementing advanced enterprise-grade security measures"
+    ],
+    solutions: [
+      "Implemented distributed data processing pipeline using Apache Kafka",
+      "Developed custom visualization rendering engine minimizing DOM nodes",
+      "Built a highly scalable microservices architecture via Docker & K8s",
+      "Integrated military-grade multi-factor authentication and encryption layer"
+    ],
+    results: [
+      { label: "40% improvement in decision-making speed", icon: "Zap" },
+      { label: "60% reduction in manual reporting time", icon: "Clock" },
+      { label: "99.9% uptime achieved", icon: "Target" },
+      { label: "10+ concurrent users supported", icon: "Users" }
+    ],
+    testimonial: {
+      text: "has revolutionized how we handle our internal processes. The real-time capabilities and predictive analytics have helped us make faster, more informed decisions across the board.",
+      name: "WeMurz Services LLP.",
+      title: "Employee & Event Management System"
+    },
+    projectDetails: {
+      client: "WeMurz Services LLP.",
+      industry: "IT Services and Consulting",
+      durationText: "3 months",
+      teamSizeText: "4 developers"
+    },
+    keyFeatures: [
+      "Real-time Dashboards",
+      "Predictive Analytics",
+      "Custom Reports Generator",
+      "Comprehensive API Integration",
+      "Scalable Multi-tenant Arch",
+      "Advanced SOC2 Security",
+      "Fully Mobile Responsive",
+      "Automated Export Capabilities"
+    ]
   },
   {
     id: 4,
     title: 'Swayam Siddhi College of Management & Research',
     department: 'Web Development',
     image: '/projects/SSCMR_College.png',
-    tech: ['Next.js', 'Tailwind', 'TypeScript', 'Node', 'Email API'],
-    description: 'This modern, responsive institutional website serves as a comprehensive digital gateway for Swayam Siddhi College of Management and Research. '
+    tech: ['Next.js', 'Tailwind', 'TypeScript', 'NodeJS', 'Email API', 'Docker', 'NGINX', 'Linux'],
+    description: 'This modern, responsive institutional website serves as a comprehensive digital gateway for Swayam Siddhi College of Management and Research. ',
+    duration: '2025-2026',
+    teamSize: '4 developers',
+    score: '4.9 Score',
+    challenges: [
+      "Processing large volumes of real-time data efficiently",
+      "Creating intuitive visualizations for complex datasets",
+      "Ensuring high availability and 99.9% uptime performance",
+      "Implementing advanced enterprise-grade security measures"
+    ],
+    solutions: [
+      "Implemented distributed data processing pipeline using Apache Kafka",
+      "Developed custom visualization rendering engine minimizing DOM nodes",
+      "Built a highly scalable microservices architecture via Docker & K8s",
+      "Integrated military-grade multi-factor authentication and encryption layer"
+    ],
+    results: [
+      { label: "40% improvement in decision-making speed", icon: "Zap" },
+      { label: "60% reduction in manual reporting time", icon: "Clock" },
+      { label: "99.9% uptime achieved", icon: "Target" },
+      { label: "10+ concurrent users supported", icon: "Users" }
+    ],
+    testimonial: {
+      text: "has revolutionized how we handle our internal processes. The real-time capabilities and predictive analytics have helped us make faster, more informed decisions across the board.",
+      name: "Dr. Samadhan K. Khamkar",
+      title: "Director, Swayam Siddhi College of Management & Research"
+    },
+    projectDetails: {
+      client: "Swayam Siddhi College of Management & Research",
+      industry: "Education",
+      durationText: "3-6 months",
+      teamSizeText: "4 developers"
+    },
+    keyFeatures: [
+      "Real-time Dashboards",
+      "Predictive Analytics",
+      "Custom Reports Generator",
+      "Comprehensive API Integration",
+      "Scalable Multi-tenant Arch",
+      "Advanced SOC2 Security",
+      "Fully Mobile Responsive",
+      "Automated Export Capabilities"
+    ]
   },
   {
     id: 5,
-    title: 'ShopSphere',
+    title: 'ShopSphere - E-Commerce Platform',
     department: 'DevOps Engineering',
     image: '/projects/ShopSphere.png',
-    tech: ['Docker', 'kubernetes', 'Nginx', 'AWS', 'Azure'],
-    description: 'ShopSphere is a modern, responsive e-commerce platform designed to provide customers with a seamless and enjoyable shopping experience.'
+    tech: ['Docker', 'kubernetes', 'Java', 'Next.js', 'PostgreSQL', 'Azure', 'AWS'],
+    description: 'ShopSphere is a modern, responsive e-commerce platform designed to provide customers with a seamless and enjoyable shopping experience.',
+    duration: '2025-2026',
+    teamSize: '2 developers',
+    score: '4.8 Score',
+    challenges: [
+      "Processing large volumes of real-time data efficiently",
+      "Creating intuitive visualizations for complex datasets",
+      "Ensuring high availability and 99.9% uptime performance",
+      "Implementing advanced enterprise-grade security measures"
+    ],
+    solutions: [
+      "Implemented distributed data processing pipeline using Apache Kafka",
+      "Developed custom visualization rendering engine minimizing DOM nodes",
+      "Built a highly scalable microservices architecture via Docker & K8s",
+      "Integrated military-grade multi-factor authentication and encryption layer"
+    ],
+    results: [
+      { label: "40% improvement in decision-making speed", icon: "Zap" },
+      { label: "60% reduction in manual reporting time", icon: "Clock" },
+      { label: "99.9% uptime achieved", icon: "Target" },
+      { label: "10+ concurrent users supported", icon: "Users" }
+    ],
+    testimonial: {
+      text: "has revolutionized how we handle our internal processes. The real-time capabilities and predictive analytics have helped us make faster, more informed decisions across the board.",
+      name: "DevOps Engineering",
+      title: "E-commerce Platform"
+    },
+    projectDetails: {
+      client: "DevOps Engineering",
+      industry: "E-commerce",
+      durationText: "2 months",
+      teamSizeText: "2 developers"
+    },
+    keyFeatures: [
+      "Real-time Dashboards",
+      "Predictive Analytics",
+      "Custom Reports Generator",
+      "Comprehensive API Integration",
+      "Scalable Multi-tenant Arch",
+      "Advanced SOC2 Security",
+      "Fully Mobile Responsive",
+      "Automated Export Capabilities"
+    ]
   },
+
   {
     id: 6,
-    title: 'DevConnect',
-    department: 'DevOps Engineering',
-    image: '/projects/DevConnect-argo.png',
-    tech: ['Docker', 'kubernetes', 'Nginx', 'AWS',],
-    description: 'DevConnect is a modern, responsive platform designed to provide developers with a seamless and enjoyable experience for collaboration and productivity.'
-  },
-  {
-    id: 7,
     title: 'Infrastructure Automation - AWS',
     department: 'DevOps Engineering',
     image: '/projects/infra-automation.png',
-    tech: ['Terraform', 'AWS', 'S3 Remote Backend', 'DynamoDB State Lock', 'Git Actions',],
-    description: 'Infrastructure Automation, automates the process of provisioning and managing infrastructure resources. Reduce manual intervention and save time. '
-  }
+    tech: ['Terraform', 'S3 Remote Backend', 'AWS', 'DynamoDB State Lock', 'Git Actions CI/CD', 'Ansible', 'Terraform Vault/Github Secrets'],
+    description: 'Infrastructure Automation, automates the process of provisioning and managing infrastructure resources. Reduce manual intervention and save time. ',
+    duration: '2025-2026',
+    teamSize: '4 developers',
+    score: '4.9 Score',
+    challenges: [
+      "Processing large volumes of real-time data efficiently",
+      "Creating intuitive visualizations for complex datasets",
+      "Ensuring high availability and 99.9% uptime performance",
+      "Implementing advanced enterprise-grade security measures"
+    ],
+    solutions: [
+      "Implemented distributed data processing pipeline using Apache Kafka",
+      "Developed custom visualization rendering engine minimizing DOM nodes",
+      "Built a highly scalable microservices architecture via Docker & K8s",
+      "Integrated military-grade multi-factor authentication and encryption layer"
+    ],
+    results: [
+      { label: "40% improvement in decision-making speed", icon: "Zap" },
+      { label: "60% reduction in manual reporting time", icon: "Clock" },
+      { label: "99.9% uptime achieved", icon: "Target" },
+      { label: "10+ concurrent users supported", icon: "Users" }
+    ],
+    testimonial: {
+      text: "has revolutionized how we handle our internal processes. The real-time capabilities and predictive analytics have helped us make faster, more informed decisions across the board.",
+      name: "Cloud & DevOps Engineering",
+      title: "AWS Infrastructure Automation"
+    },
+    projectDetails: {
+      client: "Cloud & DevOps Engineering",
+      industry: "IT Services and Consulting",
+      durationText: "1-2 months",
+      teamSizeText: "1 - DevOps Engineer"
+    },
+    keyFeatures: [
+      "Real-time Dashboards",
+      "Predictive Analytics",
+      "Custom Reports Generator",
+      "Comprehensive API Integration",
+      "Scalable Multi-tenant Arch",
+      "Advanced SOC2 Security",
+      "Fully Mobile Responsive",
+      "Automated Export Capabilities"
+    ]
+  },
+  // {
+  //   id: 7,
+  //   title: "DevConnect - Developer's Collaboration Platform",
+  //   department: 'DevOps Engineering',
+  //   image: '/projects/DevConnect-argo.png',
+  //   tech: ['Docker', 'kubernetes', 'Nginx', 'AWS'],
+  //   description: 'DevConnect is a modern, responsive platform designed to provide developers with a seamless and enjoyable experience for collaboration and productivity.',
+  //   duration: '2025-2026',
+  //   teamSize: '2 developers',
+  //   score: '4.8 Score',
+  //   challenges: [
+  //     "Processing large volumes of real-time data efficiently",
+  //     "Creating intuitive visualizations for complex datasets",
+  //     "Ensuring high availability and 99.9% uptime performance",
+  //     "Implementing advanced enterprise-grade security measures"
+  //   ],
+  //   solutions: [
+  //     "Implemented distributed data processing pipeline using Apache Kafka",
+  //     "Developed custom visualization rendering engine minimizing DOM nodes",
+  //     "Built a highly scalable microservices architecture via Docker & K8s",
+  //     "Integrated military-grade multi-factor authentication and encryption layer"
+  //   ],
+  //   results: [
+  //     { label: "40% improvement in decision-making speed", icon: "Zap" },
+  //     { label: "60% reduction in manual reporting time", icon: "Clock" },
+  //     { label: "99.9% uptime achieved", icon: "Target" },
+  //     { label: "10+ concurrent users supported", icon: "Users" }
+  //   ],
+  //   testimonial: {
+  //     text: "has revolutionized how we handle our internal processes. The real-time capabilities and predictive analytics have helped us make faster, more informed decisions across the board.",
+  //     name: "Development & DevOps Engineering",
+  //     title: "Developer's Collaboration Platform"
+  //   },
+  //   projectDetails: {
+  //     client: "ProgrammingProphet (Internal Process)",
+  //     industry: "IT Product and Services",
+  //     durationText: "2 months",
+  //     teamSizeText: "2 developers"
+  //   },
+  //   keyFeatures: [
+  //     "Real-time Dashboards",
+  //     "Predictive Analytics",
+  //     "Custom Reports Generator",
+  //     "Comprehensive API Integration",
+  //     "Scalable Multi-tenant Arch",
+  //     "Advanced SOC2 Security",
+  //     "Fully Mobile Responsive",
+  //     "Automated Export Capabilities"
+  //   ]
+  // },
+
+
 
 ];
 // 'Cloud Engineering', "Artificial Intelligence"

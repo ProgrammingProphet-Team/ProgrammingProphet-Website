@@ -94,9 +94,9 @@ export const ContactUs = () => {
 
     if (!value.trim()) {
       if (name === 'name') error = 'Please, enter your name';
-      if (name === 'email') error = 'Please, enter your  E-mail';
+      if (name === 'email') error = 'Please, enter your E-mail';
       if (name === 'phone') error = 'Please, enter your phone number';
-      if (name === 'requirements') error = 'Please, describe your project in a few words';
+      if (name === 'requirements') error = 'Please, describe it in a few words';
     }
 
     setErrors(prev => ({ ...prev, [name]: error }));
@@ -113,7 +113,7 @@ export const ContactUs = () => {
       isValid = false;
     }
     if (!formData.email.trim()) {
-      newErrors.email = 'Please, enter your corporate E-mail';
+      newErrors.email = 'Please, enter your E-mail';
       isValid = false;
     }
     if (!formData.phone.trim()) {
@@ -121,7 +121,7 @@ export const ContactUs = () => {
       isValid = false;
     }
     if (!formData.requirements.trim()) {
-      newErrors.requirements = 'Please, describe your project in a few words';
+      newErrors.requirements = 'Please, describe it in a few words';
       isValid = false;
     }
 
@@ -253,7 +253,7 @@ export const ContactUs = () => {
                   </div>
                   <h4 className="text-white font-semibold mb-1 pt-1">Development & Delivery</h4>
                   <p className="text-gray-300 text-[15px] leading-relaxed">
-                    Once approved, we begin development with timely updates, testing, deployment, and post-launch support.
+                    Once approved, we begin development with regular updates, testing, deployment, and post-launch support.
                   </p>
                 </div>
               </div>
@@ -356,7 +356,7 @@ export const ContactUs = () => {
                   className={`pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform lg:text-[18px] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 ${errors.name ? 'text-gray-500' : 'text-gray-500'
                     }`}
                 >
-                  Name
+                  Name *
                 </label>
                 {errors.name && (
                   <motion.p
@@ -386,7 +386,7 @@ export const ContactUs = () => {
                   htmlFor="email"
                   className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform lg:text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
                 >
-                  E-mail
+                  E-mail *
                 </label>
                 {errors.email && (
                   <motion.p
@@ -416,7 +416,7 @@ export const ContactUs = () => {
                   htmlFor="phone"
                   className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform ] lg:text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
                 >
-                  Phone number
+                  Phone number *
                 </label>
                 {errors.phone && (
                   <motion.p
@@ -446,7 +446,7 @@ export const ContactUs = () => {
                   htmlFor="requirements"
                   className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform  lg:text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
                 >
-                  Describe your project requirements
+                  Tell us about your project or idea *
                 </label>
                 {errors.requirements && (
                   <motion.p
@@ -473,9 +473,9 @@ export const ContactUs = () => {
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 hover:border-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-300 text-sm font-semibold text-slate-900 w-full sm:w-auto shrink-0 group"
+                    className="text-[16px]  flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 hover:border-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-300 text-sm font-semibold text-slate-900 w-full sm:w-auto shrink-0 group"
                   >
-                    <Paperclip size={18} className="text-black group-hover:text-white transition-colors" />
+                    <Paperclip size={20} className="text-black group-hover:text-white transition-colors" />
                     Attach file
                   </button>
                   <div className="flex flex-col gap-1">
@@ -514,8 +514,8 @@ export const ContactUs = () => {
                 </span>
               </label> */}
 
-              <div className="pt-2 flex flex-col sm:flex-row items-center gap-6">
-                <button type="submit" disabled={isSubmitting} className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold px-8 py-3.5 duration-300 hover:shadow-lg text-[15px] flex items-center justify-center gap-2">
+              <div className="pt-2 flex flex-col lg:flex-row lg:items-center items-start gap-4">
+                <button type="submit" disabled={isSubmitting} className="w-full sm:w-auto shrink-0 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-400 text-white font-semibold px-6 lg:px-8 py-3.5 duration-300 hover:shadow-lg lg:text-[16px] mt-2 flex items-center justify-center gap-2">
                   {isSubmitting ? (
                     <>
                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -523,22 +523,23 @@ export const ContactUs = () => {
                     </>
                   ) : 'Let\'s Build Together'}
                 </button>
-                <div className="flex items-center gap-2 md:text-sm lg:text-base text-gray-500 font-medium hidden lg:flex">
-                  <ShieldCheck size={24} className=" text-green-600" />
-                  Your privacy is protected
+                <div className="lg:pl-4 flex items-center gap-2 text-sm lg:text-[14px] text-gray-500 font-medium hidden lg:flex mt-2">
+                  <ShieldCheck size={24} className="shrink-0 text-green-600" />
+                  <span>Your information is kept confidential</span>
                 </div>
               </div>
 
               {submitStatus === 'success' && (
-                <div className="text-green-600 text-sm font-medium p-3 bg-green-50 border border-green-200 rounded-lg">
+                <div className="text-green-600 text-xs lg:text-sm font-medium p-3 bg-green-50 border border-green-200 rounded-lg">
                   Thank you! Your message has been sent successfully. We will get back to you soon.
                 </div>
               )}
               {submitStatus === 'error' && (
-                <div className="text-orange-600 text-sm font-medium p-3 bg-orange-50 border border-orange-200 ">
+                <div className="text-orange-600 text-xs lg:text-sm font-medium p-3 bg-orange-50 border border-orange-200 rounded-lg">
                   Oops! Something went wrong. Please try again later.
                 </div>
               )}
+
 
             </form>
           </motion.div>

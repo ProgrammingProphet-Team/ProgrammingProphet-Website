@@ -34,7 +34,8 @@ export const ProjectDetails = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#001d3d] via-[#001d3d]  to-[#f1f2f2] text-white font-sans relative">
+    // bg-gradient-to-br from-[#001d3d] via-[#001d3d]  to-[#f1f2f2]
+    <div className="min-h-screen bg-gradient-to-br from-[#001d3d] via-[#001d3d]  to-[#8896A6] text-white font-sans relative">
       <div className="lg:pt-32 pt-24 lg:pb-24 pb-14 px-6 lg:px-8 max-w-7xl mx-auto relative">
 
         {/* Decorative Background */}
@@ -73,9 +74,9 @@ export const ProjectDetails = () => {
             </p> */}
 
             <div className="flex flex-wrap items-center lg:gap-6 gap-2 text-sm text-slate-500 lg:font-medium font-small">
-              <div className="flex items-center lg:gap-2 gap-1"><Calendar className="lg:w-4 lg:h-4 w-3 h-3" size={16} /> 2025-2026</div>
-              <div className="flex items-center lg:gap-2 gap-1"><Users className="lg:w-4 lg:h-4 w-3 h-3" size={16} /> 4 developers</div>
-              <div className="flex items-center lg:gap-2 gap-1"><Star className="lg:w-4 lg:h-4 w-3 h-3 text-yellow-500" /> 4.9 Score</div>
+              <div className="flex items-center lg:gap-2 gap-1"><Calendar className="lg:w-4 lg:h-4 w-3 h-3" size={16} /> {project.duration || '2025-2026'}</div>
+              <div className="flex items-center lg:gap-2 gap-1"><Users className="lg:w-4 lg:h-4 w-3 h-3" size={16} /> {project.teamSize || '4 developers'}</div>
+              <div className="flex items-center lg:gap-2 gap-1"><Star className="lg:w-4 lg:h-4 w-3 h-3 text-yellow-500" /> {project.score || '4.9 Score'}</div>
             </div>
           </motion.div>
 
@@ -148,7 +149,7 @@ export const ProjectDetails = () => {
             </motion.div>
 
             {/* Challenges vs Solutions */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -157,12 +158,12 @@ export const ProjectDetails = () => {
               <div>
                 <h3 className="text-xl lg:text-2xl font-bold text-white lg:mb-6 mb-4">Challenges</h3>
                 <ul className="lg:space-y-4 space-y-2">
-                  {[
+                  {(project.challenges || [
                     "Processing large volumes of real-time data efficiently",
                     "Creating intuitive visualizations for complex datasets",
                     "Ensuring high availability and 99.9% uptime performance",
                     "Implementing advanced enterprise-grade security measures"
-                  ].map((item, i) => (
+                  ]).map((item, i) => (
                     <li key={i} className="flex gap-4 text-sm lg:text-base text-slate-300 leading-relaxed">
                       <span className="w-2 h-2 mt-2.5 rounded-full bg-red-500 shrink-0 shadow-[0_0_10px_rgba(239,68,68,0.6)]" />
                       {item}
@@ -174,12 +175,12 @@ export const ProjectDetails = () => {
               <div>
                 <h3 className="lg:text-2xl text-xl font-bold text-white lg:mb-6 mb-4">Solutions</h3>
                 <ul className="lg:space-y-6 space-y-2">
-                  {[
+                  {(project.solutions || [
                     "Implemented distributed data processing pipeline using Apache Kafka",
                     "Developed custom visualization rendering engine minimizing DOM nodes",
                     "Built a highly scalable microservices architecture via Docker & K8s",
                     "Integrated military-grade multi-factor authentication and encryption layer"
-                  ].map((item, i) => (
+                  ]).map((item, i) => (
                     <li key={i} className="flex gap-4 text-sm lg:text-base text-slate-300 leading-relaxed">
                       <CheckCircle className="mt-1 text-green-500 shrink-0 shadow-[0_0_10px_rgba(34,197,94,0.3)] rounded-full" size={20} />
                       {item}
@@ -187,7 +188,7 @@ export const ProjectDetails = () => {
                   ))}
                 </ul>
               </div>
-            </motion.div>
+            </motion.div> */}
 
             {/* Results & Impact */}
             <motion.div
@@ -195,37 +196,40 @@ export const ProjectDetails = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h3 className="lg:text-2xl text-xl font-bold text-white lg:mb-6 mb-4">Results & Impact</h3>
+              {/* <h3 className="lg:text-2xl text-xl font-bold text-white lg:mb-6 mb-4">Results & Impact</h3>
 
               <div className="grid sm:grid-cols-2 gap-3 lg:gap-6 mb-8">
-                {[
-                  { label: "40% improvement in decision-making speed", icon: Zap },
-                  { label: "60% reduction in manual reporting time", icon: Clock },
-                  { label: "99.9% uptime achieved", icon: Target },
-                  { label: "10+ concurrent users supported", icon: Users }
-                ].map((stat, i) => (
-                  <div key={i} className="p-2  lg:p-4 rounded-none flex items-center gap-5 border border-slate-700/50 hover:border-blue-400/50 transition-colors bg-slate-900/40">
-                    <div className="text-blue-400 h-10 w-10 flex items-center justify-center bg-blue-500/10 rounded-none border border-blue-900/30">
-                      <stat.icon className='' size={22} />
+                {(project.results || [
+                  { label: "40% improvement in decision-making speed", icon: "Zap" },
+                  { label: "60% reduction in manual reporting time", icon: "Clock" },
+                  { label: "99.9% uptime achieved", icon: "Target" },
+                  { label: "10+ concurrent users supported", icon: "Users" }
+                ]).map((stat, i) => {
+                  const Icon = { Zap, Clock, Target, Users }[stat.icon] || Target;
+                  return (
+                    <div key={i} className="p-2 lg:p-4 rounded-none flex items-center gap-5 border border-slate-700/50 hover:border-blue-400/50 transition-colors bg-slate-900/40">
+                      <div className="text-blue-400 h-10 w-10 flex items-center justify-center bg-blue-500/10 rounded-none border border-blue-900/30">
+                        <Icon className='' size={22} />
+                      </div>
+                      <p className="text-white font-medium text-sm leading-snug">{stat.label}</p>
                     </div>
-                    <p className="text-white font-medium text-sm leading-snug">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
+                  );
+                })}
+              </div> */}
 
               {/* Testimonial Block */}
               <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-none lg:p-8 p-4 sm:p-10 shadow-2xl relative overflow-hidden border border-slate-700/50">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
                 <p className="text-white/90 text-md lg:text-xl font-medium leading-relaxed italic lg:mb-8 mb-4 relative z-10">
-                  "{project.title} has revolutionized how we handle our internal processes. <br />The real-time capabilities and predictive analytics have helped us make faster, more informed decisions across the board."
+                  "{project.title} {project.testimonial?.text || 'has revolutionized how we handle our internal processes. The real-time capabilities and predictive analytics have helped us make faster, more informed decisions across the board.'}"
                 </p>
                 <div className="flex items-center gap-4 relative z-10">
                   <div className="w-12 h-12 bg-slate-700/50 rounded-none flex items-center justify-center text-blue-400 backdrop-blur-md border border-slate-600/30">
                     <Users size={20} />
                   </div>
                   <div>
-                    <h4 className="text-white font-bold">Chandrashekhar Pradhan</h4>
-                    <p className="text-blue-200 text-sm">CEO, WeMurz Services LLP.</p>
+                    <h4 className="text-white font-bold">{project.testimonial?.name || 'Chandrashekhar Pradhan'}</h4>
+                    <p className="text-blue-200 text-sm">{project.testimonial?.title || 'CEO, WeMurz Services LLP.'}</p>
                   </div>
                 </div>
               </div>
@@ -248,19 +252,19 @@ export const ProjectDetails = () => {
               <div className="lg:space-y-6 space-y-3">
                 <div>
                   <p className="text-slate-500 text-xs font-bold uppercase tracking-widest mb-1">Client</p>
-                  <p className="text-slate-200 lg:text-md text-sm lg:font-medium">WeMurz Services LLP</p>
+                  <p className="text-slate-200 lg:text-md text-sm lg:font-medium">{project.projectDetails?.client || 'WeMurz Services LLP'}</p>
                 </div>
                 <div>
                   <p className="text-slate-500 text-xs font-bold uppercase tracking-widest mb-1">Industry</p>
-                  <p className="text-slate-200 lg:text-md text-sm lg:font-medium">IT Product and Services</p>
+                  <p className="text-slate-200 lg:text-md text-sm lg:font-medium">{project.projectDetails?.industry || 'IT Product and Services'}</p>
                 </div>
                 <div>
                   <p className="text-slate-500 text-xs font-bold uppercase tracking-widest mb-1">Duration</p>
-                  <p className="text-slate-200 lg:text-md text-sm lg:font-medium">3 months</p>
+                  <p className="text-slate-200 lg:text-md text-sm lg:font-medium">{project.projectDetails?.durationText || '3 months'}</p>
                 </div>
                 <div>
                   <p className="text-slate-500 text-xs font-bold uppercase tracking-widest mb-1">Team Size</p>
-                  <p className="text-slate-200 lg:text-md text-sm lg:font-medium">4 developers</p>
+                  <p className="text-slate-200 lg:text-md text-sm lg:font-medium">{project.projectDetails?.teamSizeText || '4 developers'}</p>
                 </div>
               </div>
             </motion.div>
@@ -276,7 +280,7 @@ export const ProjectDetails = () => {
                 <Award size={20} className="text-cyan-400" /> Technologies
               </h3>
               <div className="flex flex-wrap lg:gap-2 gap-1.5">
-                {project.tech.concat(['AWS', 'PostgreSQL', 'Redis', 'Docker', 'Kubernetes']).slice(0, 8).map(tech => (
+                {project.tech.concat([]).slice(0, 8).map(tech => (
                   <span key={tech} className="lg:px-4 px-2 lg:py-2 py-1.5 lg:text-xs text-[10px] font-bold text-blue-200 bg-blue-900/40 border border-blue-800/50 rounded-none">
                     {tech}
                   </span>
@@ -285,7 +289,7 @@ export const ProjectDetails = () => {
             </motion.div>
 
             {/* Key Features Sidebar */}
-            <motion.div
+            {/* <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.5 }}
@@ -293,7 +297,7 @@ export const ProjectDetails = () => {
             >
               <h3 className="text-xl font-bold text-white lg:mb-6 mb-4 border-b border-slate-800 pb-4">Key Features</h3>
               <ul className="lg:space-y-4 space-y-2">
-                {[
+                {(project.keyFeatures || [
                   "Real-time Dashboards",
                   "Predictive Analytics",
                   "Custom Reports Generator",
@@ -302,14 +306,14 @@ export const ProjectDetails = () => {
                   "Advanced SOC2 Security",
                   "Fully Mobile Responsive",
                   "Automated Export Capabilities"
-                ].map((feature, i) => (
-                  <li key={i} className="flex items-start lg:gap-3 gap-2 text-slate-300 text-sm">
+                ]).map((feature, i) => (
+                  <li key={i} className="flex items-start lg:gap-3 gap-2 text-slate-200 text-sm">
                     <Check className="text-green-500 shrink-0 mt-0.5" size={16} />
                     <span className="leading-snug">{feature}</span>
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </motion.div> */}
 
           </div>
         </div>

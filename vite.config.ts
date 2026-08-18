@@ -8,7 +8,8 @@ export default defineConfig({
     allowedHosts: [
       '1947-113-30-186-185.ngrok-free.app',
       'programmingprophet.site',
-      'server.programmingprophet.site'
+      'server.programmingprophet.site',
+      '18db-113-30-186-57.ngrok-free.app'
 
     ],
     // proxy: {

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Paperclip, Smartphone, Mail, ShieldCheck } from 'lucide-react';
+import { X, Paperclip, Smartphone, Mail, ShieldCheck, Phone } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ProjectModalProps {
@@ -76,9 +76,9 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
 
     if (!value.trim()) {
       if (name === 'name') error = 'Please, enter your name';
-      if (name === 'email') error = 'Please, enter your corporate E-mail';
+      if (name === 'email') error = 'Please, enter your E-mail';
       if (name === 'phone') error = 'Please, enter your phone number';
-      if (name === 'requirements') error = 'Please, describe your project in a few words';
+      if (name === 'requirements') error = 'Please, describe it in a few words';
     }
 
     setErrors(prev => ({ ...prev, [name]: error }));
@@ -103,7 +103,7 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
       isValid = false;
     }
     if (!formData.requirements.trim()) {
-      newErrors.requirements = 'Please, describe your IT project in a few words';
+      newErrors.requirements = 'Please, describe it in a few words';
       isValid = false;
     }
 
@@ -160,18 +160,19 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-6xl bg-white shadow-2xl flex flex-col md:flex-row overflow-hidden"
+            className="relative w-full max-w-[1100px] bg-white shadow-2xl flex flex-col md:flex-row overflow-hidden"
+          // max-w-[1100px]
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 z-10 text-slate-900 hover:text-white transition-colors p-2"
+              className="absolute top-4 right-4 z-10 md:text-slate-100  text-slate-700  transition-colors p-2"
             >
-              <X size={24} />
+              <X size={28} />
             </button>
 
             {/* Left Side - Form */}
-            <div className="w-full md:w-1/2 p-8 md:p-14">
-              <h2 className="lg:text-4xl text-3xl font-semibold text-slate-900 lg:mb-10 mb-6 ">Let's discuss your project</h2>
+            <div className="w-full lg:w-[54%] p-8 md:p-14">
+              <h2 className="lg:text-4xl text-3xl font-semibold text-slate-900 lg:mb-10 mb-6  ">Let's discuss your project</h2>
 
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="relative pb-5">
@@ -191,7 +192,7 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
                     className={`pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform lg:text-[18px] duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75 ${errors.name ? 'text-gray-500' : 'text-gray-500'
                       }`}
                   >
-                    Name
+                    Name *
                   </label>
                   {errors.name && (
                     <motion.p
@@ -221,7 +222,7 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
                     htmlFor="email"
                     className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform lg:text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
                   >
-                    E-mail
+                    E-mail *
                   </label>
                   {errors.email && (
                     <motion.p
@@ -251,7 +252,7 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
                     htmlFor="phone"
                     className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform lg:text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
                   >
-                    Phone number
+                    Phone number *
                   </label>
                   {errors.phone && (
                     <motion.p
@@ -273,7 +274,7 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
                     onChange={handleChange}
                     onBlur={handleBlur}
                     rows={1}
-                    className={`peer block w-full max-h-[140px] appearance-none bg-transparent border-0 border-b pb-2 pt-3 text-[18px] text-slate-900 focus:outline-none focus:ring-0 resize-none transition-colors duration-300 ${errors.requirements ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500 expand'
+                    className={` [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]  peer block w-full max-h-[140px] appearance-none bg-transparent border-0 border-b pb-2 pt-3 text-[18px] text-slate-900 focus:outline-none focus:ring-0 resize-none transition-colors duration-300 ${errors.requirements ? 'border-orange-500 focus:border-orange-500' : 'border-gray-400 focus:border-blue-600 hover:border-gray-500 expand'
                       }`}
                     placeholder=" "
                   ></textarea>
@@ -281,7 +282,7 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
                     htmlFor="requirements"
                     className="pointer-events-none absolute left-0 top-3 origin-[0] -translate-y-6 scale-75 transform lg:text-[18px] text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-6 peer-focus:scale-75"
                   >
-                    Describe your project requirements
+                    Tell us about your project or idea *
                   </label>
                   {errors.requirements && (
                     <motion.p
@@ -296,8 +297,8 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row sm:items-center gap-4 ">
-                  <label className="flex items-center justify-center gap-2 px-6 py-3 border border-gray-200 hover:border-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-300 text-sm font-semibold text-slate-900 w-full sm:w-auto shrink-0 group cursor-pointer">
-                    <Paperclip size={18} className="text-black group-hover:text-white transition-colors" />
+                  <label className="text-[16px] font-semibold  flex items-center justify-center gap-2 px-8 py-3 border border-gray-200 hover:border-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-300 text-slate-900 w-full sm:w-auto shrink-0 group cursor-pointer">
+                    <Paperclip size={20} className="text-black group-hover:text-white transition-colors " />
                     Attach file
                     <input
                       type="file"
@@ -309,6 +310,7 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
                   </label>
                   <p className="text-xs text-gray-600 leading-relaxed max-w-xs">
                     No more than 3 files may be attached up to 3MB each. Formats: doc, docx, pdf, ppt, pptx.
+                    
                   </p>
                 </div>
                 {files.length > 0 && (
@@ -333,18 +335,23 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
                 </span>
               </label> */}
 
-                <div className="pt-2 flex flex-col sm:flex-row items-center gap-6">
-                  <button type="submit" disabled={isSubmitting} className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold px-8 py-3.5 duration-300 hover:shadow-lg  lg:text-[15px] flex items-center justify-center gap-2">
+              {/* <div className="flex items-center gap-2 md:text-sm lg:text-[18px] text-gray-500 font-medium hidden lg:flex">
+                    <ShieldCheck size={24} className=" text-green-600" />
+                    Your information is kept confidential
+                  </div> */}
+
+                <div className="pt-2 flex flex-col lg:flex-row lg:items-center items-start gap-4">
+                  <button type="submit" disabled={isSubmitting} className="w-full sm:w-auto shrink-0 bg-blue-600 hover:bg-blue-500 disabled:bg-blue-400 text-white font-semibold px-6 lg:px-8 py-3.5 duration-300 hover:shadow-lg lg:text-[16px] mt-2 flex items-center justify-center gap-2">
                     {isSubmitting ? (
                       <>
                         <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                         Sending...
                       </>
-                    ) : 'Let\'s Build Together'}
+                    ) : 'Start the Conversation'}
                   </button>
-                  <div className="flex items-center gap-2 md:text-sm lg:text-base text-gray-500 font-medium hidden lg:flex">
-                    <ShieldCheck size={24} className=" text-green-600" />
-                    Your privacy is protected
+                  <div className="lg:pl-4 flex items-center gap-2 text-sm lg:text-[14px] text-gray-500 font-medium hidden lg:flex mt-2">
+                    <ShieldCheck size={24} className="shrink-0 text-green-600" />
+                    <span>Your information is kept confidential</span>
                   </div>
                 </div>
 
@@ -363,40 +370,42 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
             </div>
 
             {/* Right Side - Info */}
-            {/* bg-[#1D1D21]   bg-[#1D1D21]  bg-[#4A494F] */}
-            <div className="w-full md:w-1/2  bg-[#1D1D21] backdrop-blur-md p-8 md:p-14 text-white flex flex-col justify-center relative hidden lg:block">
+            {/* bg-[#1D1D21]   bg-[#0A0F1E]  bg-[#4A494F] */}
+            <div className="w-full lg:w-[46%] bg-[#1D1D21] backdrop-blur-md p-8 md:p-14 text-white flex flex-col justify-center relative hidden lg:flex">
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-14 h-14 rounded-full overflow-hidden shrink-0 border border-slate-500">
-                  <img src="/profile/Aditya_Vishwakarma.jpeg" alt="Aditya Vishwakarma" className="w-full h-full object-cover" />
+                <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 outline outline-2 outline-slate-200  ">
+                  <img src="/profile/Amitkumar-Naidu.jpeg" alt="Amitkumar Naidu" className="w-full h-full object-cover" />
                 </div>
                 {/* <div>
                   <h4 className="font-bold text-lg">Aditya Vishwakarma</h4>
                   <p className="text-sm text-slate-300 mt-1">Founder of ProgrammingProphet</p>
                 </div> */}
                 <div>
-                  <h4 className="font-bold text-lg">Aditya Vishwakarma</h4>
-                  <p className="text-sm text-slate-300 mt-1">Founder of ProgrammingProphet</p>
+                  <h4 className="font-semibold text-lg">Amitkumar Naidu</h4>
+                  <p className="text-slate-400 mt-1">Business Development Executive</p>
                 </div>
               </div>
 
-              <p className="text-slate-200 leading-relaxed mb-8 text-sm">
-                Reach out to ProgrammingProphet to receive a free consultation and entrust your IT initiative to ProgrammingProphet.
+              <p className="text-slate-100 leading-relaxed mb-8 font-calibri text-[17px]">
+                {/* Reach out to ProgrammingProphet to receive a free consultation and entrust your IT initiative to ProgrammingProphet. */}
+                Tell us what you're building, and our team will help you explore the right technology approach for your business.
               </p>
 
               <div className="h-px bg-slate-600/50 w-full mb-8"></div>
 
-              <h4 className="font-bold mb-5 text-xl">Contact us</h4>
+              <h4 className=" mb-5  font-calibri text-[22px]">Contact us</h4>
 
-              <div className="space-y-4">
+              <div className="space-y-4 font-calibri text-[18px] ">
                 <div className="flex items-center gap-3">
-                  <Smartphone size={18} className="text-white-500" />
-                  <span className="text-slate-200 font-medium">+91 70391679055 / 7715933711</span>
+                  <Phone size={22} className="text-blue-400" />
+                  <span className="text-slate-200  hover:text-blue-400">+91 9820346955</span>
+                  {/* 7039167905 / */}
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail size={18} className="text-white-500" />
+                  <Mail size={22} className="text-blue-400 " />
                   {/* <span className="text-slate-200 font-medium">aditya.vishwakarma@programmingprophet.site</span> */}
 
-                  <span className="text-slate-200 font-medium">contact@programmingprophet.com</span>
+                  <span className="text-slate-200 hover:text-blue-400">contact@programmingprophet.com</span>
                 </div>
               </div>
             </div>

@@ -1,5 +1,5 @@
 
-import { Rocket, Cpu, RefreshCcw, Clock, ArrowRight } from 'lucide-react';
+import { Rocket, Cpu, RefreshCcw, Clock, ArrowRight, Handshake } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export const ProjectCTA = () => {
@@ -43,11 +43,16 @@ export const ProjectCTA = () => {
           {/* 3. Agile Approach */}
           <div className="flex items-center gap-3 flex-1 min-w-0">
             <div className="bg-white/5 w-10 h-10 flex items-center justify-center flex-shrink-0 border border-white/10">
-              <RefreshCcw className="w-5 h-5 text-white" />
+              <RefreshCcw className="w-5 h-5 text-white" />              
+              {/* <Handshake className="w-5 h-5 text-white" /> */}
+
             </div>
             <div className="min-w-0">
               <h4 className="text-[13px] font-semibold text-white mb-0.5 truncate">Agile Approach</h4>
               <p className="text-[11px] text-blue-200/70 truncate">Flexible and iterative process</p>
+              {/* <h4 className="text-[13px] font-semibold text-white mb-0.5 truncate">Long-Term</h4>
+
+              <p className="text-[11px] text-blue-200/70 truncate">Technology Partnerships</p> */}
             </div>
           </div>
 

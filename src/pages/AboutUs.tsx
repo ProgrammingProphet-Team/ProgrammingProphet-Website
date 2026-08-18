@@ -7,7 +7,7 @@ export const AboutUs = () => {
     <div className="min-h-screen bg-[#030712] text-white transition-colors duration-500 overflow-hidden">
 
       {/* 1. Hero Section - The Hook */}
-      <section className="relative lg:pt-32 pt-16 pb-20 lg:pb-24 px-6 lg:px-12 max-w-[1400px] mx-auto">
+      <section className="relative lg:py-32 pt-16 pb-20  px-6 lg:px-12 max-w-[1400px] mx-auto">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none" />
 
         <motion.div

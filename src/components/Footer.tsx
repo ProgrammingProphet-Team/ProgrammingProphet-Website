@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from 'react';
-import { Phone, Mail, ChevronDown } from 'lucide-react';
+import { Phone, Mail, ChevronDown, House, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const COMPANY_LINKS = [
@@ -23,14 +23,14 @@ const FooterSection = ({ title, children, className = "" }: FooterSectionProps) 
   return (
     <div className={`col-span-2 md:col-span-4 lg:col-span-2 text-white ${className}`}>
       {/* Mobile Header */}
-      <div 
+      <div
         className="flex items-center justify-between lg:hidden py-4 border-b border-slate-700/50 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
         <h4 className="font-bold text-sm tracking-wider uppercase">{title}</h4>
         <ChevronDown size={18} className={`transition-transform duration-300 font-light ${isOpen ? 'rotate-180' : ''}`} />
       </div>
-      
+
       {/* Desktop Header */}
       <h4 className="hidden lg:block dark:text-blue-400 lg:mb-6 mb-3 font-bold uppercase">{title}</h4>
 
@@ -49,30 +49,40 @@ export const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-12 gap-y-2 lg:gap-8 mb-8">
 
           <div className="col-span-2 md:col-span-4 lg:col-span-3 lg:mb-0 mb-6">
-            <div className="flex items-center lg:mb-4 mb-2">
-              <div className="py-2 rounded-lg text-blue-500 dark:text-blue-400 group-hover:bg-blue-500/20 transition-colors">
+            <div className="flex items-center lg:mb-3 mb-3">
+              <div className=" rounded-lg text-blue-500 dark:text-blue-400 group-hover:bg-blue-500/20 transition-colors">
                 <img
                   src="/ProgrammingProphet.png"
                   alt="ProgrammingProphet Logo"
-                  className="lg:h-8 h-7 w-auto object-contain mr-2"
+                  className="lg:h-10 h-10 w-auto object-contain mr-2"
                 />
               </div>
-              <span className="text-xl font-bold text-white ">
+              <p className="text-xl font-bold text-white ">
                 Programming<span className="text-xl text-blue-500 font-bold">Prophet</span>
-              </span>
+                {/* Programming<span className="text-xl text-[#155DFC] font-bold">Prophet</span> */}
+                <p className="text-[11px] font-light text-slate-200 "> <span className=" text-blue-400">powered by</span> Gyanti Enterprises</p>
+              </p>              
+              
             </div>
-            <p className="font-semibold text-slate-100 dark:text-blue-400 mb-6 lg:mb-14 italic">
-              "Transforming Ideas into Reality."
+                          {/* <p className="text-xs font-light text-slate-100 dark:text-blue-400">powered by Gyanti Enterprises</p> */}
+
+            <p className="pr-4 text-md  text-slate-200 dark:text-blue-400 mb-6  lg:mb-8 italic">
+              {/* "Transforming Ideas into Reality." */}
+              "Digital Engineering Partner for Growing Businesses."
             </p>
-            <h3 className='text-white lg:mb-5 mb-3 font-bold'>CONTACT US</h3>
-            <div className="lg:space-y-3 space-y-1.5">
-              <div className="flex items-start lg:gap-3 gap-2 text-slate-100">
+            <h3 className='text-white lg:mb-4 mb-3 font-bold'>CONTACT US</h3>
+            <div className="lg:space-y-2 space-y-1.5 ">
+              <div className="flex items-start  gap-2 text-slate-100 text-center">
                 <Phone size={18} className="text-blue-500 mt-0.5 shrink-0" />
-                <span className="text-sm">+91 70391679055 / 7715933711</span>
+                <span className="text-sm">+91 7039167905 / 9820346955</span>
               </div>
-              <div className="flex items-start lg:gap-3 gap-2 text-slate-100">
-                <Mail size={18} className="text-blue-500 mt-1 shrink-0 text-center" />
+              <div className="flex items-start  gap-2 text-slate-100 text-center">
+                <Mail size={18} className="text-blue-500 mt-0.5 shrink-0" />
                 <span className="text-sm">contact@programmingprophet.com</span>
+              </div>
+              <div className="flex items-start  gap-2 text-slate-100 text-center">
+                <MapPin size={18} className="text-blue-500 mt-0.5  shrink-0 " />
+                <span className="text-sm">Digha, Navi-Mumbai - 400708</span>
               </div>
             </div>
           </div>
