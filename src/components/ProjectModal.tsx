@@ -404,7 +404,7 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail size={22} className="text-blue-400 " />
-                  {/* <span className="text-slate-200 font-medium">aditya.vishwakarma@programmingprophet.site</span> */}
+                  {/* <span className="text-slate-200 font-medium">aditya.vishwakarma@programmingprophet.com</span> */}
 
                   <span className="text-slate-200 hover:text-blue-400">contact@programmingprophet.com</span>
                 </div>

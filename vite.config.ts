@@ -24,10 +24,8 @@ export default defineConfig({
   },
   server: {
     allowedHosts: [
-      '1947-113-30-186-185.ngrok-free.app',
-      'programmingprophet.site',
+      'programmingprophet.com',
       'server.programmingprophet.site',
-      '18db-113-30-186-57.ngrok-free.app'
     ],
     proxy: {
       '/api': {
