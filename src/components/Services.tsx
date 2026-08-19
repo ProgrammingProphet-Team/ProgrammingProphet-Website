@@ -105,7 +105,7 @@ export const Services = () => {
   return (
     <section
       id="services"
-      className="relative min-h-[calc(100vh-80px)] flex flex-col justify-center lg:py-12 py-4 overflow-hidden bg-[#0A0F1E]"
+      className="relative min-h-[calc(100vh-80px)] flex flex-col justify-center lg:py-0 py-4 overflow-hidden bg-[#0A0F1E]"
     >
       {/* Background Image */}
       {/* <div
