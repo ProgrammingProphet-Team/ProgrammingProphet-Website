@@ -6,7 +6,7 @@ const TESTIMONIALS = [
     id: 1,
     name: "PCKeyZone - Ongoing",
     role: "E-Commerce Plateform",
-    image: "../public/testimonials/PCKeyZone.png",
+    image: "/testimonials/PCKeyZone.png",
     text: "Developing a modern, user-friendly website for PCKeyZone that looks impressive & will improves online presence and customer engagement.",
     rating: 5
   },
@@ -14,7 +14,7 @@ const TESTIMONIALS = [
     id: 2,
     name: "SSCMR College",
     role: "Educational Institution",
-    image: "../public/testimonials/SSCMR-College.png",
+    image: "/testimonials/SSCMR-College.png",
     text: "The team at ProgrammingProphet built a professional and responsive website for SSCMR College that truly reflects our academic excellence and values.",
     rating: 5
   },
@@ -22,7 +22,7 @@ const TESTIMONIALS = [
     id: 3,
     name: "WeMurz Services ",
     role: "IT Service and Consulting",
-    image: "../public/testimonials/wemore-logo.png",
+    image: "/testimonials/wemore-logo.png",
     text: "ProgrammingProphet created a fast, clean and easy-to-manage website for WeMurz Services that has helped us reach and support more clients online.",
     rating: 5
   },
@@ -38,7 +38,7 @@ const TESTIMONIALS = [
     id: 5,
     name: "CherryApp - Netlyra",
     role: "Social Media Plateform",
-    image: "../public/testimonials/CherryApp.png",
+    image: "/testimonials/CherryApp.png",
     text: "ProgrammingProphet gave us great business services, related to our professional  email setup and deployment engineering.",
     rating: 5
   },
@@ -47,7 +47,7 @@ const TESTIMONIALS = [
     name: "ProgrammingProphet",
     role: "Your Technology Partner",
     // image: "../public/testimonials/men-profile.svg",
-    image: "../public/testimonials/logo-light.png",
+    image: "/testimonials/logo-light.png",
     // image: "../public/testimonials/pp-new.png",
 
 

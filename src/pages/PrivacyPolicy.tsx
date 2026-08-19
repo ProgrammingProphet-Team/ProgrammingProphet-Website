@@ -88,7 +88,7 @@ export const PrivacyPolicy = () => {
               </p>
               <div className="bg-slate-900/80 p-6 rounded-lg border border-slate-800 mt-4 inline-block">
                 <p className="font-bold text-white mb-1">ProgrammingProphet (Gyanti Enterprises)</p>
-                <p className="text-slate-400">Email: contact@programmingprophet.site</p>
+                <p className="text-slate-400">Email: contact@programmingprophet.com</p>
               </div>
             </section>
           </div>

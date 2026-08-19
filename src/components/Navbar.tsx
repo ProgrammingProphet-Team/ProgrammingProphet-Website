@@ -60,6 +60,7 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    const wasMobileMenuOpen = isMobileMenuOpen;
     setIsMobileMenuOpen(false);
 
     if (href.startsWith('/#')) {
@@ -70,8 +71,15 @@ export const Navbar = () => {
         // We are already on home page, just scroll smoothly
         const element = document.getElementById(targetId);
         if (element) {
-          const top = element.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top, behavior: 'smooth' });
+          const offset = window.innerWidth >= 1024 ? 80 : 64;
+          const top = element.getBoundingClientRect().top + window.scrollY - offset;
+          if (wasMobileMenuOpen) {
+            setTimeout(() => {
+              window.scrollTo({ top, behavior: 'smooth' });
+            }, 100);
+          } else {
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
         }
       } else {
         // Navigate to home and hash
@@ -91,7 +99,8 @@ export const Navbar = () => {
       const element = document.getElementById(targetId);
       if (element) {
         setTimeout(() => {
-          const top = element.getBoundingClientRect().top + window.scrollY - 80;
+          const offset = window.innerWidth >= 1024 ? 80 : 64;
+          const top = element.getBoundingClientRect().top + window.scrollY - offset;
           window.scrollTo({ top, behavior: 'smooth' });
         }, 100);
       }

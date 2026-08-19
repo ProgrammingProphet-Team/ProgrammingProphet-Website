@@ -105,10 +105,10 @@ export const Services = () => {
   return (
     <section
       id="services"
-      className="relative min-h-[calc(100vh-80px)] flex flex-col justify-center py-12 md:py-3 overflow-hidden bg-[#0A0F1E]"
+      className="relative min-h-[calc(100vh-80px)] flex flex-col justify-center lg:py-12 py-4 overflow-hidden bg-[#0A0F1E]"
     >
       {/* Background Image */}
-      <div
+      {/* <div
         className="absolute inset-0 z-0 opacity-40 mix-blend-overlay pointer-events-none"
         style={{
           backgroundImage: "url('/contact/demo.jpg')",
@@ -116,7 +116,7 @@ export const Services = () => {
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat'
         }}
-      />
+      /> */}
 
       <div className="w-full max-w-[100vw] mx-auto px-4 md:px-8 lg:px-12 relative z-10 py-8 md:py-12">
         {/* Fixed Title while scrolling */}

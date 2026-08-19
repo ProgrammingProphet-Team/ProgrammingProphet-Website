@@ -296,7 +296,7 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
                   )}
                 </div>
 
-                <div className="flex flex-col sm:flex-row sm:items-center gap-4 ">
+                {/* <div className="flex flex-col sm:flex-row sm:items-center gap-4 ">
                   <label className="text-[16px] font-semibold  flex items-center justify-center gap-2 px-8 py-3 border border-gray-200 hover:border-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-300 text-slate-900 w-full sm:w-auto shrink-0 group cursor-pointer">
                     <Paperclip size={20} className="text-black group-hover:text-white transition-colors " />
                     Attach file
@@ -324,7 +324,7 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
                       </div>
                     ))}
                   </div>
-                )}
+                )} */}
 
                 {/* <label className="flex items-start gap-3 cursor-pointer group">
                 <div className="relative flex items-start">

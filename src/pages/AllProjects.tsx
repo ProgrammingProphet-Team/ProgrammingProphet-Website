@@ -241,7 +241,7 @@ export const ALL_PROJECTS_DATA = [
     tech: ['Docker', 'kubernetes', 'Java', 'Next.js', 'PostgreSQL', 'Azure', 'AWS'],
     description: 'ShopSphere is a modern, responsive e-commerce platform designed to provide customers with a seamless and enjoyable shopping experience.',
     duration: '2025-2026',
-    teamSize: '2 developers',
+    teamSize: '2 Engineers',
     score: '4.8 Score',
     challenges: [
       "Processing large volumes of real-time data efficiently",
@@ -269,8 +269,8 @@ export const ALL_PROJECTS_DATA = [
     projectDetails: {
       client: "DevOps Engineering",
       industry: "E-commerce",
-      durationText: "2 months",
-      teamSizeText: "2 developers"
+      durationText: "1-2 months",
+      teamSizeText: "2 Engineers"
     },
     keyFeatures: [
       "Real-time Dashboards",
@@ -292,7 +292,7 @@ export const ALL_PROJECTS_DATA = [
     tech: ['Terraform', 'S3 Remote Backend', 'AWS', 'DynamoDB State Lock', 'Git Actions CI/CD', 'Ansible', 'Terraform Vault/Github Secrets'],
     description: 'Infrastructure Automation, automates the process of provisioning and managing infrastructure resources. Reduce manual intervention and save time. ',
     duration: '2025-2026',
-    teamSize: '4 developers',
+    teamSize: '1 Cloud & DevOps Enginner',
     score: '4.9 Score',
     challenges: [
       "Processing large volumes of real-time data efficiently",
@@ -321,7 +321,7 @@ export const ALL_PROJECTS_DATA = [
       client: "Cloud & DevOps Engineering",
       industry: "IT Services and Consulting",
       durationText: "1-2 months",
-      teamSizeText: "1 - DevOps Engineer"
+      teamSizeText: "1 - Cloud & DevOps Engineer"
     },
     keyFeatures: [
       "Real-time Dashboards",
@@ -408,7 +408,7 @@ export const AllProjects = () => {
               animate={{ opacity: 1, x: 0 }}
               className="text-5xl font-extrabold bg-gradient-to-r from-blue-100 to-blue-700 bg-clip-text text-transparent mb-6 tracking-tight font-sans uppercase"
             >
-              Our Complete Portfolio
+              Featured Projects
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -416,7 +416,7 @@ export const AllProjects = () => {
               transition={{ delay: 0.1 }}
               className="text-slate-100 text-xl leading-relaxed"
             >
-              Explore the technological innovations we've brought to life across various industries and departments.
+              Explore the technological excellence we've brought to life across various industries and departments.
             </motion.p>
           </div>
 

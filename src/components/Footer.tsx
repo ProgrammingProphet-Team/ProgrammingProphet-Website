@@ -61,17 +61,17 @@ export const Footer = () => {
                 Programming<span className="text-xl text-blue-500 font-bold">Prophet</span>
                 {/* Programming<span className="text-xl text-[#155DFC] font-bold">Prophet</span> */}
                 <p className="text-[11px] font-light text-slate-200 "> <span className=" text-blue-400">powered by</span> Gyanti Enterprises</p>
-              </p>              
-              
-            </div>
-                          {/* <p className="text-xs font-light text-slate-100 dark:text-blue-400">powered by Gyanti Enterprises</p> */}
+              </p>
 
-            <p className="pr-4 text-md  text-slate-200 dark:text-blue-400 mb-6  lg:mb-8 italic">
+            </div>
+            {/* <p className="text-xs font-light text-slate-100 dark:text-blue-400">powered by Gyanti Enterprises</p> */}
+
+            <p className="pr-4 text-md  text-slate-200 dark:text-blue-400 lg:mb-4 mb-6 italic">
               {/* "Transforming Ideas into Reality." */}
               "Digital Engineering Partner for Growing Businesses."
             </p>
-            <h3 className='text-white lg:mb-4 mb-3 font-bold'>CONTACT US</h3>
-            <div className="lg:space-y-2 space-y-1.5 ">
+            <h3 className='text-white lg:mb-3 mb-3 font-bold'>CONTACT US</h3>
+            <div className="lg:space-y-1.5 space-y-1.5 ">
               <div className="flex items-start  gap-2 text-slate-100 text-center">
                 <Phone size={18} className="text-blue-500 mt-0.5 shrink-0" />
                 <span className="text-sm">+91 7039167905 / 9820346955</span>
@@ -80,9 +80,12 @@ export const Footer = () => {
                 <Mail size={18} className="text-blue-500 mt-0.5 shrink-0" />
                 <span className="text-sm">contact@programmingprophet.com</span>
               </div>
-              <div className="flex items-start  gap-2 text-slate-100 text-center">
-                <MapPin size={18} className="text-blue-500 mt-0.5  shrink-0 " />
-                <span className="text-sm">Digha, Navi-Mumbai - 400708</span>
+              <div className="flex items-start gap-2 text-slate-100">
+                <MapPin size={18} className="text-blue-500 mt-0.5 shrink-0" />
+                <span className="text-sm text-left pr-16 lg:pr-12">
+                  {/* <span className="block text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-0.5">REGISTERED BUSINESS ADDRESS</span> */}
+                  Digha, Navi Mumbai, Maharashtra, India – 400708
+                </span>
               </div>
             </div>
           </div>
