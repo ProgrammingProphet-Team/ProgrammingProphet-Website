@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
 const NAV_LINKS: { name: string; href: string; hasDropdown?: boolean; openInNewTab?: boolean }[] = [
   // { name: 'Tech Stack', href: '/#tech-stack', hasDropdown: true },
   { name: 'Home', href: '/#home', hasDropdown: false },
@@ -11,7 +10,7 @@ const NAV_LINKS: { name: string; href: string; hasDropdown?: boolean; openInNewT
   { name: 'Projects', href: '/#projects', hasDropdown: false },
   { name: 'Testimonials', href: '/#testimonials', hasDropdown: false },
 
-  { name: 'About us', href: '/about', },
+  { name: 'About us', href: '/about/', },
 
   // { name: 'Careers', href: '/careers', openInNewTab: true },
 ];
@@ -56,19 +55,15 @@ export const Navbar = () => {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [activeTechCategory, setActiveTechCategory] = useState<keyof typeof TECH_STACK_DATA>('Front-end');
 
-  const location = useLocation();
-  const navigate = useNavigate();
-
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     const wasMobileMenuOpen = isMobileMenuOpen;
     setIsMobileMenuOpen(false);
 
     if (href.startsWith('/#')) {
-      e.preventDefault();
-      const targetId = href.replace('/#', '');
-      
-      if (location.pathname === '/') {
-        // We are already on home page, just scroll smoothly
+      const currentPath = window.location.pathname;
+      if (currentPath === '/' || currentPath === '/index.html' || currentPath === '') {
+        e.preventDefault();
+        const targetId = href.replace('/#', '');
         const element = document.getElementById(targetId);
         if (element) {
           const offset = window.innerWidth >= 1024 ? 80 : 64;
@@ -82,20 +77,17 @@ export const Navbar = () => {
           }
         }
       } else {
-        // Navigate to home and hash
-        navigate(href);
+        // Let it do a full page navigation to the home page with the hash
       }
     } else if (href.startsWith('/')) {
-      // For non-hash internal links like /about
-      e.preventDefault();
-      navigate(href);
+      // For MPA routes, let the browser navigate normally
     }
   };
 
   useEffect(() => {
-    // Scroll to hash on location change if it exists
-    if (location.hash) {
-      const targetId = location.hash.substring(1);
+    // Scroll to hash on initial load if it exists
+    if (window.location.hash) {
+      const targetId = window.location.hash.substring(1);
       const element = document.getElementById(targetId);
       if (element) {
         setTimeout(() => {
@@ -105,7 +97,7 @@ export const Navbar = () => {
         }, 100);
       }
     }
-  }, [location]);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -121,17 +113,23 @@ export const Navbar = () => {
         <div className="flex items-center justify-between lg:h-[80px] h-[64px]">
 
           {/* Logo (Left) */}
-          <Link 
-            to="/" 
+          <a 
+            href="/" 
             className="flex items-center group cursor-pointer shrink-0"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={(e) => {
+              const currentPath = window.location.pathname;
+              if (currentPath === '/' || currentPath === '/index.html' || currentPath === '') {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            }}
           >
             <img src="/logo-light.png" alt="ProgrammingProphet Logo" className="h-11 lg:h-12 w-auto object-contain mix-blend-multiply" />
 
             <div className="flex ">
               <span className="text-xl font-bold text-slate-900 tracking-tight leading-tight">Programming</span><span className="text-xl font-bold text-blue-600 tracking-tight leading-tight">Prophet</span>
             </div>
-          </Link>
+          </a>
 
           {/* Desktop Links (Center) */}
           <div className="hidden lg:flex items-center justify-center flex-1 ml-4 h-full relative" onMouseLeave={() => setActiveMenu(null)}>
@@ -214,10 +212,9 @@ export const Navbar = () => {
               <Search size={18} />
             </button> */}
 
-            <Link to="/contact" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5  text-[14px] transition-colors flex items-center gap-2">
+            <a href="/contact/" className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5  text-[14px] transition-colors flex items-center gap-2">
               Contact us
-              {/* <ArrowRight size={16} /> */}
-            </Link>
+            </a>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -263,10 +260,9 @@ export const Navbar = () => {
                 </a>
               ))}
               <div className="h-[1px] bg-gray-100 my-2"></div>
-              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3  text-center transition-colors w-full flex items-center justify-center gap-2">
+              <a href="/contact/" onClick={() => setIsMobileMenuOpen(false)} className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3  text-center transition-colors w-full flex items-center justify-center gap-2">
                 Contact Us 
-                {/* <ArrowRight size={18} /> */}
-              </Link>
+              </a>
             </div>
           </motion.div>
         )}

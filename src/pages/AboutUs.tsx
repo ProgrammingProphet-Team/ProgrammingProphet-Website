@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Target, Shield, ArrowRight, Eye, Zap, CheckCircle2, RefreshCw, Check, Layers, Clock, Heart, Code, Cloud, Cpu } from 'lucide-react';
-import { Link } from 'react-router-dom';
+
 
 export const AboutUs = () => {
   return (
@@ -44,13 +44,13 @@ export const AboutUs = () => {
           </p>
 
           <div className="relative flex flex-col sm:flex-row items-center justify-center gap-4 mb-14 z-10">
-            <Link to="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-3.5 transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] group">
+            <a href="/contact/" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-3.5 transition-all duration-300 hover:shadow-[0_0_30px_rgba(37,99,235,0.4)] group">
               Start Your Project
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link to="/projects" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-transparent border-2 border-slate-700 hover:border-blue-500 text-white font-bold px-8 py-3.5  transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] group">
+            </a>
+            <a href="/projects" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-transparent border-2 border-slate-700 hover:border-blue-500 text-white font-bold px-8 py-3.5  transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] group">
               View Our Work
-            </Link>
+            </a>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10 text-sm md:text-base font-semibold text-slate-300 opacity-90">

@@ -16,6 +16,7 @@ const SERVICES = [
     ],
     bottomLine: 'Responsive • SEO-ready • Production-ready',
     cta: 'Discuss your web project',
+    link: '/services/web-development/',
     color: 'from-blue-500 to-cyan-400',
     textColor: 'text-blue-400',
     hoverTextColor: 'group-hover/tile:text-blue-400',
@@ -34,6 +35,7 @@ const SERVICES = [
     ],
     bottomLine: 'Discovery → Architecture → Development → Deployment',
     cta: 'Discuss your software project',
+    link: '/services/software-development/',
     color: 'from-indigo-500 to-purple-500',
     textColor: 'text-indigo-400',
     hoverTextColor: 'group-hover/tile:text-indigo-400',
@@ -52,6 +54,7 @@ const SERVICES = [
     ],
     bottomLine: 'Infrastructure • Automation • Monitoring • Reliability',
     cta: 'Discuss your DevOps setup',
+    link: '/services/devops-cloud/',
     color: 'from-emerald-500 to-teal-400',
     textColor: 'text-emerald-400',
     hoverTextColor: 'group-hover/tile:text-emerald-400',
@@ -70,6 +73,7 @@ const SERVICES = [
     ],
     bottomLine: 'Assess → Plan → Modernize → Improve',
     cta: 'Discuss your modernization project',
+    link: '/services/system-integration/',
     color: 'from-orange-500 to-amber-400',
     textColor: 'text-orange-400',
     hoverTextColor: 'group-hover/tile:text-orange-400',
@@ -216,12 +220,20 @@ export const Services = () => {
                         <span className="text-xs md:text-sm text-slate-500 font-mono tracking-wider">
                           {service.bottomLine}
                         </span>
-                        <button
-                          onClick={() => setIsModalOpen(true)}
-                          className="inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:underline group/cta w-fit"
-                        >
-                          {service.cta} <span className="transition-transform duration-300 group-hover/cta:translate-x-1">→</span>
-                        </button>
+                        <div className="flex items-center gap-6">
+                          <a
+                            href={service.link}
+                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-400 hover:text-blue-300 hover:underline group/learn w-fit"
+                          >
+                            Learn More <span className="transition-transform duration-300 group-hover/learn:translate-x-1">→</span>
+                          </a>
+                          <button
+                            onClick={() => setIsModalOpen(true)}
+                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-white hover:underline group/cta w-fit"
+                          >
+                            {service.cta} <span className="transition-transform duration-300 group-hover/cta:translate-x-1">→</span>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>

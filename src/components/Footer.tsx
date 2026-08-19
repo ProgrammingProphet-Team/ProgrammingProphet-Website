@@ -1,14 +1,13 @@
 import { useState, type ReactNode } from 'react';
 import { Phone, Mail, ChevronDown, MapPin } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const COMPANY_LINKS = [
-  { name: 'About Us', href: '/about' },
+  { name: 'About Us', href: '/about/' },
   { name: 'Services', href: '/#services' },
   { name: 'Projects', href: '/#projects' },
   { name: 'Testimonials', href: '/#testimonials' },
   { name: 'View Our Work', href: '/projects' },
-  { name: 'Contact', href: '/contact' },
+  { name: 'Contact', href: '/contact/' },
 ];
 
 interface FooterSectionProps {
@@ -114,12 +113,10 @@ export const Footer = () => {
 
           <FooterSection title="SERVICES" className="lg:ml-8 lg:col-span-3">
             <ul className="lg:space-y-4 space-y-3 text-sm  text-slate-300 dark:text-slate-400 font-bold lg:font-normal">
-              <li>Web Development</li>
-              <li>DevOps Services</li>
-              <li>Cloud Engineering</li>
-              <li>Software Engineering</li>
-              <li>Startups & MVP Services</li>
-              <li>Custom Software Solutions</li>
+              <li><a href="/services/web-development/" className="hover:text-blue-500 transition-colors">Web Development Services</a></li>
+              <li><a href="/services/software-development/" className="hover:text-blue-500 transition-colors">Custom Software Development</a></li>
+              <li><a href="/services/devops-cloud/" className="hover:text-blue-500 transition-colors">Cloud & DevOps Consulting</a></li>
+              <li><a href="/services/system-integration/" className="hover:text-blue-500 transition-colors">Integration & Modernization</a></li>
             </ul>
           </FooterSection>
 
@@ -141,7 +138,7 @@ export const Footer = () => {
           <p>© 2025 ProgrammingProphet. All rights reserved. </p>
           <div className="flex ">
             <span className="flex items-center gap-1">
-              <Link to="/privacy-policy" className=" font-bold text-white hover:text-blue-500 transition-colors">Privacy Policy</Link> and <Link to="/terms-of-service" className="font-bold text-white hover:text-blue-500 transition-colors">Terms of Service</Link>
+              <a href="/privacy-policy/" className=" font-bold text-white hover:text-blue-500 transition-colors">Privacy Policy</a> and <a href="/terms-of-service/" className="font-bold text-white hover:text-blue-500 transition-colors">Terms of Service</a>
             </span>
           </div>
         </div>

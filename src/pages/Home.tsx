@@ -3,6 +3,7 @@ import { Hero } from '../components/Hero';
 import { SectionDivider } from '../components/SectionDivider';
 import { Projects } from '../components/Projects';
 import { ProjectCTA } from '../components/ProjectCTA';
+import { SEOContent } from '../components/SEOContent';
 
 const Credibility = React.lazy(() => import('../components/Credibility').then(module => ({ default: module.Credibility })));
 // const DashboardPreview = React.lazy(() => import('../components/DashboardPreview').then(module => ({ default: module.DashboardPreview })));
@@ -74,6 +75,7 @@ export const Home = () => {
 
         </div> */}
         <div className='bg-[#0A0F1E]'>
+        <SEOContent />
         <Testimonials />
         <SectionDivider type="glowing-line" />
         <FAQ />

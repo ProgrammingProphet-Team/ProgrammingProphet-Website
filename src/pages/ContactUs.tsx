@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight, Paperclip, ShieldCheck, Zap, Shield, Rocket, Handshake, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+
 
 export const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -183,9 +183,8 @@ export const ContactUs = () => {
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-6 lg:px-10 pt-6 ">
 
-        {/* Breadcrumb */}
         <div className="flex items-center gap-2 text-sm text-white lg:mb-12 ">
-          <Link to="/" className="hover:text-white transition-colors">Home</Link>
+          <a href="/" className="hover:text-white transition-colors">Home</a>
           <ChevronRight size={14} />
           <span className="text-blue-500 font-medium ">Contact Us</span>
         </div>
