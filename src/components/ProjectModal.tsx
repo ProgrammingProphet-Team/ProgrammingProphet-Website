@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { X, Paperclip, Mail, ShieldCheck, Phone } from 'lucide-react';
+import { X, Mail, ShieldCheck, Phone } from 'lucide-react';
+// import { Paperclip } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface ProjectModalProps {
@@ -26,34 +27,34 @@ export const ProjectModal = ({ isOpen, onClose }: ProjectModalProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      const selectedFiles = Array.from(e.target.files);
-      if (selectedFiles.length + files.length > 3) {
-        alert('You can only attach up to 3 files.');
-        return;
-      }
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (e.target.files) {
+  //     const selectedFiles = Array.from(e.target.files);
+  //     if (selectedFiles.length + files.length > 3) {
+  //       alert('You can only attach up to 3 files.');
+  //       return;
+  //     }
+  //
+  //     const validFiles = selectedFiles.filter(file => {
+  //       const isValidSize = file.size <= 3 * 1024 * 1024;
+  //       const validExtensions = ['.doc', '.docx', '.pdf', '.ppt', '.pptx'];
+  //       const isValidType = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+  //       return isValidSize && isValidType;
+  //     });
+  //
+  //     if (validFiles.length !== selectedFiles.length) {
+  //       alert('Some files were rejected due to invalid format or size exceeding 3MB.');
+  //     }
+  //
+  //     setFiles(prev => [...prev, ...validFiles]);
+  //   }
+  //   // Reset input value so the same file can be selected again if removed
+  //   e.target.value = '';
+  // };
 
-      const validFiles = selectedFiles.filter(file => {
-        const isValidSize = file.size <= 3 * 1024 * 1024;
-        const validExtensions = ['.doc', '.docx', '.pdf', '.ppt', '.pptx'];
-        const isValidType = validExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
-        return isValidSize && isValidType;
-      });
-
-      if (validFiles.length !== selectedFiles.length) {
-        alert('Some files were rejected due to invalid format or size exceeding 3MB.');
-      }
-
-      setFiles(prev => [...prev, ...validFiles]);
-    }
-    // Reset input value so the same file can be selected again if removed
-    e.target.value = '';
-  };
-
-  const removeFile = (index: number) => {
-    setFiles(prev => prev.filter((_, i) => i !== index));
-  };
+  // const removeFile = (index: number) => {
+  //   setFiles(prev => prev.filter((_, i) => i !== index));
+  // };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
